@@ -1,3 +1,32 @@
+# Specific Bucket Full Access
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteObject",
+                "s3:Put*",
+                "s3:Get*",
+                "s3:Describe*",
+                "s3:ListBucket*"
+            ],
+            "Resource": ["arn:aws:s3:::cloudgeeks", "arn:aws:s3:::cloudgeeks/*"
+            ]
+
+        }
+        
+    ]
+}
+
+
+
+
+
+
+
 # Specific Bucket Full Access with AWS Console
 
 # https://aws.amazon.com/premiumsupport/knowledge-center/s3-access-denied-listobjects-sync/
