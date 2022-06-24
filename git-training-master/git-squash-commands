@@ -1,3 +1,5 @@
+git log --oneline
+
 git log --oneline -n13
 
 git rebase -i HEAD~13
