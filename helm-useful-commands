@@ -29,6 +29,8 @@ helm plugin ls
 
 helm plugin install https://github.com/databus23/helm-diff 
 
+helm history release-name -n learning
+
 helm diff revision release-name 1 2
 
 helm diff revision hello 1 2 -n learning
