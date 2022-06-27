@@ -24,6 +24,9 @@ helm template -f env.yaml helloworld
 # Diff Plugin
 #############
 # https://github.com/databus23/helm-diff
+
+helm plugin ls
+
 helm plugin install https://github.com/databus23/helm-diff 
 
 helm diff revision release-name 1 2
