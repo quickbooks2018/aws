@@ -1,0 +1,15 @@
+###############
+# Crontab Entry
+###############
+yes | docker image prune --all --filter "until=2190h" # delete images older than 3 months ago
+
+#####################
+# Docker System usage
+#####################
+docker system df
+
+docker system df -v
+
+
+
+# https://www.freecodecamp.org/news/how-to-remove-all-docker-images-a-docker-cleanup-guide/
