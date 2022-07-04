@@ -103,6 +103,6 @@ EOF
   
  docker compose -p pritunl up -d
  
- docker exec -it pritunl pritunl default-password
+ # docker exec -it pritunl pritunl default-password
  
  # End
