@@ -78,7 +78,7 @@ services:
     volumes:
       - mongodb:/data/db
   pritunl:
-    image: goofball222/pritunl:latest
+    image: quickbooks2018/pritunl:latest
     container_name: pritunl
     depends_on:
         - mongo
