@@ -89,8 +89,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 80:80
-      - 8443:443
-      - 443:1194/tcp  # Note: Run the Server on 1194 & edit ovpn file to 443
+      - 443:443
+      - 8443:1194/tcp  # Note: Run the Server on 1194 & edit ovpn file to 8443
     environment:
       - MONGODB_URI=mongodb://mongoadmin:secret@mongo:27017/admin
 volumes:
