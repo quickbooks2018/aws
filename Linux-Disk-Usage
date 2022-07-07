@@ -3,6 +3,8 @@
 # Ubuntu/Debian
 
 apt install -y ncdu
+cd /
+ncdu
 
 # Fedorora/Centos
 
