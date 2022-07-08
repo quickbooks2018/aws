@@ -77,9 +77,12 @@ watch -x kubectl get all --namespace wordpress
 ########
 helm install --dry-run --debug
  
+ helm install nginx-alpine ./ -f values.yaml --namespace learning --create-namespace --debug --dry-run
+ 
              # release-name
 helm install nginx-alpine --debug --dry-run helloworld
 
+             # environment variable file
 helm install nginx-alpine -f helloworld/env.yaml helloworld  --debug --dry-run
 
                # release-name-absent
