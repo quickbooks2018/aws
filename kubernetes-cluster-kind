@@ -5,6 +5,12 @@
 # https://hub.docker.com/u/kindest
 # https://hub.docker.com/r/kindest/node/tags
 
+####################
+# Docker Installtion
+####################
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+rm -f get-docker.sh
 
 #######################
 # Kubectl Installation
@@ -26,8 +32,9 @@ cp /usr/local/bin/helm /usr/bin/helm
 rm -f get_helm.sh
 helm version
 
-
+###################
 # Kind Installation
+###################
 
  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.0/kind-linux-amd64
 
