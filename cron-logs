@@ -1,0 +1,4 @@
+# https://stackoverflow.com/questions/4811738/how-to-log-cron-jobs
+
+grep CRON /var/log/syslog
+
