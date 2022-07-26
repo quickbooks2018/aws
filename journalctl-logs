@@ -1,3 +1,22 @@
+systemctl status service-name.service
+
+journalctl -u service.name --since today
+
+#########
+# Example
+#########
+# Hazelcast Management Server
+
+systemctl status hazelcast-mc.service
+
+journalctl -u hazelcast-mc.service --since today
+
+
+# Hazelcast Members
+
 systemctl status hazelcast.service
 
 journalctl -u hazelcast.service --since today
+
+
+
