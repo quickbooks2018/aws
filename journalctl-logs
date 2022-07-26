@@ -1,0 +1,3 @@
+systemctl status hazelcast.service
+
+journalctl -u hazelcast.service --since today
