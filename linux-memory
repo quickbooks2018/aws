@@ -1,6 +1,12 @@
 # https://stackoverflow.com/questions/624857/finding-which-process-was-killed-by-linux-oom-killer
 
+# https://haydenjames.io/dstat-command-in-linux-examples/
+
+dstat --cpu --mem
 
 
+# OOM killed the process incase of high memory
 dstat --top-oom
  --out-of-memory---
+
+# Incase High cpu process is not killed but we face cpu throttling or chocking
