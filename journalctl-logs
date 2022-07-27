@@ -1,3 +1,5 @@
+# https://www.loggly.com/ultimate-guide/using-journalctl/
+
 systemctl status service-name.service
 
 journalctl -u service.name --since today
@@ -17,6 +19,17 @@ journalctl -u hazelcast-mc.service --since today
 systemctl status hazelcast.service
 
 journalctl -u hazelcast.service --since today
+
+journalctl -u hazelcast.service --since "2022-07-26 22:00:00" --until "2022-07-26 23:59:00"
+
+
+# Time
+# Management
+journalctl -u hazelcast-mc.service --since "2022-07-26 22:00:00" --until "2022-07-26 23:59:00"
+
+
+# Member
+journalctl -u hazelcast.service --since "2022-07-26 22:00:00" --until "2022-07-26 23:59:00"
 
 
 
