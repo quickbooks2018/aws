@@ -1,0 +1,6 @@
+# https://stackoverflow.com/questions/624857/finding-which-process-was-killed-by-linux-oom-killer
+
+
+
+dstat --top-oom
+ --out-of-memory---
