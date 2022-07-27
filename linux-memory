@@ -6,7 +6,31 @@ dstat --cpu --mem
 
 
 # OOM killed the process incase of high memory
+################
 dstat --top-oom
+#################
  --out-of-memory---
+ 
+ A score 789 means the process was using 78.9% of the memory when it was killed.
+ # https://support.datastax.com/s/article/OOM-Killer
+ 
+ ################################
+ Common causes of OOM Killer are:
+ ################################
+1. The heap size is too large (https://docs.datastax.com/en/dse/6.0/dse-admin/datastax_enterprise/operations/opsConHeapSize.html)
+2. The node doesn't have enough memory (https://docs.datastax.com/en/dse-planning/doc/planning/capacityPlanning.html#Memory)
+3. Improper settings of the Kernel (https://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html). In particular the swap and Java Hugepages settings.
+4. Memory fragmentation caused in general by either a JAVA bug or a product misconfiguration (like using Native memory allocation (malloc) instead of JEMalloc, JEMalloc results in less memory fragmentation than malloc)
+(https://datastax.slack.com/archives/C173L734P/p1570480173356300)
+List of known bugs for the existing JAVA releases:
+5. Other processes running on the machine are using more memory.
+6. An Operating System memory leak bug. Known examples of the supported DSE platforms:
+https://bugs.centos.org/view.php?id=14303
+https://bugzilla.redhat.com/show_bug.cgi?id=692251
+7. High replication factor of a table that's being compacted (really? Could this happen when we end-up with large sstables after a forced compaction? https://datastax.zendesk.com/agent/tickets/58753)
+https://datastax.zendesk.com/agent/tickets/40391 Currently, the suspicion is that you're seeing a combination of factors, likely the trigger these past couple of weeks seeing an increase in the number of queries related to data that have TTLs associated, which is stressing the heap.
+8. disk_access_mode: mmap_index_only (https://datastax.zendesk.com/agent/tickets/45686 https://datastax.zendesk.com/agent/tickets/44653 https://datastax.zendesk.com/agent/tickets/41679 https://datastax.slack.com/archives/C173L734P/p1570480173356300)
+9. Improper manual setting of the MaxDirectMemory (https://docs.datastax.com/en/dse/6.0/dse-admin/datastax_enterprise/operations/opsConHeapSize.html)
+10. A possible product issue (for existing product bugs, check the release notes).
 
 # Incase High cpu process is not killed but we face cpu throttling or chocking
