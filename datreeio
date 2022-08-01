@@ -1,0 +1,4 @@
+# https://hub.datree.io/
+
+#  Linux
+curl https://get.datree.io | /bin/bash
