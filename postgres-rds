@@ -26,9 +26,9 @@ psql --host=cloudgeeks-postgres-us-east-1.rds.amazonaws.com --port=5432 --userna
 ############################
 # Port Mapping with Postgres
 #############################
-docker run --name postgres-a -p 5432:5432 -w /root -e POSTGRES_PASSWORD=password -id postgres:latest  # This port mapping works only
+docker run --name postgres-a -p 5432:5432 -w /root -e POSTGRES_PASSWORD=password -id postgres:latest 
 
-docker run --name postgres-b -p 5433:5432 -w /root -e POSTGRES_PASSWORD=password -id postgres:latest  # This port mapping is also working
+docker run --name postgres-b -p 5433:5432 -w /root -e POSTGRES_PASSWORD=password -id postgres:latest 
 
 psql --host localhost --port 5433 --username postgres --dbname=postgres --password
 
