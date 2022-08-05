@@ -1,0 +1,4 @@
+# https://www.tutorialworks.com/kubernetes-curl/
+
+kubectl -n cloudgeeks run curl-pod --image=curlimages/curl -i --tty -- sh
+
