@@ -1,0 +1,36 @@
+- https://dockersl.im/
+
+- https://github.com/docker-slim/docker-slim
+
+curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
+
+
+
+#########
+# Example
+#########
+docker run --name docker-slim -v "//var/run/docker.sock:/var/run/docker.sock" -id python:latest
+
+docker images
+
+docker pull archlinux:latest
+
+docker-slim build --target archlinux:latest --tag archlinux:curl --http-probe=false --exec "curl checkip.amazonaws.com"
+
+##################
+# Install docker
+##################
+# https://get.docker.com/
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sh  get-docker.sh && rm -f get-docker
+###################################################
+
+docker images quickbooks2018/kasm-desktop:1.10.0
+
+docker-slim build --target quickbooks2018/kasm-desktop:1.10.0 --http-probe=false
+
+docker run --name kasmweb-desktop-slim --shm-size=2048m  -p 9099:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop.slim:latest
+
+
