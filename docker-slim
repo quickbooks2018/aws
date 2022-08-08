@@ -27,10 +27,10 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh  get-docker.sh && rm -f get-docker
 ###################################################
 
-docker images quickbooks2018/kasm-desktop:1.10.0
+docker images
 
-docker-slim build --target quickbooks2018/kasm-desktop:1.10.0 --http-probe=false
+docker-slim build --target nginx:latest --http-probe=false
 
-docker run --name kasmweb-desktop-slim --shm-size=2048m  -p 9099:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop.slim:latest
+docker run --name nginx -p 80:80 -id nginx.slim:latest
 
 
