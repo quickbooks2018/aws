@@ -32,7 +32,9 @@ sh  get-docker.sh && rm -f get-docker
 
 docker images
 
-docker-slim build --target nginx:latest --http-probe=true
+docker pull nginx:latest
+
+docker-slim build --target nginx:latest --tag quickbooks2018/nginx:slim --http-probe=true
 
 docker run --name nginx -p 80:80 -id nginx.slim:latest       # size reduced to 12MB approx
 
