@@ -9,7 +9,7 @@ helm plugin ls
 # Basic Sample Release
 ######################
 helm create hello
-cd 
+cd hello
 helm install hello ./ -f values.yaml --namespace datree --create-namespace --debug --dry-run
 
 ###############
