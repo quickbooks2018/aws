@@ -12,6 +12,9 @@ helm create hello
 cd hello
 helm install hello ./ -f values.yaml --namespace datree --create-namespace --debug --dry-run
 
+cd ..
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run
+
 ###############
 # Helm Template
 ###############
@@ -25,6 +28,7 @@ helm template -f env.yaml helloworld
  
  helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace
 
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run
 
 
 #############
