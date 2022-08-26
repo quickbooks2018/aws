@@ -13,7 +13,7 @@ docker run --name ansible --network host -w /mnt -v ${PWD}/ansible:/mnt -id pyth
 docker exec -it ansible bash
 
 apt update -y \
-cd /root \
+&& cd /root \
 && apt install -y ansible sudo curl zip unzip jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
 && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 && chmod +x ./kubectl \
