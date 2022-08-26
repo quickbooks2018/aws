@@ -6,7 +6,7 @@ docker exec -it ansible bash
 
 apt update -y \
 && apt install -y ansible sudo curl zip unzip jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
-&& curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+&& curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 && chmod +x ./kubectl \
 && mv ./kubectl /usr/bin/kubectl \
 && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
