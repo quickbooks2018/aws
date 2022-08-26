@@ -1,4 +1,12 @@
+#############
+# For Windows
+#############
 docker run --name ansible --network host -w /mnt -v "c:/users/Muhammad Asim/Desktop/ansible:/mnt" -id python:slim
+
+#################
+# For MacOs/Linux
+#################
+docker run --name ansible --network host -w /mnt -v ${PWD}/ansible:/mnt -id python:slim
 
 # https://github.com/ibraheemdev/modern-unix
 
@@ -18,7 +26,7 @@ apt update -y \
 && curl -# -LO https://releases.hashicorp.com/terraform/1.1.8/terraform_1.1.8_linux_amd64.zip \
 && unzip terraform_1.1.8_linux_amd64.zip \
 && mv terraform /usr/local/bin \
-&& curl -# -LO https://github.com/gruntwork-io/terragrunt/releases/download/v0.36.7/terragrunt_linux_amd64 \
+&& curl -# -LO https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.7/terragrunt_linux_amd64 \
 && mv terragrunt_linux_amd64 terragrunt \
 && chmod +x terragrunt \
 && mv terragrunt /usr/local/bin \
