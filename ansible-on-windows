@@ -5,7 +5,7 @@ docker run --name ansible --network host -w /mnt -v "c:/users/Muhammad Asim/Desk
 docker exec -it ansible bash
 
 apt update -y \
-&& apt install -y ansible sudo curl zip unzip awscli jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
+&& apt install -y ansible sudo curl zip unzip jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
 && curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
 && chmod +x ./kubectl \
 && mv ./kubectl /usr/bin/kubectl \
