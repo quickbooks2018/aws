@@ -79,9 +79,9 @@ docker run --name kasmweb-desktop -u root --shm-size=2048m -v "//var/run/docker.
 
 or
 
------------------------------------------------------------------------------------------
-docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -id python:slim
-------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -w /root -id python:slim
+---------------------------------------------------------------------------------------------------
 
 docker exec -it aws-ecr bash
 
