@@ -86,13 +86,11 @@ docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -id py
 docker exec -it aws-ecr bash
 
 apt update -y \
-&& apt install -y jq curl unzip sudo \
+&& apt install -y jq curl unzip sudo docker.io \
 && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
 && unzip awscliv2.zip \
 && sudo ./aws/install \
-&& curl -fsSL https://get.docker.com -o get-docker.sh \
-&& sh get-docker.sh && rm -f get-docker.sh \
-rm -rf *
+&& rm -rf *
 
 
 ----------------------------------------------------------------------------------------------
@@ -111,15 +109,13 @@ apk add --no-cache \
     && rm -rf /var/cache/apk/*
 # apk does not support awscliv2
 ---------------------------------------------------------------------------------------------------
-##################
-# Install docker
-##################
-# https://get.docker.com/
-curl -fsSL https://get.docker.com -o get-docker.sh
-###################################################
+#############################
+# Install docker in container
+##############################
+apt search docker
+apt install -y docker.io
+##############################
 
-
-sh  get-docker.sh
 
 https://localhost:6901/
 
