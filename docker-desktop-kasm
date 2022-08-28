@@ -79,11 +79,38 @@ docker run --name kasmweb-desktop -u root --shm-size=2048m -v "//var/run/docker.
 
 or
 
+-----------------------------------------------------------------------------------------
+docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -id python:slim
+------------------------------------------------------------------------------------------
+
+docker exec -it aws-ecr bash
+
+apt update -y
+apt install -y jq curl unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh && rm -f get-docker.sh
+rm -rf *
+
+
+----------------------------------------------------------------------------------------------
+########################
+# do not use docker image
+#########################
 docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -id docker:slim
 docker exec -it aws-ecr bash
-apk add bash
-apk add --update py-pip
-python3 -m pip install awscliv2
+apk add bash sudo curl
+apk add --no-cache \
+        python3 \
+        py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install --no-cache-dir \
+        awscli \
+    && rm -rf /var/cache/apk/*
+# apk does not support awscliv2
+---------------------------------------------------------------------------------------------------
 ##################
 # Install docker
 ##################
