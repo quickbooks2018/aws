@@ -81,8 +81,9 @@ or
 
 docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -id docker:slim
 docker exec -it aws-ecr bash
-apk add aws-cli bash
-
+apk add bash
+apk add --update py-pip
+python3 -m pip install awscliv2
 ##################
 # Install docker
 ##################
