@@ -1,0 +1,20 @@
+https://aws.amazon.com/premiumsupport/knowledge-center/eks-terminated-namespaces/
+
+############
+# Resolution
+############
+Follow these instructions to delete namespaces stuck in the "Terminating" status.
+
+1.    Save a JSON file similar to the following:
+
+kubectl get namespace <terminating-namespace> -o json > tempfile.json
+2.    Edit the JSON file and remove the finalizers from the array.
+
+3.    To apply the changes, run a command similar to the following:
+
+kubectl replace --raw "/api/v1/namespaces/<terminating-namespace>/finalize" -f ./tempfile.json
+4.    Verify that the terminating namespace is removed:
+
+kubectl get namespaces
+Repeat these steps for any remaining namespaces stuck in the "Terminating" status.
+
