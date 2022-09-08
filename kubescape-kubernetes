@@ -3,15 +3,11 @@ https://github.com/kubescape/kubescape
 Install
 curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 
+Account ID ---> Naviagte to configuration ---> add cluster ---> # Replace `[...]` with the account number
+export ARMO_ACCOUNT=[...]
 
+https://hub.armosec.io/docs/kubescape-cloud-account
 
-
-# Source: https://gist.github.com/38fe5617f9c38125f0213d442d9ab4c9
-
-#############################################################
-# How To Secure Kubernetes Clusters With Kubescape And Armo #
-# https://youtu.be/ZATGiDIDBQk                              #
-#############################################################
 
 # Additional Info:
 # - Kubescape: https://hub.armo.cloud
@@ -26,9 +22,6 @@ cd kubescape-demo
 
 # Install the CLI from https://github.com/armosec/kubescape#install
 
-# Create a Kubernetes cluster with Ingress
-# This demo was tested on Rancher Desktop, but it should work with any Kubernetes cluster
-# Please watch https://youtu.be/bYVfCp9dRTE if you are not familiar with Rancher Desktop
 
 kubectl create namespace production
 
