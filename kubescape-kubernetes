@@ -1,0 +1,159 @@
+https://github.com/kubescape/kubescape
+
+Install
+curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+
+
+
+
+# Source: https://gist.github.com/38fe5617f9c38125f0213d442d9ab4c9
+
+#############################################################
+# How To Secure Kubernetes Clusters With Kubescape And Armo #
+# https://youtu.be/ZATGiDIDBQk                              #
+#############################################################
+
+# Additional Info:
+# - Kubescape: https://hub.armo.cloud
+
+#########
+# Setup #
+#########
+
+git clone https://github.com/vfarcic/kubescape-demo
+
+cd kubescape-demo
+
+# Install the CLI from https://github.com/armosec/kubescape#install
+
+# Create a Kubernetes cluster with Ingress
+# This demo was tested on Rancher Desktop, but it should work with any Kubernetes cluster
+# Please watch https://youtu.be/bYVfCp9dRTE if you are not familiar with Rancher Desktop
+
+kubectl create namespace production
+
+kubectl apply \
+    --kustomize kustomize/overlays/dev
+
+helm repo add prometheus \
+    https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+helm upgrade --install \
+    prometheus prometheus/prometheus \
+    --namespace monitoring \
+    --create-namespace \
+    --wait
+
+###############################################
+# Kubernetes Security Scanning With Kubescape #
+###############################################
+
+kubescape scan framework nsa
+
+echo $?
+
+kubescape scan framework nsa \
+    --fail-threshold 0
+
+echo $?
+
+kubescape scan framework nsa \
+    --fail-threshold 50
+
+echo $?
+
+########################################################
+# Visualize Security Scanning Results With Armo Portal #
+########################################################
+
+# Open https://portal.armo.cloud
+
+# Replace `[...]` with the account number
+export ARMO_ACCOUNT=[...]
+
+kubescape scan framework nsa,mitre,armobest \
+    --exclude-namespaces kube-system,dev \
+    --fail-threshold 0 \
+    --account $ARMO_ACCOUNT \
+    --submit
+
+# Open https://portal.armo.cloud
+
+#######################################
+# Custom Security Scanning Frameworks #
+#######################################
+
+# Create a framework called `dev` and include `C-0005`, `C-0006`, `C-0009`, `C-0013`, and `C-0044`
+
+# Create a framework called `prod` and exclude a few controls
+
+kubescape scan framework dev \
+    --fail-threshold 0 \
+    --account $ARMO_ACCOUNT \
+    --submit
+
+# Edit kustomize/base/deployment.yaml
+
+kubectl apply \
+    --kustomize kustomize/overlays/dev
+
+kubescape scan framework dev \
+    --fail-threshold 0 \
+    --account $ARMO_ACCOUNT \
+    --submit
+
+###################################################
+# Scanning Production Environments With Kubescape #
+###################################################
+
+kubectl apply \
+    --kustomize kustomize/overlays/production
+
+kubescape scan framework prod \
+    --fail-threshold 0 \
+    --account $ARMO_ACCOUNT \
+    --submit
+
+#################################
+# Image Scanning With Kubescape #
+#################################
+
+helm repo add armo \
+    https://armosec.github.io/armo-helm
+
+helm repo update
+
+helm upgrade --install \
+    armo armo/armo-cluster-components \
+    --namespace armo-system \
+    --create-namespace \
+    --set accountGuid=$ARMO_ACCOUNT \
+    --set clusterName=`kubectl config current-context` \
+    --wait
+
+# Open https://github.com/armosec/armo-helm/blob/master/charts/armo-components/values.yaml#L66
+
+#####################################
+# RBAC Visualization With Kubescape #
+#####################################
+
+kubescape submit rbac \
+    --account $ARMO_ACCOUNT
+
+###########
+# Destroy #
+###########
+
+cp orig/deployment.yaml kustomize/base/.
+
+git add .
+
+git commit -m "Revert"
+
+git push
+
+# Delete the cluster and the custom frameworks from https://portal.armo.cloud
+
+# Destroy or reset the Kubernetes cluster
