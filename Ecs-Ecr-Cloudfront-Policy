@@ -1,0 +1,56 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+           "ecs:ListClusters",
+           "ecs:DescribeClusters"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+            "ecr:DescribeImages",
+            "ecr:DescribeRepositories",
+            "ecr:GetRegistryPolicy"
+  
+        ],
+        "Resource": "arn:aws:ecr:*:*:repository/*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": "ecr:GetAuthorizationToken",
+        "Resource": "*"
+    },
+           {
+              "Effect":"Allow",
+              "Action":[
+                 "acm:ListCertificates", 
+                 "cloudfront:GetDistribution",
+                 "cloudfront:GetDistributionConfig",
+                 "cloudfront:ListDistributions",
+                 "cloudfront:ListCloudFrontOriginAccessIdentities",
+                 "elasticloadbalancing:DescribeLoadBalancers",
+                 "iam:ListServerCertificates",
+                 "sns:ListSubscriptionsByTopic",
+                 "sns:ListTopics",
+                 "waf:GetWebACL",
+                 "waf:ListWebACLs"
+              ],
+              "Resource":"*"
+           },
+           {
+              "Effect":"Allow",
+              "Action":[
+                 "s3:ListAllMyBuckets"
+              ],
+              "Resource":"arn:aws:s3:::*"
+         
+     }
+
+    ]
+  }
