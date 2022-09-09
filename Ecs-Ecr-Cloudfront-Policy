@@ -1,56 +1,68 @@
 {
     "Version": "2012-10-17",
     "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": [
-           "ecs:ListClusters",
-           "ecs:DescribeClusters"
-        ],
-        "Resource": [
-          "*"
-        ]
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
-            "ecr:DescribeImages",
-            "ecr:DescribeRepositories",
-            "ecr:GetRegistryPolicy"
-  
-        ],
-        "Resource": "arn:aws:ecr:*:*:repository/*"
-    },
-    {
-        "Effect": "Allow",
-        "Action": "ecr:GetAuthorizationToken",
-        "Resource": "*"
-    },
-           {
-              "Effect":"Allow",
-              "Action":[
-                 "acm:ListCertificates", 
-                 "cloudfront:GetDistribution",
-                 "cloudfront:GetDistributionConfig",
-                 "cloudfront:ListDistributions",
-                 "cloudfront:ListCloudFrontOriginAccessIdentities",
-                 "elasticloadbalancing:DescribeLoadBalancers",
-                 "iam:ListServerCertificates",
-                 "sns:ListSubscriptionsByTopic",
-                 "sns:ListTopics",
-                 "waf:GetWebACL",
-                 "waf:ListWebACLs"
-              ],
-              "Resource":"*"
-           },
-           {
-              "Effect":"Allow",
-              "Action":[
-                 "s3:ListAllMyBuckets"
-              ],
-              "Resource":"arn:aws:s3:::*"
-         
-     }
+        
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "waf:ListWebACLs",
+                "cloudfront:ListCloudFrontOriginAccessIdentities",
+                "ecs:ListAttributes",
+                "iam:ListServerCertificates",
+                "sns:ListTopics",
+                "ecs:DescribeTaskSets",
+                "ecs:DescribeTaskDefinition",
+                "ecs:ListServices",
+                "ecs:DescribeCapacityProviders",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "cloudfront:GetDistribution",
+                "ecs:ListTasks",
+                "acm:ListCertificates",
+                "ecs:DescribeServices",
+                "ecs:DescribeContainerInstances",
+                "cloudfront:GetDistributionConfig",
+                "ecs:DescribeTasks",
+                "ecs:ListTaskDefinitions",
+                "waf:GetWebACL",
+                "ecs:ListClusters",
+                "sns:ListSubscriptionsByTopic",
+                "ecr:GetAuthorizationToken",
+                "ecs:DescribeClusters",
+                "ecs:ListAccountSettings",
+                "ecs:ListTagsForResource",
+                "ecs:ListTaskDefinitionFamilies",
+                "cloudfront:ListDistributions",
+                "ecs:ListContainerInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetRegistryPolicy",
+                "ecr:DescribeImageScanFindings",
+                "ecr:GetLifecyclePolicyPreview",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:DescribeRegistry",
+                "ecr:DescribePullThroughCacheRules",
+                "ecr:DescribeImageReplicationStatus",
+                "ecr:GetAuthorizationToken",
+                "ecr:ListTagsForResource",
+                "ecr:ListImages",
+                "ecr:BatchGetRepositoryScanningConfiguration",
+                "ecr:GetRegistryScanningConfiguration",
+                "ecr:BatchGetImage",
+                "ecr:DescribeImages",
+                "ecr:DescribeRepositories",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetRepositoryPolicy",
+                "ecr:GetLifecyclePolicy"
+            ],
+            "Resource": "arn:aws:ecr:*:*:repository/*"
+        }
+
 
     ]
-  }
+}
