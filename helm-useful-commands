@@ -18,6 +18,12 @@ helm template -f hello/values.yaml --namespace datree --create-namespace hello/ 
 ###############
 # Helm Template
 ###############
+-----------------------------------------
+Note: Difference between Teample & Dryrun
+-----------------------------------------
+Template output is pure yaml does not need k8 connectivity with API Server
+Dy Run out is not pure yaml does need k8 connectivity with k8 API Server
+
 helm template dirname
 
 helm template -f env.yaml helloworld 
@@ -26,9 +32,13 @@ helm template -f env.yaml helloworld
  
  helm template -f helloworld/env.yaml helloworld/
  
- helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace
 
-helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/
+
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/ > pureyaml.yaml
+
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run # Note: dry run will talk to kubernetes API server & output of this is proper yaml
 
 
 #############
