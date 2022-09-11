@@ -1,6 +1,10 @@
 helm ls -A
 helm repo ls
 helm template dirname
+
+####################################
+# Helm Lint for Helm Syntax Checking
+####################################
 helm lint dirname
 
 helm plugin ls
