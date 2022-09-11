@@ -288,3 +288,80 @@ EOF
 helm secrets install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace
 
 helm secrets upgrade --install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace
+
+
+##########
+# Helm Get 
+###########
+helm get INSTALLATIONNAME
+
+helm get INSTALLATIONNAME values
+# this will show the values of last deployment via helm
+
+helm get INSTALLATIONNAME values --all
+# this will show all the values of last deployment via helm
+
+helm get INSTALLATIONNAME values --revision 1
+# this will show the values of specific deployment via helm
+
+helm get INSTALLATIONNAME values --revision 2
+# this will show the values of specific deployment via helm
+
+###############
+# Helm Manifest
+################
+helm get manifest INSTALLATIONNAME
+# this will get the manifest of the existing last deployed 
+
+
+helm get manifest INSTALLATIONNAME --revision 1
+# this will get the manifest of the specific version deployed 
+
+
+helm get manifest INSTALLATIONNAME --revision 2
+# this will get the manifest of the specific version deployed 
+
+##############
+# Helm History
+##############
+kubectl get secrets -n default
+# this will show also the helm versions as well
+
+helm history INSTALLATIONNAME
+# this will show all the deployed history with revisions
+
+###############
+# Helm RollBack
+###############
+helm rollback INSTALLATIONNAME 1
+# Rollback to revision 1
+
+helm rollback INSTALLATION 3
+# Rollback to revision 3
+
+##################################
+# Helm Uninstall with Keep History
+##################################
+helm uninstall INSTALLATIONNAME --keep-history
+# Even after you uninstall the history will be there in secrets section & you can again redeploy with Helm RollBack
+
+##############
+# Helm TimeOut 
+##############
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --wait --timeout 10m25s
+
+# this is usefull when your installation is taking more time example: image pull take time or network latency issues
+
+#############
+# Helm Atomic
+#############
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --atomic -timeout 10m25s
+# default timeout is 5 minutes
+# Note --wait be enabled automatically with ATOMIC
+# this is very usefull in CICD, incase of failed existing deployment, it will automatically rollback to previously successfull deployment
+
+############
+# Helm Force
+############
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --force
+# Do not use this in CICD, sometimes you want to delete the deployment & recreate it, this option will be helpfull.
