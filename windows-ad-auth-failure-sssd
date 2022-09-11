@@ -1,0 +1,28 @@
+# https://red-orbita.com/?p=9701
+
+To solve this error we go to the sssd configuration and in the domain section ([domain/red-orbita.com]) we add the following line:
+
+ad_gpo_access_control = permissive
+The complete configuration would be as follows: 
+
+cat /etc/sssd/sssd.conf
+
+[sssd]
+domains = red-orbita.com
+config_file_version = 2
+services = nss, pam
+
+[domain/red-orbita.com]
+default_shell = /bin/bash
+krb5_store_password_if_offline = True
+cache_credentials = True
+krb5_realm = RED-ORBITA.COM
+realmd_tags = manages-system joined-with-adcli
+id_provider = ad
+fallback_homedir = /home/%u@%d
+ad_domain = red-orbita.com
+use_fully_qualified_names = True
+ldap_id_mapping = True
+access_provider = simple
+simple_allow_groups = sysadminlinux@red-orbita.com
+ad_gpo_access_control = permissive
