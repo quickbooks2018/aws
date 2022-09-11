@@ -360,9 +360,21 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 # Helm Atomic
 #############
 helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --atomic -timeout 10m25s
+# atomic mean it will wait till all the k8 resources are succesfully deployed. default is 5 min
 # default timeout is 5 minutes
 # Note --wait be enabled automatically with ATOMIC
 # this is very usefull in CICD, incase of failed existing deployment, it will automatically rollback to previously successfull deployment
+
+####################################
+# Helm Atomic With CleanUp on Failure
+#####################################
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --atomic -timeout 10m25s --cleanup-on-fail
+# atomic mean it will wait till all the k8 resources are succesfully deployed. default is 5 min
+# cleanup-on-fail means it will cleanup all the resources if deployment is failed with new release
+# default timeout is 5 minutes
+# Note --wait be enabled automatically with ATOMIC
+# this is very usefull in CICD, incase of failed existing deployment, it will automatically rollback to previously successfull deployment & with cleanup
+
 
 ############
 # Helm Force
