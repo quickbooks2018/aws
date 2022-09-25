@@ -1,0 +1,1 @@
+docker run --name portainer -p 9443:9443 -p 8000:8000 --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -id portainer/portainer-ce:latest
