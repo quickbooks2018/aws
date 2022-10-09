@@ -33,5 +33,4 @@ curl -X GET "ENDPOINT/INDEX_NAME/_settings?pretty"
 #############################
 # ElasticSearch Cluster Stats
 #############################
-
 - curl --user admin:'PASSWORD' -X GET "https://search-cloudgeeks-sxdqjq5vqx5sj4d6m35rqs4x2y.us-east-1.es.amazonaws.com/_cluster/stats?human&pretty&pretty"
