@@ -22,3 +22,10 @@ curl ES_Endpoint/_cat/allocation?v
 curl -X GET "ENDPOINT/_cluster/allocation/explain?pretty"
 
 curl -X GET "ENDPOINT/INDEX_NAME/_settings?pretty"
+
+#############################################
+# ElasticSearch Health Check with credentials
+#############################################
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/http-clients.html
+
+- curl --user admin:'PASSWORD' -X GET "https://search-cloudgeeks-sxdqjq5vqx5sj4d6m35rqs4x2y.us-east-1.es.amazonaws.com/_cluster/health?"
