@@ -27,3 +27,5 @@ check df -hT
 fdisk -l
 
 
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.htm
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
