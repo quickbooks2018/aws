@@ -1,3 +1,22 @@
+
+########
+# docker
+#########
+https://eff-certbot.readthedocs.io/en/stable/install.html#running-with-docker
+
+docker run -it --rm --name certbot \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            -p 80:80 certbot/certbot certonly
+
+
+
+
+
+
+
+
+
 # https://certbot.eff.org/
 
 # https://certbot.eff.org/instructions
