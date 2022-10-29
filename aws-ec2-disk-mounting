@@ -1,6 +1,66 @@
 ###############
 # Disk Mounting
 ###############
+
+STEP 6
+
+# Best Strategy is to use labels instead of UUID, because if ec2, you take AMI, redeployed that machine, UUID of that machine will be different, so use labels which mapped to UUID
+
+
+lsblk -o name,mountpoint,label,size,uuid
+
+# To create a label
+# https://askubuntu.com/questions/1103569/how-do-i-change-the-label-reported-by-lsblk
+
+Since the label is a property of the filesystem there are individual ways to set the label for different file systems.
+
+for ext2/ext3/ext4 filesystems you use:
+
+e2label /dev/XXX <label>
+for btrfs:
+
+btrfs filesystem label /dev/XXX <label>
+for reiserfs:
+
+reiserfstune -l <label> /dev/XXX
+for jfs:
+
+jfs_tune -L <label> /dev/XXX
+
+##############################
+for xfs:
+
+xfs_admin -L <label> /dev/XXX
+
+xfs_admin -L ES /dev/nvme1n1
+
+lsblk -o name,mountpoint,label,size,uuid
+
+LABEL=ES /data  xfs  defaults,nofail  0  2
+###############################
+
+for fat/vfat (using dosfstools):
+
+fatlabel /dev/XXX <label> 
+OR (using mtools):
+
+mlabel -i /dev/XXX ::<label>
+for exfat (you might need to install exfat-utils first):
+
+exfatlabel /dev/XXX <label>
+for ntfs:
+
+ntfslabel /dev/XXX <label>
+for swap (first you need to swapoff):
+
+swaplabel -L <label> /dev/XXX
+
+
+###################################
+# Note: First create a file system
+###################################
+
+
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.htm
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
 
@@ -27,11 +87,15 @@ cp /etc/fstab /etc/fstab.orig
 
  5. blkid  for Ubuntu18 ---> lsblk -o +UUID
  
+ 
+ # DO NOT MOUNT DISK WITH UUID'S USE LABELS (step no.6 is above)
+ 
+ ##########################################################################################################################
  6. Replace the blkid with the id of your disk
 cat << EOF >> /etc/fstab
 UUID=0d652b48-0ad5-4aef-87ca-2243dd98d92d  /data  xfs  defaults,nofail  0  2
 EOF
-
+#############################################################################################################################
 7. To verify that your entry works, run the following commands to unmount the device and then mount all file systems in /etc/fstab.
 
 umount /data
