@@ -88,7 +88,7 @@ cp /etc/fstab /etc/fstab.orig
  5. blkid  for Ubuntu18 ---> lsblk -o +UUID
  
  
- # DO NOT MOUNT DISK WITH UUID'S USE LABELS (step no.6 is above)
+ # You can USE LABELS (step no.6 is above)
  
  ##########################################################################################################################
  6. Replace the blkid with the id of your disk
