@@ -4,7 +4,7 @@
 
 STEP 6
 
-# Best Strategy is to use labels instead of UUID, because if ec2, you take AMI, redeployed that machine, UUID of that machine will be different, so use labels which mapped to UUID
+# Best Strategy is to use labels instead of UUID, as it provides easy custom mappings (Note: UUID is also correct)
 
 
 lsblk -o name,mountpoint,label,size,uuid
