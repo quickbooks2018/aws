@@ -7,7 +7,7 @@ networking:
 EOF  
   
 
-  # kind create --name cloudgeeks cluster --config kind-config.yaml
+  # kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.21.10
   
   # ssh -N -L 8443:0.0.0.0:8443 cloud_user@d8d0041c.mylabserver.com
   
