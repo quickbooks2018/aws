@@ -1,5 +1,7 @@
 # https://stackoverflow.com/questions/624857/finding-which-process-was-killed-by-linux-oom-killer
 
+# https://medium.com/rockedscience/simulating-out-of-memory-errors-on-linux-c69754904209
+
 
 
 apt update -y && apt install -y dstat
