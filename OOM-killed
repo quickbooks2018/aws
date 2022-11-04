@@ -1,0 +1,19 @@
+# https://stackoverflow.com/questions/624857/finding-which-process-was-killed-by-linux-oom-killer
+
+
+
+apt update -y && apt install -y dstat
+
+
+# Now dstat provides the feature to find out in your running system which process is candidate for getting killed by oom mechanism
+
+dstat --top-oom
+ --out-of-memory---
+  kill score
+ java           77
+ java           77
+ java           77
+and as per man page
+
+  --top-oom
+          show process that will be killed by OOM the first
