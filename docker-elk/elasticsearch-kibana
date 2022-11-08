@@ -1,0 +1,51 @@
+docker network create ek --attachable
+
+# Docker Volumes
+docker volume create elasticsearch
+
+# docker-compose setup
+
+mkdir $PWD/efk
+cat > $PWD/efk/docker-compose.yaml <<'EOF'
+version: '3.7'
+services:
+  elasticsearch:
+    image: elasticsearch:7.9.2
+    container_name: elasticsearch
+    networks:
+      - ek
+    environment:
+      - node.name=elasticsearch
+      - discovery.seed_hosts=elasticsearch
+      - cluster.initial_master_nodes=elasticsearch
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  kibana:
+    image: kibana:7.9.2
+    networks:
+      - ek
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+volumes:
+  elasticsearch:
+networks:
+  ek:
+   external: true
+EOF
