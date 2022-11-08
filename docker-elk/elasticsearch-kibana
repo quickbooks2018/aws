@@ -39,6 +39,8 @@ services:
       - elasticsearch:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      
+      
   kibana:
     image: kibana:7.9.2
     networks:
