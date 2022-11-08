@@ -17,7 +17,7 @@ mkdir $PWD/ek
 cat > $PWD/ek/docker-compose.yaml <<'EOF'
 services:
   elasticsearch:
-    image: elasticsearch:7.9.2
+    image: elasticsearch:7.14.0
     container_name: elasticsearch
     networks:
       - ek
@@ -42,7 +42,7 @@ services:
       
       
   kibana:
-    image: kibana:7.9.2
+    image: kibana:7.14.0
     networks:
       - ek
     container_name: kibana
