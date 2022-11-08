@@ -8,7 +8,6 @@ docker volume create elasticsearch
 mkdir $PWD/ek
 
 cat > $PWD/ek/docker-compose.yaml <<'EOF'
-version: '3.7'
 services:
   elasticsearch:
     image: elasticsearch:7.9.2
