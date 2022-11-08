@@ -51,4 +51,5 @@ networks:
 EOF
 
 
-docker compose -p ek up -d
+docker compose -f ./ek/docker-compose.yaml -p ek up -d
+
