@@ -3,6 +3,8 @@
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
+
+# Network
 docker network create ek --attachable
 
 # Docker Volumes
