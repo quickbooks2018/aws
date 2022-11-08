@@ -49,3 +49,6 @@ networks:
   ek:
    external: true
 EOF
+
+
+docker compose -p ek up -d
