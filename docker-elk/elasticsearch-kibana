@@ -6,7 +6,8 @@ docker volume create elasticsearch
 # docker-compose setup
 
 mkdir $PWD/ek
-cat > $PWD/ef/docker-compose.yaml <<'EOF'
+
+cat > $PWD/ek/docker-compose.yaml <<'EOF'
 version: '3.7'
 services:
   elasticsearch:
