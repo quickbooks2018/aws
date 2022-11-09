@@ -19,7 +19,7 @@ docker volume create elasticsearch
 mkdir $PWD/ek
 
 
-ELASTIC_IMAGE='bitnami/elasticsearch'
+ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
 ELASTIC_VERSION='8.5.0'
 
 IMAGE='es'
