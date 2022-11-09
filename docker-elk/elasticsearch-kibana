@@ -131,7 +131,7 @@ networks:
 EOF
 
 
-docker compose -f ./ek/docker-compose.yaml -p ek up -d
+docker compose -f ./ek/docker-compose.yaml -p ek up -d --build
 
 
 # ENDPOINT='http://localhost:9200'
