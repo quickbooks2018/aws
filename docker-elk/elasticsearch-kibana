@@ -134,13 +134,13 @@ docker compose -f ./ek/docker-compose.yaml -p ek up -d --build
 
 # export ENDPOINT
 
-# curl -X GET "${ENDPOINT}/_cluster/health?pretty"
+# curl --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cluster/health?pretty"
 
-# curl -X GET "${ENDPOINT}/_cat"
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat"
 
-# curl -X GET "${ENDPOINT}/_cat/nodes?v"
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat/nodes?v"
 
-# curl -X GET "${ENDPOINT}/_cat/indices?v"
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat/indices?v"
 
 
 # End
