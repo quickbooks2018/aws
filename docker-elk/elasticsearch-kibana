@@ -33,6 +33,7 @@ services:
       - "xpack.monitoring.collection.enabled=false"
       - "xpack.security.enabled=true"
       - "ELASTIC_PASSWORD=cloudgeeks"
+      - "ES_JAVA_HOME=/usr/lib/jvm/default-java"
       
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200"]
