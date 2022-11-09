@@ -95,10 +95,11 @@ services:
       - xpack.security.transport.ssl.key=${CERTS_DIR}/$DOMAIN.key
       
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9200"]
-      interval: 120s
-      timeout: 20s
+      test: curl --fail http://localhost:9200 || exit 1
+      interval: 60s
       retries: 5
+      start_period: 20s
+      timeout: 10s
     ulimits:
       nofile:
         soft: 65536
