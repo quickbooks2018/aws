@@ -62,6 +62,7 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "xpack.monitoring.collection.enabled=false"
       - "xpack.security.enabled=true"
+      - "logger.level=ERROR"
       - "ELASTIC_PASSWORD=cloudgeeks"
       
     healthcheck:
