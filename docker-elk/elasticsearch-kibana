@@ -73,7 +73,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - elasticsearch:/bitnami/elasticsearch/data
+      - elasticsearch:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       
