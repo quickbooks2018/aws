@@ -72,4 +72,18 @@ EOF
 
 docker compose -f ./ek/docker-compose.yaml -p ek up -d
 
+
+# ENDPOINT='http://localhost:9200'
+
+# export ENDPOINT
+
+# curl -X GET "${ENDPOINT}/_cluster/health?pretty"
+
+# curl -X GET "${ENDPOINT}/_cat"
+
+# curl -X GET "${ENDPOINT}/_cat/nodes?v"
+
+# curl -X GET "${ENDPOINT}/_cat/indices?v"
+
+
 # End
