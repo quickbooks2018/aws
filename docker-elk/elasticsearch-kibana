@@ -30,8 +30,8 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "xpack.monitoring.collection.enabled=false"
-      - xpack.security.enabled=false
-      - ELASTIC_PASSWORD=cloudgeeks
+      - "xpack.security.enabled=true"
+      - "ELASTIC_PASSWORD=cloudgeeks"
       
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200"]
