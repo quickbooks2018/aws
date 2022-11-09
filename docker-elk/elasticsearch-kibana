@@ -2,6 +2,7 @@
 # https://discuss.elastic.co/t/elasticsearch-7-17-7-does-not-start-java-security-accesscontrolexception-access-denied/318013/6
 # https://raw.githubusercontent.com/bitnami/containers/main/bitnami/elasticsearch/docker-compose.yml
 # https://github.com/bitnami/bitnami-docker-elasticsearch
+# https://www.elastic.co/downloads/x-pack
 
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
@@ -26,7 +27,7 @@ services:
     networks:
       - ek
     environment:
-      - ELASTICSEARCH_PLUGINS=xpack.security
+      - ELASTICSEARCH_PLUGINS=x-pack
       - node.name=elasticsearch
       - discovery.seed_hosts=elasticsearch
       - cluster.initial_master_nodes=elasticsearch
