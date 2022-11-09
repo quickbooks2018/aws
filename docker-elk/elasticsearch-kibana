@@ -33,6 +33,7 @@ export VERSION
 cat << EOF > $PWD/ek/Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
 RUN yes | elasticsearch-plugin install discovery-ec2
+RUN yes | elasticsearch-plugin uninstall x-pack
 RUN yes | elasticsearch-plugin install x-pack
 EOF
 
