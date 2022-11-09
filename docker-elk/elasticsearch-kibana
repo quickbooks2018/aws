@@ -20,6 +20,7 @@ services:
     image: elasticsearch:7.17.7
     container_name: elasticsearch
     restart: unless-stopped
+    privileged: true
     networks:
       - ek
     environment:
