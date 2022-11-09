@@ -18,16 +18,27 @@ docker volume create elasticsearch
 
 mkdir $PWD/ek
 
+
+ELASTIC_IMAGE='bitnami/elasticsearch'
+ELASTIC_VERSION='8.5.0'
+
+cat << EOF > Dockerfile
+FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
+RUN yes | elasticsearch-plugin install discovery-ec2
+RUN yes | elasticsearch-plugin install x-pack
+EOF
+
+
+
 cat > $PWD/ek/docker-compose.yaml <<'EOF'
 services:
   elasticsearch:
-    image: bitnami/elasticsearch:8.5.0
+    image: ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
     container_name: elasticsearch
     restart: unless-stopped
     networks:
       - ek
     environment:
-      - ELASTICSEARCH_PLUGINS=x-pack
       - node.name=elasticsearch
       - discovery.seed_hosts=elasticsearch
       - cluster.initial_master_nodes=elasticsearch
