@@ -19,6 +19,7 @@ services:
   elasticsearch:
     image: elasticsearch:7.17.7
     container_name: elasticsearch
+    restart: unless-stopped
     networks:
       - ek
     environment:
@@ -45,6 +46,7 @@ services:
       
   kibana:
     image: kibana:7.17.7
+    restart: unless-stopped
     networks:
       - ek
     container_name: kibana
