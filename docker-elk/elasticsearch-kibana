@@ -49,8 +49,9 @@ export ELASTIC_IMAGE
 export ELASTIC_VERSION
 export IMAGE
 export VERSION
-export DOMAIN
 export CERTS_DIR
+export DOMAIN
+
 
 
 
