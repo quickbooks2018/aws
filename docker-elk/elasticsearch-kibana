@@ -22,6 +22,9 @@ mkdir $PWD/ek
 ELASTIC_IMAGE='bitnami/elasticsearch'
 ELASTIC_VERSION='8.5.0'
 
+export ELASTIC_IMAGE
+export ELASTIC_VERSION
+
 cat << EOF > Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
 RUN yes | elasticsearch-plugin install discovery-ec2
