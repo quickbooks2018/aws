@@ -4,6 +4,7 @@
 # https://github.com/bitnami/bitnami-docker-elasticsearch
 # https://www.elastic.co/downloads/x-pack
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+# https://github.com/wazuh/wazuh-docker/issues/269
 
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
@@ -60,8 +61,9 @@ services:
       - "cluster.name=docker-cluster"
       - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "xpack.monitoring.collection.enabled=false"
+      - "xpack.monitoring.collection.enabled=true"
       - "xpack.security.enabled=true"
+      - "xpack.security.transport.ssl.enabled=true"
       - "logger.level=ERROR"
       - "ELASTIC_PASSWORD=cloudgeeks"
       
