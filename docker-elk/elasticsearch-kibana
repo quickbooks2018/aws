@@ -21,7 +21,7 @@ mkdir $PWD/ek
 
 
 ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
-ELASTIC_VERSION='8.4.0'
+ELASTIC_VERSION='8.3.0'
 
 IMAGE='es'
 VERSION='latest'
