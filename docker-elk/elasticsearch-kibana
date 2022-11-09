@@ -25,7 +25,7 @@ ELASTIC_VERSION='8.5.0'
 export ELASTIC_IMAGE
 export ELASTIC_VERSION
 
-cat << EOF > Dockerfile
+cat << EOF > $PWD/ek/Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
 RUN yes | elasticsearch-plugin install discovery-ec2
 RUN yes | elasticsearch-plugin install x-pack
@@ -36,6 +36,9 @@ EOF
 cat > $PWD/ek/docker-compose.yaml <<'EOF'
 services:
   elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
     container_name: elasticsearch
     restart: unless-stopped
