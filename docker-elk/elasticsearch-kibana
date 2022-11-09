@@ -21,7 +21,7 @@ mkdir $PWD/ek
 
 
 ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
-ELASTIC_VERSION='8.4.2'
+ELASTIC_VERSION='8.5.0'
 
 IMAGE='es'
 VERSION='latest'
@@ -60,7 +60,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "xpack.monitoring.collection.enabled=false"
-      - "xpack.security.enabled=true"
+      - "xpack.security.enabled=false"
       - "ELASTIC_PASSWORD=cloudgeeks"
       
     healthcheck:
