@@ -3,6 +3,7 @@
 # https://raw.githubusercontent.com/bitnami/containers/main/bitnami/elasticsearch/docker-compose.yml
 # https://github.com/bitnami/bitnami-docker-elasticsearch
 # https://www.elastic.co/downloads/x-pack
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
@@ -30,12 +31,12 @@ export ELASTIC_VERSION
 export IMAGE
 export VERSION
 
+
+
 cat << EOF > $PWD/ek/Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
 RUN yes | bin/elasticsearch-plugin list
 RUN yes | elasticsearch-plugin install discovery-ec2
-RUN yes | elasticsearch-plugin remove x-pack
-RUN yes | elasticsearch-plugin install x-pack
 EOF
 
 
