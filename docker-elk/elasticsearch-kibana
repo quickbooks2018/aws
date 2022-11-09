@@ -30,6 +30,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "xpack.monitoring.collection.enabled=false"
+      - xpack.security.enabled=true
       - ELASTIC_PASSWORD=cloudgeeks
       
     healthcheck:
