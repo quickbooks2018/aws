@@ -22,8 +22,13 @@ mkdir $PWD/ek
 ELASTIC_IMAGE='bitnami/elasticsearch'
 ELASTIC_VERSION='8.5.0'
 
+IMAGE='es'
+VERSION='latest'
+
 export ELASTIC_IMAGE
 export ELASTIC_VERSION
+export IMAGE
+export VERSION
 
 cat << EOF > $PWD/ek/Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
@@ -39,7 +44,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
+    image: ${IMAGE}:${VERSION}
     container_name: elasticsearch
     restart: unless-stopped
     networks:
