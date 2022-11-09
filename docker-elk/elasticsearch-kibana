@@ -95,10 +95,10 @@ services:
       - xpack.security.transport.ssl.key=${CERTS_DIR}/$DOMAIN.key
       
     healthcheck:
-      test: ["CMD", "curl", "-v", "telnet://localhost:9200"]
-      interval: 30s
-      timeout: 10s
-      retries: 30
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 120s
+      timeout: 20s
+      retries: 5
     ulimits:
       nofile:
         soft: 65536
