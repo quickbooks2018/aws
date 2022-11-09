@@ -1,5 +1,6 @@
 #!/bin/bash
 # https://discuss.elastic.co/t/elasticsearch-7-17-7-does-not-start-java-security-accesscontrolexception-access-denied/318013/6
+# https://raw.githubusercontent.com/bitnami/containers/main/bitnami/elasticsearch/docker-compose.yml
 
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
@@ -47,7 +48,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - elasticsearch:/usr/share/elasticsearch/data
+      - elasticsearch:/bitnami/elasticsearch/data
     ports:
       - 9200:9200
       
