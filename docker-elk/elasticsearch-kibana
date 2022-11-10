@@ -40,7 +40,7 @@ CERTS_DIR='/usr/share/elasticsearch/config/certificates'
 DOMAIN='cloudgeeks.tk'
 
 ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
-ELASTIC_VERSION='7.6.0'
+ELASTIC_VERSION='7.17.7'
 
 IMAGE='es'
 VERSION='latest'
