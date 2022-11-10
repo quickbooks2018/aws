@@ -10,6 +10,9 @@ set -x
 REGION="us-east-1"
 INSTANCE_ID=$(aws ec2 describe-instances --output text --query 'Reservations[*].Instances[*].InstanceId' --region $REGION)
 
+export REGION
+export INSTANCE_ID
+
 for ec2 in $INSTANCE_ID
 do
   echo "protecting ec2 in region $REGION"
@@ -29,6 +32,9 @@ set -x
 
 REGION="us-east-1"
 INSTANCE_ID=$(aws ec2 describe-instances --output text --query 'Reservations[*].Instances[*].InstanceId' --region $REGION)
+
+export REGION
+export INSTANCE_ID
 
 for ec2 in $INSTANCE_ID
 do
