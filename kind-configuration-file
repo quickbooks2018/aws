@@ -2,6 +2,14 @@
 # Purpose: Kubernetes Cluster
 
 
+######################################
+# Docker & Docker Compose Installation
+######################################
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+rm -f get-docker.sh
+
+
 #######################
 # Kubectl Installation
 #######################
@@ -55,4 +63,5 @@ EOF
   export KUBECONFIG=".kube/config"
   
   
+  #End
   
