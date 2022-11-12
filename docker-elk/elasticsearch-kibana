@@ -5,13 +5,11 @@
 # https://www.elastic.co/downloads/x-pack
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 # https://github.com/wazuh/wazuh-docker/issues/269
+# https://github.com/karmi/elastic-stack-demo
 
 # Set to max mem 256GB
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
-
-# Network
-docker network create ek --attachable
 
 # Docker Volumes
 docker volume create elasticsearch
@@ -93,8 +91,7 @@ services:
     image: ${IMAGE}:${VERSION}
     container_name: elasticsearch
     restart: unless-stopped
-    networks:
-      - ek
+    network_mode: host
     environment:
       - "node.name=elasticsearch"
       - "discovery.seed_hosts=elasticsearch"
@@ -125,6 +122,24 @@ services:
     ports:
       - 9200:9200
       
+ 
+ metricbeat:
+    image: docker.elastic.co/beats/metricbeat:${ELASTIC_VERSION}
+    network_mode: host
+    restart: unless-stopped
+    container_name: metricbeat
+    hostname: metricbeat
+    command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
+    volumes:
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - metricbeat:/usr/share/metricbeat/data
+    environment:
+      - "ELASTICSEARCH_HOSTS=elasticsearch:9200"
+      - "ELASTIC_PASSWORD=cloudgeeks"
+      
       
   kibana:
     build:
@@ -133,8 +148,7 @@ services:
     image: custom_kibana:kibana
     container_name: kibana
     restart: unless-stopped
-    networks:
-      - ek
+    network_mode: host
     ports:
       - '5601:5601'
     depends_on:
