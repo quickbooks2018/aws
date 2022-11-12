@@ -52,6 +52,23 @@ export VERSION
 export CERTS_DIR
 export DOMAIN
 
+########
+# Kibana
+########
+KIBANA="docker.elastic.co/kibana/kibana"
+export KIBANA
+
+cat <<EOF > $PWD/ek/kibana.yml
+server.host: "0.0.0.0"
+elasticsearch.username: "elastic"
+elasticsearch.password: "cloudgeeks"
+elasticsearch.hosts: [ "https://elasticsearch-cluster.cloudgeeks.tk" ]
+EOF
+
+cat <<EOF $PWD/ek/ > KibanaDockerfile
+FROM ${KIBANA}:${ELASTIC_VERSION}
+COPY kibana.yml /usr/share/kibana/config/kibana.yml
+EOF
 
 
 
@@ -62,6 +79,8 @@ COPY tls ${CERTS_DIR}
 RUN yes | elasticsearch-plugin install discovery-ec2
 RUN elasticsearch-plugin list
 EOF
+
+
 
 
 
@@ -108,15 +127,14 @@ services:
       
       
   kibana:
-    image: kibana:${ELASTIC_VERSION}
-    restart: unless-stopped
-    networks:
-      - ek
+    build:
+      context: .
+      dockerfile: KibanaDockerfile
+    image: custom_kibana:kibana
     container_name: kibana
-    environment:
-      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    restart: unless-stopped
     ports:
-      - 5601:5601
+      - '5601:5601'
     depends_on:
       - elasticsearch
 volumes:
