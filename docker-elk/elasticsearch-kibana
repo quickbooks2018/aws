@@ -11,8 +11,6 @@
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 
-# Docker Volumes
-docker volume create elasticsearch
 
 # docker-compose setup
 
