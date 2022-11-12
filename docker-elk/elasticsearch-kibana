@@ -62,7 +62,7 @@ cat <<EOF > $PWD/ek/kibana.yml
 server.host: "0.0.0.0"
 elasticsearch.username: "elastic"
 elasticsearch.password: "cloudgeeks"
-elasticsearch.hosts: [ "https://elasticsearch-cluster.cloudgeeks.tk" ]
+elasticsearch.hosts: [ "http://elasticsearch:9200" ]
 EOF
 
 cat <<EOF > $PWD/ek/KibanaDockerfile
