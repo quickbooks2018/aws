@@ -130,7 +130,7 @@ services:
       - xpack.security.transport.ssl.certificate_authorities=${CERTS_DIR}/CA.crt
       - xpack.security.transport.ssl.certificate=${CERTS_DIR}/$DOMAIN.crt
       - xpack.security.transport.ssl.key=${CERTS_DIR}/$DOMAIN.key
-      
+
     ulimits:
       nofile:
         soft: 65536
@@ -142,26 +142,26 @@ services:
       - elasticsearch:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-      
- 
+
+
   metricbeat:
-     build:
+    build:
       context: .
       dockerfile: MetricBeatDockerfile
     image: custom_metricbeat:metricbeat
     container_name: metricbeat
+    restart: unless-stopped
 #     network_mode: host
-     restart: unless-stopped
-     hostname: metricbeat
-     command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
-     volumes:
-       - /proc:/hostfs/proc:ro
-       - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
-       - /:/hostfs:ro
-       - /var/run/docker.sock:/var/run/docker.sock
-       - metricbeat:/usr/share/metricbeat/data
+    hostname: metricbeat
+    command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
+    volumes:
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - metricbeat:/usr/share/metricbeat/data
 
-      
+
   kibana:
     build:
       context: .
