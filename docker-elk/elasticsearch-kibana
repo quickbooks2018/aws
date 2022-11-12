@@ -65,7 +65,7 @@ elasticsearch.password: "cloudgeeks"
 elasticsearch.hosts: [ "https://elasticsearch-cluster.cloudgeeks.tk" ]
 EOF
 
-cat <<EOF $PWD/ek/ > KibanaDockerfile
+cat <<EOF > $PWD/ek/KibanaDockerfile
 FROM ${KIBANA}:${ELASTIC_VERSION}
 COPY kibana.yml /usr/share/kibana/config/kibana.yml
 EOF
