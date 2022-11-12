@@ -91,7 +91,7 @@ services:
     container_name: elasticsearch
     hostname: elasticsearch
     restart: unless-stopped
-    network_mode: host
+ #   network_mode: host
     environment:
       - "node.name=elasticsearch"
       - "discovery.seed_hosts=elasticsearch"
@@ -125,7 +125,7 @@ services:
  
   metricbeat:
      image: docker.elastic.co/beats/metricbeat:${ELASTIC_VERSION}
-     network_mode: host
+#     network_mode: host
      restart: unless-stopped
      container_name: metricbeat
      hostname: metricbeat
@@ -147,7 +147,7 @@ services:
       dockerfile: KibanaDockerfile
     image: custom_kibana:kibana
     container_name: kibana
-    hostname: kibana
+#    hostname: kibana
     restart: unless-stopped
     network_mode: host
     ports:
