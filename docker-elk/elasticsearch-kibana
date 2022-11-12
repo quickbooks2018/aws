@@ -68,6 +68,27 @@ COPY kibana.yml /usr/share/kibana/config/kibana.yml
 EOF
 
 
+############
+# MetricBeat
+############
+# https://www.elastic.co/guide/en/beats/metricbeat/current/running-on-docker.html
+cat <<EOF > $PWD/ek/metricbeat.yml
+#Make these changes in your metricbeat.yml.
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"] ## Monitoring cluster
+
+# Optional protocol and basic auth credentials.
+protocol: "http"
+username: "elastic"
+password: "cloudgeeks"
+EOF
+
+cat <<EOF > $PWD/ek/MetricBeatDockerfile
+FROM ${METRICBEAT}:${ELASTIC_VERSION}
+COPY metricbeat.yml /usr/share/metricbeat/metricbeat.yml
+EOF
+
+
 
 cat << EOF > $PWD/ek/Dockerfile
 FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
@@ -124,10 +145,13 @@ services:
       
  
   metricbeat:
-     image: docker.elastic.co/beats/metricbeat:${ELASTIC_VERSION}
+     build:
+      context: .
+      dockerfile: MetricBeatDockerfile
+    image: custom_metricbeat:metricbeat
+    container_name: metricbeat
 #     network_mode: host
      restart: unless-stopped
-     container_name: metricbeat
      hostname: metricbeat
      command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
      volumes:
@@ -136,10 +160,7 @@ services:
        - /:/hostfs:ro
        - /var/run/docker.sock:/var/run/docker.sock
        - metricbeat:/usr/share/metricbeat/data
-     environment:
-       - "ELASTICSEARCH_HOSTS=elasticsearch:9200"
-       - "ELASTIC_PASSWORD=cloudgeeks"
-      
+
       
   kibana:
     build:
