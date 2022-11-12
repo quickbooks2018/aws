@@ -11,6 +11,7 @@
 echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 
+localip=$(curl -fs http://169.254.169.254/latest/meta-data/local-ipv4)
 
 # docker-compose setup
 
@@ -88,6 +89,7 @@ services:
       dockerfile: Dockerfile
     image: ${IMAGE}:${VERSION}
     container_name: elasticsearch
+    hostname: elasticsearch
     restart: unless-stopped
     network_mode: host
     environment:
@@ -145,6 +147,7 @@ services:
       dockerfile: KibanaDockerfile
     image: custom_kibana:kibana
     container_name: kibana
+    hostname: kibana
     restart: unless-stopped
     network_mode: host
     ports:
