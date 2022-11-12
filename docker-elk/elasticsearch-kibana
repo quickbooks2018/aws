@@ -153,9 +153,8 @@ services:
       - elasticsearch
 volumes:
   elasticsearch:
-networks:
-  ek:
-   external: true
+  metricbeat:
+
 EOF
 
 
