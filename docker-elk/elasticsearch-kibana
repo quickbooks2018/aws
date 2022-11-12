@@ -72,6 +72,9 @@ EOF
 # MetricBeat
 ############
 # https://www.elastic.co/guide/en/beats/metricbeat/current/running-on-docker.html
+METRICBEAT="docker.elastic.co/beats/metricbeat"
+export METRICBEAT
+
 cat <<EOF > $PWD/ek/metricbeat.yml
 #Make these changes in your metricbeat.yml.
 output.elasticsearch:
