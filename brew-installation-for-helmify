@@ -1,0 +1,11 @@
+########
+#Windows
+########
+docker run --name brew -u root -v "c:/users/Muhammad Asim/Desktop/asim:/mnt"  -w /mnt -id homebrew/brew:latest
+
+######
+#Linux
+######
+docker run --name brew -u root -v ${PWD}/brew:/mnt -w /mnt -id homebrew/brew:latest
+
+brew install arttor/tap/helmify
