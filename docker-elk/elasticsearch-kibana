@@ -37,7 +37,7 @@ CERTS_DIR='/usr/share/elasticsearch/config/certificates'
 DOMAIN='cloudgeeks.tk'
 
 ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
-ELASTIC_VERSION='7.17.7'
+ELASTIC_VERSION='8.5.0'
 
 IMAGE='es'
 VERSION='latest'
@@ -137,6 +137,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: ${IMAGE}:${VERSION}
+    shm_size: '2gb'   # shared mem
     container_name: elasticsearch
     hostname: elasticsearch
     restart: unless-stopped
@@ -179,6 +180,7 @@ services:
     image: custom_metricbeat:metricbeat
     container_name: metricbeat
     restart: unless-stopped
+    depends_on: ['elasticsearch', 'kibana']
 #     network_mode: host
     hostname: metricbeat
     command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
@@ -186,8 +188,7 @@ services:
       - /proc:/hostfs/proc:ro
       - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
       - /:/hostfs:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-      - metricbeat:/usr/share/metricbeat/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 
   kibana:
@@ -197,6 +198,7 @@ services:
     image: custom_kibana:kibana
     container_name: kibana
     hostname: kibana
+    depends_on: ['elasticsearch']
     restart: unless-stopped
 #    network_mode: host
     ports:
@@ -205,7 +207,6 @@ services:
       - elasticsearch
 volumes:
   elasticsearch:
-  metricbeat:
 
 EOF
 
