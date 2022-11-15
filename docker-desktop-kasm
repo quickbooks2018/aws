@@ -43,6 +43,7 @@ docker run --name kasmweb-desktop -u root --shm-size=2048m -v "c:/users/Muhammad
 #############
 # GCP Desktop
 #############
+docker network create --attachable
 docker run --name gcp-desktop -u root --shm-size=2048m -w /mnt -v "c:/users/Muhammad Asim/Desktop/gke:/mnt" -p 8080:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop:1.10.0
 docker run --name gke --network host -w /mnt -v "c:/Users/Muhammad Asim/Desktop/gke:/mnt" -id google/cloud-sdk:latest
 
