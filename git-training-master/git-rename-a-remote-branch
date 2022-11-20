@@ -1,0 +1,4 @@
+# https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name
+
+ Checkout to the local branch, 2. git branch -M new-name 3. git push -d origin old-name 4. git push -u origin new-name
+
