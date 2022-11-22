@@ -138,3 +138,11 @@ Password: password
 # Linux packages on Windows
 ############################
 docker run --name kubernetes --network host -w /root -v "c:/users/Muhammad Asim/Desktop/kubernetes:/root" -id python:slim
+
+#######
+# Audio
+#######
+https://hub.docker.com/repository/docker/quickbooks2018/alpine-desktop-audio
+https://github.com/novaspirit/Alpine_xfce4_noVNC/tree/dev
+
+docker run --name alpine-desktop-audio --shm-size=2048m -it -p 6080:6080 -p 56780:56780 -v "c:/users/Muhammad Asim/Desktop/alpine-desktop:/mnt" -id quickbooks2018/alpine-desktop-audio:latest
