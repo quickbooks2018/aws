@@ -70,6 +70,8 @@ docker run --name kasmweb-desktop -u root --shm-size=2048m -v "c:/users/Muhammad
 
 docker run --name kasmweb-desktop--shm-size=2048m  -p 6901:6901 -e VNC_PW=password -id kasmweb/desktop:1.10.0
 
+docker run --name sandbox --network home --shm-size=2048m -v "c:/users/Muhammad Asim/Desktop/container:/mnt" -p 8089:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop:1.11.0-rolling
+
 
 ######################
 # Docker Socket Mount
