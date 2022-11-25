@@ -19,6 +19,11 @@ helm install hello ./ -f values.yaml --namespace datree --create-namespace --deb
 cd ..
 helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run
 
+
+helm install hello ./ -f values.yaml --namespace datree --create-namespace --debug
+
+
+helm upgrade --install hello ./ -f values.yaml --namespace datree --create-namespace --debug
 ###############
 # Helm Template
 ###############
@@ -76,7 +81,7 @@ helm search repo wordpress --versions
 ########
 # Values
 ########
-helm show values bitnami/wordpress --version 10.0.3
+helm show values bitnami/wordpress --version 10.0.3 
 
 wordpressUsername: cloudgeeks
 wordpressPassword: cloudgeeks
@@ -90,7 +95,7 @@ service:
 ##############
 # Installation
 ##############
-helm upgrade --install wordpress bitnami/wordpress  --values=wordpress-values.yaml --namespace wordpress --create-namespace --version 10.0.3
+helm upgrade --install wordpress bitnami/wordpress  --values=wordpress-values.yaml --namespace wordpress --create-namespace --version 10.0.3 --debug
 
 #######
 # Watch
@@ -119,12 +124,12 @@ helm install -f helloworld/env.yaml helloworld  --debug --dry-run --generate-nam
 # Rollback
 ###########
              # release-name
-helm rollback nginx-alpine 1
+helm rollback nginx-alpine 1 --debug
 
 #########
 # History
 #########
-helm history release-name
+helm history release-name --debug
 
 ##############
 # Helm Secrets
@@ -289,9 +294,9 @@ EOF
 ######################################
 # Helm command for secrets deployment
 ######################################
-helm secrets install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace
+helm secrets install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace --debug
 
-helm secrets upgrade --install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace
+helm secrets upgrade --install nginx-alpine ./ -f values.yaml -f values.secrets.yaml --namespace learning --create-namespace --debug
 
 
 ##########
@@ -352,7 +357,7 @@ helm uninstall INSTALLATIONNAME --keep-history
 ##############
 # Helm TimeOut 
 ##############
-helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --wait --timeout 10m25s
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --wait --timeout 10m25s --debug
 
 # this is usefull when your installation is taking more time example: image pull take time or network latency issues
 
@@ -368,7 +373,7 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 ####################################
 # Helm Atomic With CleanUp on Failure
 #####################################
-helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --atomic -timeout 10m25s --cleanup-on-fail
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --atomic -timeout 10m25s --cleanup-on-fail --debug
 # atomic mean it will wait till all the k8 resources are succesfully deployed. default is 5 min
 # cleanup-on-fail means it will cleanup all the resources if deployment is failed with new release
 # default timeout is 5 minutes
@@ -379,7 +384,7 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 ############
 # Helm Force
 ############
-helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --force
+helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --force --debug
 # Do not use this in CICD, sometimes you want to delete the deployment & recreate it, this option will be helpfull.
 
 
