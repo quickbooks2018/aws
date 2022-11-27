@@ -246,7 +246,10 @@ services:
     depends_on: ['elasticsearch']
     container_name: apm
     command: -e --strict.perms=false
-    restart: unless-stopped    
+    restart: unless-stopped
+    
+    ports:
+      - '8200:8200'
 
 
   kibana:
