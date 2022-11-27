@@ -1,0 +1,292 @@
+#!/bin/bash
+# https://discuss.elastic.co/t/elasticsearch-7-17-7-does-not-start-java-security-accesscontrolexception-access-denied/318013/6
+# https://raw.githubusercontent.com/bitnami/containers/main/bitnami/elasticsearch/docker-compose.yml
+# https://github.com/bitnami/bitnami-docker-elasticsearch
+# https://www.elastic.co/downloads/x-pack
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+# https://github.com/wazuh/wazuh-docker/issues/269
+# https://github.com/karmi/elastic-stack-demo
+
+# https://discuss.elastic.co/t/unable-to-retrieve-version-information-from-elasticsearch-nodes-connect-econnrefused-127-0-0-1-9200/305585
+
+# Service Account Toekn
+# https://www.elastic.co/guide/en/elasticsearch/reference/8.0/service-tokens-command.html
+# https://www.elastic.co/guide/en/elasticsearch/reference/8.0/service-accounts.html
+# Command 
+
+#################################################################
+# elasticsearch-service-tokens create elastic/kibana kibana-token
+
+# elasticsearch-service-tokens list
+
+# docker exec -it elasticsearch elasticsearch-service-tokens create elastic/kibana kibana-token
+
+# SERVICE_TOKEN elastic/kibana/kibana-token = AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS10b2tlbjpLWlU3ZXlkblFJeWpaQWxWLWV2WlB3
+
+
+# Use this for password
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+
+#################################################################
+
+
+# Set to max mem 256GB
+echo "vm.max_map_count=2097152" >> /etc/sysctl.conf
+sysctl -p /etc/sysctl.conf
+
+localip=$(curl -fs http://169.254.169.254/latest/meta-data/local-ipv4)
+
+# docker-compose setup
+
+############
+# Enable TLS
+############
+curl -# -LO https://raw.githubusercontent.com/quickbooks2018/cloudflare-tls/main/ssl.sh
+chmod +x ssl.sh
+bash -uvx ssl.sh
+chmod 0777 -R ${HOME}/tls
+
+
+
+
+############
+# Enable TLS
+############
+CERTS_DIR='/usr/share/elasticsearch/config/certificates'
+DOMAIN='cloudgeeks.tk'
+
+ELASTIC_IMAGE='docker.elastic.co/elasticsearch/elasticsearch'
+ELASTIC_VERSION='8.5.0'
+
+CUSTOM_ELASTIC_IMAGE='es'
+CUSTOM_ELASTIC_IMAGE_VERSION='latest'
+
+export ELASTIC_IMAGE
+export ELASTIC_VERSION
+export CUSTOM_ELASTIC_IMAGE
+export CUSTOM_ELASTIC_IMAGE_VERSION
+export CERTS_DIR
+export DOMAIN
+
+########
+# Kibana
+########
+KIBANA="docker.elastic.co/kibana/kibana"
+export KIBANA
+
+#cat <<EOF > $PWD/kibana.yml
+#server.host: "0.0.0.0"
+#elasticsearch.username: "kibana_system"
+#elasticsearch.password: "kibana"
+#elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+#EOF
+#
+#cat <<EOF > $PWD/KibanaDockerfile
+#FROM ${KIBANA}:${ELASTIC_VERSION}
+#COPY kibana.yml /usr/share/kibana/config/kibana.yml
+#EOF
+
+
+############
+# MetricBeat
+############
+# https://www.elastic.co/guide/en/beats/metricbeat/current/running-on-docker.html
+METRICBEAT="docker.elastic.co/beats/metricbeat"
+export METRICBEAT
+
+echo '
+---
+metricbeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    # Reload module configs as they change:
+    reload.enabled: false
+
+metricbeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+metricbeat.modules:
+- module: docker
+  metricsets:
+    - "container"
+    - "cpu"
+    - "diskio"
+    - "healthcheck"
+    - "info"
+    #- "image"
+    - "memory"
+    - "network"
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 10s
+  enabled: true
+
+processors:
+  - add_cloud_metadata: ~
+
+output.elasticsearch:
+  hosts: 'http://elasticsearch:9200'
+  username: 'elastic'
+  password: 'cloudgeeks'' > $PWD/metricbeat.yml
+
+cat <<EOF > $PWD/MetricBeatDockerfile
+FROM ${METRICBEAT}:${ELASTIC_VERSION}
+COPY metricbeat.yml /usr/share/metricbeat/metricbeat.yml
+EOF
+
+
+
+cat << EOF > $PWD/Dockerfile
+FROM ${ELASTIC_IMAGE}:${ELASTIC_VERSION}
+RUN mkdir -p ${CERTS_DIR}
+COPY tls ${CERTS_DIR}
+RUN yes | elasticsearch-plugin install discovery-ec2
+RUN elasticsearch-plugin list
+EOF
+
+
+############
+# APM Server
+############
+export KIBANA_URL='kibana'
+export ELASTICSEARCH_URL='elasticsearch'
+# https://raw.githubusercontent.com/elastic/apm-server/master/apm-server.docker.yml
+cat << EOF > apm-server.yml
+---
+apm-server:
+  host: 0.0.0.0:8200
+  ssl.enabled: false
+output.elasticsearch:
+  hosts: ["http://${ELASTICSEARCH_URL}:9200"]
+kibana:
+  enabled: true
+  host: ["http://${KIBANA_URL}:5601"]
+monitoring:
+  enabled: true
+EOF
+
+
+############
+# APM Server
+############
+cat << EOF > APMServerDockerfile
+FROM docker.elastic.co/apm/apm-server:${ELASTIC_VERSION}
+COPY apm-server.yml /usr/share/apm-server/apm-server.yml
+EOF
+
+
+cat << EOF > $PWD/docker-compose.yaml
+services:
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${CUSTOM_ELASTIC_IMAGE}:${CUSTOM_ELASTIC_IMAGE_VERSION}
+    shm_size: '2gb'   # shared mem
+    container_name: elasticsearch
+    hostname: elasticsearch
+    restart: unless-stopped
+ #   network_mode: host
+    environment:
+      - "node.name=elasticsearch"
+      - "discovery.seed_hosts=elasticsearch"
+      - "cluster.initial_master_nodes=elasticsearch"
+      - "xpack.ml.enabled: false"
+      - "cluster.name=docker-cluster"
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "xpack.monitoring.collection.enabled=true"
+   #   - "logger.level=ERROR"
+      - "ELASTIC_PASSWORD=cloudgeeks"
+      - "ELASTICSEARCH_PASSWORD=kibana"
+      - "xpack.security.enabled=false"
+      - "xpack.security.http.ssl.enabled=false"
+      - xpack.security.transport.ssl.enabled=false
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.certificate_authorities=${CERTS_DIR}/CA.crt
+      - xpack.security.transport.ssl.certificate=${CERTS_DIR}/${DOMAIN}.crt
+      - xpack.security.transport.ssl.key=${CERTS_DIR}/${DOMAIN}.key
+
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+
+  metricbeat:
+    build:
+      context: .
+      dockerfile: MetricBeatDockerfile
+    image: custom_metricbeat:metricbeat
+    container_name: metricbeat
+    restart: unless-stopped
+    depends_on: ['elasticsearch', 'kibana']
+#     network_mode: host
+    hostname: metricbeat
+    command: ["--strict.perms=false", "-system.hostfs=/hostfs"]
+    volumes:
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  apm_server:
+    build:
+     context: .
+     dockerfile: APMServerDockerfile
+    image: apm:apm
+    depends_on: ['elasticsearch']
+    container_name: apm
+    command: -e --strict.perms=false
+    restart: unless-stopped    
+
+
+  kibana:
+    image: ${KIBANA}:${ELASTIC_VERSION}
+    container_name: kibana
+    hostname: kibana
+    depends_on: ['elasticsearch']
+    restart: unless-stopped
+#    network_mode: host
+
+    environment:
+    - "SERVERNAME=kibana"
+    - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
+    - "ELASTICSEARCH_USERNAME=kibana_system"
+    - "ELASTICSEARCH_PASSWORD=kibana"
+
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+volumes:
+  elasticsearch:
+
+EOF
+
+
+docker compose -f docker-compose.yaml -p ek up -d --build
+
+
+# ENDPOINT='http://localhost:9200'
+
+# export ENDPOINT
+
+# curl --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cluster/health?pretty"
+
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat"
+
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat/nodes?v"
+
+# curl  --user elastic:'cloudgeeks' -X GET "${ENDPOINT}/_cat/indices?v"
+
+
+# End
