@@ -488,3 +488,8 @@ Finally, we re-run the helm upgrade command (either from command line or from yo
 There is an open issue with Helm so hopefully these workaround won't be needed anymore. But it's open since 2018.
 
 Of course there could be other cases or issues, but I hope this is a nice place to start. If you ran into something similar I would love to read your input in what the issue was and how you solved it especially since I didn't find the error message to be intuitive.
+
+
+# Bitnami Old HELM Repos
+# https://github.com/bitnami/charts/issues/10542
+# repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
