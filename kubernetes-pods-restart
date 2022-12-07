@@ -1,1 +1,9 @@
 # kubectl -n my-namespace rollout restart deployment my-deployment-1 my-deployment-2 my-deployment-3
+
+# kubectl -n prometheus get pods | grep -i alert
+
+####################################
+# Note: pod restart is not supported
+####################################
+
+# kubectl -n prometheus rollout restart statefulset name-of-statefulset-1 name-of-statefulset-2
