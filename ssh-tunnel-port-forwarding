@@ -7,5 +7,3 @@ localhost:8888
 or 
 
 ssh -N -L 8443:0.0.0.0:8443 cloud_user@d8d0041c.mylabserver.com
-
-localhost:9000
