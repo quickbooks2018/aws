@@ -17,11 +17,13 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 #########
 # Cluster
 #########
+helm dependency build
 helm install redis-cluster --namespace redis-cluster --create-namespace  ./ -f ./values.yaml --set volumePermissions.enabled=true,replica.replicaCount=3,auth.enabled=true,auth.password=admin,master.livenessProbe.enabled=true
 
 ##########
 # Sentinel
 ##########
+helm dependency build
 helm install redis-sentinel --namespace redis-sentinel --create-namespace  ./ -f ./values.yaml --set volumePermissions.enabled=true,replica.replicaCount=3,auth.enabled=true,auth.password=admin,master.livenessProbe.enabled=true
 
 # Adding a new node to the cluster
