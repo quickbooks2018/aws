@@ -24,7 +24,7 @@ helm upgrade --install redis-cluster --namespace redis-cluster --create-namespac
 # Sentinel
 ##########
 helm dependency build
-helm upgrade --install redis-sentinel --namespace redis-sentinel --create-namespace  ./ -f ./values.yaml --set volumePermissions.enabled=true,replica.replicaCount=3,auth.enabled=true,auth.password=admin,master.livenessProbe.enabled=true,persistence.size=10Gi
+helm upgrade --install redis-sentinel --namespace redis-sentinel --create-namespace  ./ -f ./values.yaml --set volumePermissions.enabled=true,replica.replicaCount=3,auth.enabled=true,auth.password=admin,master.livenessProbe.enabled=true,master.persistence.size=10Gi,replica.persistence.size=10Gi
 
 # Adding a new node to the cluster
 helm upgrade redis-cluster --namespace redis --create-namespace --timeout 600s <release> --set "password=${REDIS_PASSWORD},cluster.nodes=7,cluster.update.addNodes=true,cluster.update.currentNumberOfNodes=6"  ./ -f ./values.yaml
