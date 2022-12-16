@@ -1,6 +1,12 @@
 https://www.youtube.com/watch?v=JmCn7k0PlV4&list=PLHq1uqvAteVtlgFkmOlIqWro3XP26y_oW&index=3
 
+
+Choose between Redis® Helm Chart and Redis® Cluster Helm Chart
+You can choose any of the two Redis® Helm charts for deploying a Redis® cluster. While Redis® Helm Chart will deploy a master-slave cluster using Redis® Sentinel, the Redis® Cluster Helm Chart will deploy a Redis® Cluster with sharding. The main features of each chart are the following:
+
 https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster
+
+https://github.com/bitnami/charts/tree/main/bitnami/redis
 
 helm repo list
 
