@@ -4,6 +4,8 @@ https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster
 
 helm repo list
 
+helm repo update
+
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 helm install redis bitnami/redis --set volumePermissions.enabled=true,replica.replicaCount=3,auth.enabled=true,auth.password=admin,master.livenessProbe.enabled=true,master.readiness
