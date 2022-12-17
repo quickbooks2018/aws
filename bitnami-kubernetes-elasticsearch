@@ -1,4 +1,7 @@
 # https://github.com/bitnami/charts
+
+# https://artifacthub.io/packages/helm/bitnami/elasticsearch
+
 helm repo list
 
 helm repo update
