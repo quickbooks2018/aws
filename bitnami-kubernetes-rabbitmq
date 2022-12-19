@@ -1,0 +1,46 @@
+# https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
+# https://hub.docker.com/r/bitnami/rabbitmq/tags
+
+export USERNAME='cloudgeeks'
+export PASSWORD='cloudgeeksca'
+export ERLANG_COOKIE='cloudgeeksca'
+
+helm dependency build
+
+helm upgrade --install rabbitmq --namespace rabbitmq --create-namespace ./ -f values.yaml \
+    --set podManagementPolicy=Parallel \
+    --set replicaCount=3 \
+    --set auth.username=${USERNAME} \
+    --set auth.password=${PASSWORD} \
+    --set auth.erlangCookie=${ERLANG_COOKIE} \
+    --set metrics.enabled=true \
+    --set persistence.size=10Gi \
+    --set image.tag=3.10.13
+
+
+
+
+
+# Recover the cluster from complete shutdown
+IMPORTANT: Some of these procedures can lead to data loss. Always make a backup beforehand.
+
+The RabbitMQ cluster is able to support multiple node failures but, in a situation in which all the nodes are brought down at the same time, the cluster might not be able to self-recover.
+
+This happens if the pod management policy of the statefulset is not Parallel and the last pod to be running wasn't the first pod of the statefulset. If that happens, update the pod management policy to recover a healthy state:
+
+kubectl delete statefulset STATEFULSET_NAME --cascade=false
+helm upgrade RELEASE_NAME my-repo/rabbitmq \
+    --set podManagementPolicy=Parallel \
+    --set replicaCount=NUMBER_OF_REPLICAS \
+    --set auth.password=PASSWORD \
+    --set auth.erlangCookie=ERLANG_COOKIE
+For a faster resyncronization of the nodes, you can temporarily disable the readiness probe by setting readinessProbe.enabled=false. Bear in mind that the pods will be exposed before they are actually ready to process requests.
+
+If the steps above don't bring the cluster to a healthy state, it could be possible that none of the RabbitMQ nodes think they were the last node to be up during the shutdown. In those cases, you can force the boot of the nodes by specifying the clustering.forceBoot=true parameter (which will execute rabbitmqctl force_boot in each pod):
+
+  helm upgrade RELEASE_NAME my-repo/rabbitmq \
+    --set podManagementPolicy=Parallel \
+    --set clustering.forceBoot=true \
+    --set replicaCount=NUMBER_OF_REPLICAS \
+    --set auth.password=PASSWORD \
+    --set auth.erlangCookie=ERLANG_COOKIE
