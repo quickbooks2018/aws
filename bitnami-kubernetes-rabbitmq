@@ -7,7 +7,7 @@ export ERLANG_COOKIE='cloudgeeksca'
 
 helm dependency build
 
-helm upgrade --install rabbitmq --namespace rabbitmq --create-namespace ./ -f values.yaml \
+helm upgrade --install rabbit --namespace rabbit --create-namespace ./ -f values.yaml \
     --set podManagementPolicy=Parallel \
     --set replicaCount=3 \
     --set auth.username=${USERNAME} \
