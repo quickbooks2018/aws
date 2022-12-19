@@ -1,5 +1,6 @@
 # https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
 # https://hub.docker.com/r/bitnami/rabbitmq/tags
+# https://github.com/marcel-dempers/docker-development-youtube-series/blob/master/messaging/rabbitmq/applications/publisher/deployment.yaml
 
 export USERNAME='cloudgeeks'
 export PASSWORD='cloudgeeksca'
