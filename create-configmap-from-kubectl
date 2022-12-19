@@ -1,0 +1,4 @@
+# https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_configmap/
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#:~:text=You%20can%20use%20kubectl%20create,files%20into%20the%20new%20ConfigMap.
+
+kubectl create configmap my-nginx-conf --from-file=default.conf
