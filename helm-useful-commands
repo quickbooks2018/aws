@@ -389,6 +389,10 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --namespace default --create-namespace --force --debug
 # Do not use this in CICD, sometimes you want to delete the deployment & recreate it, this option will be helpfull.
 
+####################
+# Packing helm chart
+####################
+helm package -d ${PWD}/helm ${PWD}/helm/cloudgeeks
 
 ########
 # Issues 
