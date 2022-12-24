@@ -61,7 +61,9 @@ kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/
   
   export KUBECONFIG=".kube/config"
   
+ ####################  
  # Multi-Node Cluster
+ ####################
  cat > kind-config.yaml <<EOF
 # three node (two workers) cluster config
 kind: Cluster
