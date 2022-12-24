@@ -2,6 +2,9 @@
 # https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 # https://www.youtube.com/watch?v=MtI9yjH8v4g
 
+# webui builtin in 2.x
+http://54.213.213.111:8086/
+
 docker network create monitoring --attachable
 
 docker run --name grafana -p 8080:3000 --network monitoring --restart unless-stopped -id grafana/grafana:9.3.2
