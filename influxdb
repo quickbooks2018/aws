@@ -1,4 +1,5 @@
 # https://hub.docker.com/_/influxdb
+# https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 
 docker network create monitoring --attachable
 
