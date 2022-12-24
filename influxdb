@@ -59,10 +59,10 @@ cat << EOF > telegraf.conf
   omit_hostname = false
 [[outputs.influxdb]]
   urls = ["http://influxdb:8086"]
-  database = "influx"
+  database = "telegraf"
   timeout = "5s"
-  username = "telegraf"
-  password = "metricsmetricsmetricsmetrics"
+  username = "cloudgeeks"
+  password = "my-super-secret-auth-token"
 [[inputs.cpu]]
   percpu = true
   totalcpu = true
