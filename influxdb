@@ -1,6 +1,7 @@
 # https://hub.docker.com/_/influxdb
 # https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 # https://www.youtube.com/watch?v=MtI9yjH8v4g
+# https://www.youtube.com/watch?v=NGv7LeCaPtc
 
 # webui builtin in 2.x
 http://54.213.213.111:8086/
