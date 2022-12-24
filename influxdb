@@ -17,7 +17,7 @@ docker run --name influxdb -id --network monitoring --restart unless-stopped -p 
       -e DOCKER_INFLUXDB_INIT_USERNAME=cloudgeeks \
       -e DOCKER_INFLUXDB_INIT_PASSWORD=12345678 \
       -e DOCKER_INFLUXDB_INIT_ORG=cloudgeeks \
-      -e DOCKER_INFLUXDB_INIT_BUCKET=cloudgeeks-bucket \
+      -e DOCKER_INFLUXDB_INIT_BUCKET=telegraf \
       -e DOCKER_INFLUXDB_INIT_RETENTION=1w \
       -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token \
       influxdb:2.6.0
