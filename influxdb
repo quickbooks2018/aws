@@ -39,9 +39,9 @@ HOSTIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
 SERVER="${HOSTNAME}"-"${HOSTIP}"
 
-export $HOSTNAME
-export $HOSTIP
-export $SERVER
+export HOSTNAME
+export HOSTIP
+export SERVER
 
 # Telegraf Setup
 cat << EOF > telegraf.conf
