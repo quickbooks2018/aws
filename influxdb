@@ -1,5 +1,6 @@
 # https://hub.docker.com/_/influxdb
 # https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
+# https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 
 # webui builtin in 2.x
 http://54.213.213.111:8086/
@@ -36,12 +37,20 @@ influx v1 shell
 
 HOSTNAME="Docker-Cloudgeeks-CA"
 HOSTIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+DOCKER_INFLUXDB_INIT_ADMIN_TOKEN='my-super-secret-auth-token'
+DOCKER_INFLUXDB_INIT_ORG='cloudgeeks'
+DOCKER_INFLUXDB_INIT_BUCKET='telegraf'
+
 
 SERVER="${HOSTNAME}"-"${HOSTIP}"
 
 export HOSTNAME
 export HOSTIP
 export SERVER
+export INFLUX_TOKEN
+export DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+export DOCKER_INFLUXDB_INIT_ORG
+export DOCKER_INFLUXDB_INIT_BUCKET
 
 # Telegraf Setup
 cat << EOF > telegraf.conf
@@ -57,12 +66,22 @@ cat << EOF > telegraf.conf
   precision = ""
   hostname = "$SERVER"
   omit_hostname = false
-[[outputs.influxdb]]
-  urls = ["http://influxdb:8086"]
-  database = "telegraf"
-  timeout = "5s"
-  username = "cloudgeeks"
-  password = "my-super-secret-auth-token"
+[[outputs.influxdb_v2]]
+ ## The URLs of the InfluxDB cluster nodes.
+ ##
+ ## Multiple URLs can be specified for a single cluster, only ONE of the
+ ## urls will be written to each interval.
+ ## urls exp: http://127.0.0.1:8086
+ urls = ["http://influxdb:8086"]
+
+ ## Token for authentication.
+ token = "$DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"
+
+ ## Organization is the name of the organization you wish to write to; must exist.
+ organization = "$DOCKER_INFLUXDB_INIT_ORG"
+
+ ## Destination bucket to write into.
+ bucket = "$DOCKER_INFLUXDB_INIT_BUCKET"
 [[inputs.cpu]]
   percpu = true
   totalcpu = true
@@ -85,7 +104,19 @@ EOF
 
 chmod 666 /var/run/docker.sock
 
-docker run --name telegraf --network monitoring -v /var/run/docker.sock:/var/run/docker.sock -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro --restart unless-stopped -id telegraf:latest
 
-
+docker run -id --name=telegraf --network=monitoring --restart unless-stopped \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+	-v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
+	-v /:/hostfs:ro \
+	-e HOST_ETC=/hostfs/etc \
+	-e HOST_PROC=/hostfs/proc \
+	-e HOST_SYS=/hostfs/sys \
+	-e HOST_VAR=/hostfs/var \
+	-e HOST_RUN=/hostfs/run \
+	-e HOST_MOUNT_PREFIX=/hostfs \
+    -e DOCKER_INFLUXDB_INIT_ORG="$DOCKER_INFLUXDB_INIT_ORG" \
+    -e DOCKER_INFLUXDB_INIT_BUCKET="$DOCKER_INFLUXDB_INIT_BUCKET" \
+    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN="$DOCKER_INFLUXDB_INIT_ADMIN_TOKEN" \
+	telegraf:1.25.0
 # End
