@@ -2,6 +2,11 @@
 # https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 # https://www.influxdata.com/blog/running-influxdb-2-0-and-telegraf-using-docker/
 
+#########################
+# Grafana dashboad import
+#########################
+# https://grafana.com/grafana/dashboards/15650-telegraf-influxdb-2-0-flux/
+
 # webui builtin in 2.x
 http://54.213.213.111:8086/
 
