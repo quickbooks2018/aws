@@ -48,19 +48,19 @@ mv ./kind /usr/local/bin
 #############
 # Kind Config
 #############
-cat << EOF > kind-config.yaml
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-networking:
-  apiServerAddress: 0.0.0.0
-  apiServerPort: 8443
-EOF
+#cat << EOF > kind-config.yaml
+#kind: Cluster
+#apiVersion: kind.x-k8s.io/v1alpha4
+#networking:
+#  apiServerAddress: 0.0.0.0
+#  apiServerPort: 8443
+#EOF
   
-kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.21.10
+# kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.21.10
   
   # ssh -N -L 8443:0.0.0.0:8443 cloud_user@d8d0041c.mylabserver.com
   
-  export KUBECONFIG=".kube/config"
+ # export KUBECONFIG=".kube/config"
   
  ####################  
  # Multi-Node Cluster
@@ -79,6 +79,9 @@ nodes:
 EOF
   
  kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.23.13
+ 
+ 
+  export KUBECONFIG=".kube/config"
  
   #End
   
