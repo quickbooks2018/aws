@@ -2,6 +2,21 @@ Note: Alnternative of Kind
 
 https://rancher.com/quick-start
 
+#########################################################
+# Must run on a server, rather than on your local machine
+#########################################################
+
+# https://ranchermanager.docs.rancher.com/pages-for-subheaders/rancher-on-a-single-node-with-docker
+docker run --name rancher -id --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:latest --acme-domain rancher.cloudgeeks.tk
+
+
+docker logs rancher | grep "Bootstrap Password:"
+
+
+
+
+
+
 docker run --name rancher --privileged -id --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
 
 https://hub.docker.com/r/rancher/rancher
