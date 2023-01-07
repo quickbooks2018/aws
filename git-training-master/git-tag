@@ -6,3 +6,32 @@ git log --oneline
 git tag -a v1.0 225ac38 -m "Release version 1.0"
 
 git push
+
+####################################################################################################################################################################
+Overwrite the existing tag: If you want to update the existing tag to point to a new commit, you can delete the existing tag and create a new tag with the same name.
+#####################################################################################################################################################################
+# Delete the existing tag
+git tag -d v1.0
+
+# Create a new commit
+# Make the changes you want to include in the commit
+# Stage the changes
+git add .
+
+git log --oneline
+
+---> 378466e HEAD
+
+# Commit the changes with a commit message
+git commit -m "Add new feature"
+
+# Create a new tag with the same name as the deleted tag
+git tag -a v1.0 378466e -m "Release version 1.0"
+
+# Push the commit and the tag to the remote repository
+git push origin HEAD
+git push origin v1.0
+
+
+
+
