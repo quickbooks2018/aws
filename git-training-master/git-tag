@@ -1,0 +1,8 @@
+git log --oneline
+
+---> 225ac38 HEAD
+
+# commit the tag & push
+git tag -a v1.0 225ac38 -m "Release version 1.0"
+
+git push
