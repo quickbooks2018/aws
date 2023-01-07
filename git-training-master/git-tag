@@ -6,6 +6,7 @@ git log --oneline
 git tag -a v1.0 225ac38 -m "Release version 1.0"
 
 git push
+git push origin v1.0
 
 ####################################################################################################################################################################
 Overwrite the existing tag: If you want to update the existing tag to point to a new commit, you can delete the existing tag and create a new tag with the same name.
