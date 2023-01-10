@@ -102,6 +102,7 @@ docker run --name kasmweb-desktop -u root --shm-size=2048m  -v "//var/run/docker
 --------------------------------------------------------------------------------------------------
 docker run --name aws-ecr -v "//var/run/docker.sock:/var/run/docker.sock" -w /root -id python:slim
 ---------------------------------------------------------------------------------------------------
+docker run --name asim -v "//var/run/docker.sock:/var/run/docker.sock" -v "c:/users/Muhammad Asim/Desktop/asim:/mnt" -w /mnt -id python:slim
 
 docker exec -it aws-ecr bash
 
