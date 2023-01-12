@@ -1,0 +1,8 @@
+# terragrunt run-all init -upgrade
+# yes | terragrunt init -upgrade
+# terragrunt plan
+# terragrunt run-all init
+# terragrunt run-all plan
+
+# terragrunt plan
+# terragrunt apply
