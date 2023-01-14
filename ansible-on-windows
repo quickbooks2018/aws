@@ -34,7 +34,6 @@ apt update -y \
 && curl -LO -# https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb \
 && dpkg -i ripgrep_13.0.0_amd64.deb \
 && pip3 install boto3 \
-&& ansible-galaxy collection install amazon.aws \
 && apt install -y python3-boto3 \
 && apt install -y python3-botocore \
 && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
