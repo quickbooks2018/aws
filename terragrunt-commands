@@ -1,3 +1,5 @@
+docker run --name terragrunt --network host -w /mnt -v "c:/users/Muhammad Asim/Desktop/terragrunt:/mnt" -id quickbooks2018/terragrunt:latest
+
 # terragrunt run-all init -upgrade
 # yes | terragrunt init -upgrade
 # terragrunt plan
