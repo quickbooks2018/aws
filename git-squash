@@ -4,6 +4,8 @@ git log --oneline -n13
 
 git rebase -i HEAD~13
 
+from bottom ---> s  (squash)
+
 git branch
 
 git push origin branchname -f
