@@ -1,6 +1,14 @@
 #!/bin/bash
 # Purpose: Kubernetes Cluster
 
+#####################
+# Eksctl instaalation
+#####################
+curl -# -LO https://github.com/weaveworks/eksctl/releases/download/v0.130.0/eksctl_Linux_amd64.tar.gz
+tar -xzvf eksctl_Linux_amd64.tar.gz
+chmod +x eksctl
+mv eksctl /usr/local/bin/
+eksctl version
 
 ######################################
 # Docker & Docker Compose Installation
