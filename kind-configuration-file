@@ -9,6 +9,7 @@ tar -xzvf eksctl_Linux_amd64.tar.gz
 chmod +x eksctl
 mv eksctl /usr/local/bin/
 eksctl version
+rm -f eksctl_Linux_amd64.tar.gz
 
 ######################################
 # Docker & Docker Compose Installation
