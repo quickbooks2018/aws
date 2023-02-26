@@ -1,3 +1,24 @@
+# MYSQL Client
+--------------
+
+# Connect to MYSQL Database
+kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -pdbpassword11
+
+# Verify usermgmt schema got created which we provided in ConfigMap
+mysql> show schemas;
+
+
+
+
+
+
+
+
+
+
+
+
+
 #CUSTOM PASSWORD
 ----------------
 https://scottlinux.com/2012/09/01/encode-or-decode-base64-from-the-command-line/
