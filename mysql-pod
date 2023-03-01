@@ -1,0 +1,6 @@
+kubectl run -it --rm --image=mysql:5.7.22 --restart=Never mysql-client -- mysql -h cloudgeeks-mysql.cfcnivmmptga.us-east-1.rds.amazonaws.com -u dbadmin -p12345678
+
+mysql> show schemas;
+mysql> create database usermgmt;
+mysql> show schemas;
+mysql> exit
