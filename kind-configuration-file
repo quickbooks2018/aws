@@ -87,7 +87,7 @@ nodes:
 - role: worker
 EOF
   
- kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.24.7
+ kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.25.3
  
  
   export KUBECONFIG=".kube/config"
