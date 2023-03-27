@@ -2,12 +2,19 @@
 
 yum update -y
 
-yum install -y unzip awscli
+yum install -y unzip 
 
+# Terraform
 curl -LO -# https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip
 
 unzip terraform_1.4.2_linux_amd64.zip
 
 mv terraform /usr/bin/
+
+# awscli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -f awscliv2.zip
 
 # End of script
