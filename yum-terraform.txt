@@ -1,0 +1,13 @@
+#!/bin/bash
+
+yum update -y
+
+yum install -y unzip
+
+curl -LO -# https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip
+
+unzip terraform_1.4.2_linux_amd64.zip
+
+mv terraform /usr/bin/
+
+# End of script
