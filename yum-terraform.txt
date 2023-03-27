@@ -2,7 +2,7 @@
 
 yum update -y
 
-yum install -y unzip
+yum install -y unzip awscli
 
 curl -LO -# https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip
 
