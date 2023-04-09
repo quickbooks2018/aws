@@ -83,12 +83,36 @@ networking:
   apiServerPort: 8443
 nodes:
 - role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        eviction-hard: "memory.available<5%"
+        system-reserved: "memory=1Gi"
+        kube-reserved: "memory=1Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        eviction-hard: "memory.available<5%"
+        system-reserved: "memory=1Gi"
+        kube-reserved: "memory=1Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        eviction-hard: "memory.available<5%"
+        system-reserved: "memory=1Gi"
+        kube-reserved: "memory=1Gi"
 EOF
   
  kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.25.3
- 
+ # Now, each node in the cluster will have a 4GB memory limit (1GB for system-reserved and 1GB for kube-reserved)
  
   export KUBECONFIG=".kube/config"
  
