@@ -20,6 +20,7 @@ rules:
   - pods
   - nodes
   - namespaces
+  - configmaps
   verbs:
   - get
   - list
