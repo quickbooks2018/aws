@@ -90,6 +90,9 @@ docker run --name sandbox --network home --shm-size=2048m -v "c:/users/Muhammad 
 docker run --name kasmweb-desktop -u root --shm-size=2048m -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /root/ubuntu:/root -p 4901:4901 -p 6901:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop:1.10.0
 
 docker run --name kasmweb-desktop -u root  -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /root/ubuntu:/root -p 443:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop:1.10.0
+
+docker run --name kasmweb-desktop -u root --shm-size=2048m -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /root/ubuntu:/root -p 4901:4901 -p 6901:6901 -e VNC_PW=password -id quickbooks2018/kasm-desktop:1.10.0
+
 #########
 # Windows
 #########
