@@ -1,15 +1,9 @@
 #!/bin/bash
 # Purpose: Kubernetes Cluster
+# extraPortMappings allow the local host to make requests to the Ingress controller over ports 80/443
+# node-labels only allow the ingress controller to run on a specific node(s) matching the label selector
+# https://kind.sigs.k8s.io/docs/user/ingress/
 
-#####################
-# Eksctl instaalation
-#####################
-curl -# -LO https://github.com/weaveworks/eksctl/releases/download/v0.130.0/eksctl_Linux_amd64.tar.gz
-tar -xzvf eksctl_Linux_amd64.tar.gz
-chmod +x eksctl
-mv eksctl /usr/local/bin/
-eksctl version
-rm -f eksctl_Linux_amd64.tar.gz
 
 ######################################
 # Docker & Docker Compose Installation
@@ -42,7 +36,7 @@ helm version
 ###################
 # Kind Installation
 ###################
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-linux-amd64
 # curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.0/kind-linux-amd64
 
 # Latest Version
@@ -88,9 +82,17 @@ nodes:
     kind: InitConfiguration
     nodeRegistration:
       kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
         eviction-hard: "memory.available<5%"
         system-reserved: "memory=1Gi"
         kube-reserved: "memory=1Gi"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
 - role: worker
   kubeadmConfigPatches:
   - |
@@ -111,10 +113,9 @@ nodes:
         kube-reserved: "memory=1Gi"
 EOF
   
- kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.25.3
- # Now, each node in the cluster will have a 4GB memory limit (1GB for system-reserved and 1GB for kube-reserved)
+ kind create --name cloudgeeks cluster --config kind-config.yaml --image kindest/node:v1.25.8
+ 
  
   export KUBECONFIG=".kube/config"
  
   #End
-  
