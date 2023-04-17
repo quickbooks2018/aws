@@ -1,0 +1,31 @@
+# This file describes the network interfaces available on your system
+
+# For more information, see netplan(5).
+
+# sudo /etc/netplan
+
+# ip route | grep default this will give gateway
+
+# sudo netplan apply
+
+# https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-04-bionic-beaver-linux
+
+network:
+
+  version: 2
+
+  renderer: networkd
+
+  ethernets:
+
+    ens:
+
+     dhcp4: no
+
+     addresses: [192.168.111.133/24]
+
+     gateway4: 192.168.111.2
+
+     nameservers:
+
+       addresses: [8.8.8.8,8.8.4.4]
