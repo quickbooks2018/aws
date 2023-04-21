@@ -5,3 +5,6 @@ apt install -y nmap
 sudo nmap -sTU -p- 0.0.0.0 
 
 # netstat -aplntu
+
+# gateway
+route -n
