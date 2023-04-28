@@ -1,3 +1,9 @@
 # https://www.git-tower.com/learn/git/faq/delete-remote-branch/
 
+# Delete remote branch
+
 git push origin --delete branchname
+
+
+# Delete local branch
+git branch --delete branchname
