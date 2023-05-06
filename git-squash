@@ -7,6 +7,8 @@ git log --oneline --format="%h %an %s"
 
 git log --format="%h %an %s"
 
+git log --oneline --format="%h %an %s" -n13
+
 git log --oneline -n13
 
 git rebase -i HEAD~13
