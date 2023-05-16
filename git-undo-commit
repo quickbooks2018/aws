@@ -3,6 +3,9 @@ Note: Becareful after this all commits after this will be destroyed
 --------------------------------------------------------------------
 
 git log --oneline
+git log --oneline --format="%h %an %s"
+git log --oneline --format="%h %an %s" -n1
+
 git reset --hard HEAD~1   # See your commit which you want to undo
 git push -f
 
