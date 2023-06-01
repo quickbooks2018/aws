@@ -16,3 +16,8 @@ apt insatll -y nc
 yum install -y nc 
 netstat -plntu
 netstat -antp
+
+
+# AmazonLinux
+sudo amazon-linux-extras install epel -y
+sudo yum install ncdu -y
