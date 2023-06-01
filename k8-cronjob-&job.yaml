@@ -1,0 +1,34 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudgeeks-crobjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cloudgeeks-crobjob
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cloudgeeks-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: cloudgeeks-job
+        image: busybox
+        command: ["/bin/sh", "-c", "date; echo Hello from the Kubernetes cluster"]
+      restartPolicy: Never
+  backoffLimit: 4
