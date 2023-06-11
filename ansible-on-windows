@@ -14,7 +14,7 @@ docker exec -it ansible bash
 
 apt update -y \
 && cd /root \
-&& apt install -y ansible sudo curl zip unzip jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
+&& apt install -y ansible tmux sudo curl zip unzip jq telnet netcat net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev \
 && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 && chmod +x ./kubectl \
 && mv ./kubectl /usr/bin/kubectl \
@@ -24,10 +24,10 @@ apt update -y \
 && curl -# -LO -# https://github.com/weaveworks/eksctl/releases/download/v0.94.0-rc.0/eksctl_Linux_amd64.tar.gz \
 && tar -xzvf eksctl_Linux_amd64.tar.gz \
 && mv eksctl /usr/local/bin \
-&& curl -# -LO https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_linux_amd64.zip \
+&& curl -# -LO https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip \
 && unzip terraform_1.3.7_linux_amd64.zip \
 && mv terraform /usr/local/bin \
-&& curl -# -LO https://github.com/gruntwork-io/terragrunt/releases/download/v0.42.7/terragrunt_linux_amd64 \
+&& curl -# -LO https://github.com/gruntwork-io/terragrunt/releases/download/v0.46.3/terragrunt_linux_amd64 \
 && mv terragrunt_linux_amd64 terragrunt \
 && chmod +x terragrunt \
 && mv terragrunt /usr/local/bin \
