@@ -25,7 +25,7 @@ apt update -y \
 && tar -xzvf eksctl_Linux_amd64.tar.gz \
 && mv eksctl /usr/local/bin \
 && curl -# -LO https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip \
-&& unzip terraform_1.3.7_linux_amd64.zip \
+&& unzip terraform_1.4.6_linux_amd64.zip \
 && mv terraform /usr/local/bin \
 && curl -# -LO https://github.com/gruntwork-io/terragrunt/releases/download/v0.46.3/terragrunt_linux_amd64 \
 && mv terragrunt_linux_amd64 terragrunt \
