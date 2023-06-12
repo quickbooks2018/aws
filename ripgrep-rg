@@ -1,3 +1,5 @@
+kubectl describe node cloudgeeks-worker3 | grep -i  "label"
+
 # https://github.com/BurntSushi/ripgrep/releases
 
 ###############
