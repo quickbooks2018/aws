@@ -1,0 +1,1 @@
+docker run --name gettr -v $PWD:/mnt --shm-size=4096m -w /mnt --platform linux/amd64 -id python:slim
