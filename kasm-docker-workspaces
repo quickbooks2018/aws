@@ -8,6 +8,9 @@
 
 /home/persistance/profiles/ubuntu_jammy/{username}
 
+admin: admin@kasm.local
+password: password 
+
 docker run -id \
   --name=kasm \
   --privileged \
