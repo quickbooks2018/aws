@@ -1,0 +1,15 @@
+Start the Ubuntu guest operating system:
+Start your Ubuntu virtual machine within VMware Fusion.
+
+
+# If you are running a GUI interface, install the following package:
+# sudo apt-get install -y open-vm-tools-desktop
+
+
+# sudo apt-get update
+# sudo apt-get install -y open-vm-tools
+
+# Reboot the Ubuntu guest:
+After the installation is complete, reboot your Ubuntu guest operating system to make sure the VMware Tools are fully initialized. You can do this by typing the following command in the Terminal:
+
+sudo reboot
