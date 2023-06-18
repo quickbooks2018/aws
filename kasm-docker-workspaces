@@ -19,3 +19,9 @@ docker run -id \
   -p 443:443 \
   --restart unless-stopped \
   lscr.io/linuxserver/kasm:arm64v8-latest
+
+
+# MAC kasm arm images
+# https://hub.docker.com/r/kasmweb/core-ubuntu-bionic/tags
+docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/core-ubuntu-bionic:1.13.1-rolling
+
