@@ -23,5 +23,13 @@ docker run -id \
 
 # MAC kasm arm images
 # https://hub.docker.com/r/kasmweb/core-ubuntu-bionic/tags
+
+# Gui
+################################
+https://hub.docker.com/u/kasmweb
+################################
+docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
+
+# Ubuntu Core NoGUI
 docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/core-ubuntu-bionic:1.13.1
 
