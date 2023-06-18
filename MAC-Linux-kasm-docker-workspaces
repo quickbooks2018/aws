@@ -1,3 +1,4 @@
+# With Sound Enabled (Voice)
 # https://hub.docker.com/r/linuxserver/kasm
 
 # https://www.youtube.com/watch?v=ioJla7aLfoQ
@@ -24,6 +25,8 @@ docker run -id \
 # MAC kasm arm images
 # https://hub.docker.com/r/kasmweb/core-ubuntu-bionic/tags
 
+
+# With No Sound Enabled (No Voice)
 # Gui
 ################################
 https://hub.docker.com/u/kasmweb
