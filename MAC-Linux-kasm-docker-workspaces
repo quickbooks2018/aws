@@ -12,6 +12,9 @@
 admin: admin@kasm.local
 password: password 
 
+Tip: open a terminal ---> sudo -i ---> passwd kasm-user ---> 1 (Incase of lock you can easily provide password 1)
+
+
 docker run -id \
   --name=kasm \
   --privileged \
