@@ -4,6 +4,21 @@ helm ls -A
 helm repo ls
 helm template dirname
 
+###########
+# Helm Repo
+###########
+
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+helm repo ls
+helm search repo jenkins
+helm search repo jenkins/jenkins --versions
+helm show values jenkins/jenkins --version 4.3.20
+mkdir -p jenkins/values
+helm show values jenkins/jenkins --version 4.3.20 > jenkins/values/jenkins.yaml
+helm upgrade --install jenkins --namespace jenkins --create-namespace jenkins/jenkins --version 4.3.20 -f jenkins/values/jenkins.yaml --wait
+
+
 ####################################
 # Helm Lint for Helm Syntax Checking
 ####################################
