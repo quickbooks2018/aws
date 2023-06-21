@@ -46,7 +46,7 @@ https://hub.docker.com/u/kasmweb
 ################################
 docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
 docker run --name docker --shm-size=2048m -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/mnt -w /mnt -p 6902:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
-
+# apt update -y && apt install -y docker.io
 
 # Ubuntu Core NoGUI
 docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/core-ubuntu-bionic:1.13.1
