@@ -5,8 +5,8 @@
 # This will be portable lens installation
 
 
-apt update -y
-apt install -y snapd fuse
+sudo apt update -y
+sudo apt install -y snapd fuse
 curl -LO -# https://api.k8slens.dev/binaries/latest.x86_64.AppImage
 chmod +x latest.x86_64.AppImage
 ./latest.x86_64.AppImage
