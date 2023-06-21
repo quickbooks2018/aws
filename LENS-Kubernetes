@@ -8,5 +8,5 @@
 apt update -y
 apt install -y snapd fuse
 curl -LO -# https://api.k8slens.dev/binaries/latest.x86_64.AppImage
-chmod +x Lens-2023.5.310801-latest.x86_64.AppImage
-./Lens-2023.5.310801-latest.x86_64.AppImage
+chmod +x latest.x86_64.AppImage
+./latest.x86_64.AppImage
