@@ -45,8 +45,9 @@ docker run -id --name=kasm --privileged -e KASM_PORT=443 -p 3000:3000 -p 443:443
 https://hub.docker.com/u/kasmweb
 ################################
 docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
-docker run --name docker --shm-size=2048m -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/mnt -w /mnt -p 6902:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
-# Use docker script to install docker
+docker run --name docker --shm-size=2048m -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/mnt -w /mnt -p 6902:6901 -e VNC_PW=password -id kasmweb/ubuntu-focal-desktop:1.13.1-rolling
+# Docker installation ---> apt update && apt install -y docker.io
+# Docker abd docker compose installation ---> use docker script
 
 # Ubuntu Core NoGUI
 docker run --name sandbox --shm-size=4096m -v $PWD:/mnt -w /mnt -p 6901:6901 -e VNC_PW=password -id kasmweb/core-ubuntu-bionic:1.13.1
