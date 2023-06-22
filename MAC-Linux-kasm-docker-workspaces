@@ -31,6 +31,14 @@ docker run -id \
 #####
 # AMD
 ######
+docker run -id \
+  --name=amd \
+  --privileged \
+  -e KASM_PORT=8443 \
+  -p 3001:3000 \
+  -p 8443:8443 \
+  --restart unless-stopped \
+  lscr.io/linuxserver/kasm:amd64-latest
 ######################################################################################################################
 docker run -id --name=kasm --privileged -e KASM_PORT=443 -p 3000:3000 -p 443:443 lscr.io/linuxserver/kasm:amd64-latest
 ######################################################################################################################
