@@ -22,7 +22,8 @@ helm upgrade --install jenkins --namespace jenkins --create-namespace jenkins/je
 ####################################
 # Helm Lint for Helm Syntax Checking
 ####################################
-helm lint dirname
+helm lint dirname direname2
+helm lint hello-0.1.0.tgz
 
 helm plugin ls
 
