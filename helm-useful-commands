@@ -407,7 +407,14 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 ####################
 # Packing helm chart
 ####################
-helm package -d ${PWD}/helm ${PWD}/helm/cloudgeeks
+helm package hello
+helm package -d ${PWD}/helm ${PWD}/helm/hello
+
+#########################
+# Helm Chart Dependencies
+#########################
+helm package hello --dependencies-update
+helm package hello -u
 
 ########
 # Issues 
