@@ -415,7 +415,9 @@ helm upgrade --install nginx-alpine -f custom-values.yaml -f env.yaml ./ --names
 # Helm chart dependency #---> (Note: dependency will be downloaded in charts directory)
 #######################
 helm dependency update CHARTNAME
-or if you are inside chart
+-----------------------
+if you are inside chart
+-----------------------
 helm dependency update .
 
 
