@@ -209,6 +209,12 @@ helm release name {{ .Release.Name }}
 helm chart name {{ .Chart.Name }}
 EOF
 
+#################################
+Helm Release Manifest (yaml files) (Note helm release which is deployed)
+##################################
+helm get manifest RELEASENAME
+helm get manifest hello
+
 #################
 # Sample Release
 #################
