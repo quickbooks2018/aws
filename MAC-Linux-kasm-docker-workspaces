@@ -1,7 +1,9 @@
 # With Sound Enabled (Voice)
 # https://hub.docker.com/r/linuxserver/kasm
 
+#############################################
 # https://www.youtube.com/watch?v=ioJla7aLfoQ
+#############################################
 
 # Persistent profile path
 
@@ -9,6 +11,10 @@
 
 /home/persistance/profiles/ubuntu_jammy/{username}
 
+
+###########################################################################
+# https://kasmweb.com/docs/latest/guide/persistent_data/volume_mapping.html
+###########################################################################
 #############
 # Volume Bind  # Note: This will bind the volume inside the host container ---> docker exec -it sandbox ls /mnt  ---> bind with kasm-user /mnt ---> you can bind host container with HOST MACHINE.
 #############
