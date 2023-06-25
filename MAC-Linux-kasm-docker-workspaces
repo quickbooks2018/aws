@@ -65,17 +65,24 @@ docker run -id \
 #####
 # AMD
 ######
+########
+# Linux
+########
 docker run -id \
-  --name=amd \
+  --name=kasm \
   --privileged \
   -e KASM_PORT=8443 \
   -p 3001:3000 \
   -p 8443:8443 \
-  --restart unless-stopped \
+  -v ${PWD}:/mnt" \
   lscr.io/linuxserver/kasm:amd64-latest
-######################################################################################################################
-docker run -id --name=kasm --privileged -e KASM_PORT=443 -p 3000:3000 -p 443:443 lscr.io/linuxserver/kasm:amd64-latest
-######################################################################################################################
+
+#########
+# Windows
+#########
+#######################################################################################################################################################################
+docker run -id --name=kasm --privileged -e KASM_PORT=443 -p 3000:3000 -p 443:443 -v "c:/users/Muhammad Asim/Desktop/sandbox:/mnt"  lscr.io/linuxserver/kasm:amd64-latest
+########################################################################################################################################################################
 
 # MAC kasm arm images
 # https://hub.docker.com/r/kasmweb/core-ubuntu-bionic/tags
