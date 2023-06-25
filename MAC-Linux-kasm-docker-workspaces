@@ -9,6 +9,33 @@
 
 /home/persistance/profiles/ubuntu_jammy/{username}
 
+#############
+# Volume Bind  # Note: This will bind the volume inside the host container ---> docker exec -it sandbox ls /mnt  ---> bind with kasm-user /mnt ---> you can bind host container with HOST MACHINE.
+#############
+{
+  "/mnt": {
+    "bind": "/mnt",
+    "mode": "rw",
+    "uid": 1000,
+    "gid": 1000,
+    "required": true,
+    "skip_check": false
+  }
+
+docker run -id \
+  --name=kasm \
+  --privileged \
+  -e KASM_PORT=443 \
+  -p 3000:3000 \
+  -p 443:443 \
+  - v $PWD:/mnt
+  --restart unless-stopped \
+  lscr.io/linuxserver/kasm:arm64v8-latest
+
+#######
+# Login
+#######
+
 admin: admin@kasm.local
 password: password 
 
