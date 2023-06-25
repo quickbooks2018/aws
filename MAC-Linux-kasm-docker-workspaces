@@ -27,6 +27,7 @@
     "required": true,
     "skip_check": false
   }
+}
 
 docker run -id \
   --name=kasm \
