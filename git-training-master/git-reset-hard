@@ -1,0 +1,9 @@
+The command git reset --hard origin/qa is used to reset your current branch to match exactly with the branch origin/qa. Here's a breakdown of what each part of the command does:
+
+git reset: This is a command that allows you to move the "HEAD" pointer to a specific commit. The "HEAD" pointer is a reference to the last commit in the currently checked-out branch.
+
+--hard: This is an option that accompanies git reset. It changes all the files in your working directory to match the files in the commit to which you're resetting. This will discard all changes in the working directory and the staging area that have happened since the commit to which you're resetting.
+
+origin/qa: This is the name of the branch you're resetting to. origin is the default name that Git gives to the remote repository from which you cloned, and qa is the branch on that remote repository.
+
+So, in summary, git reset --hard origin/qa will discard all changes on the current branch since it diverged from origin/qa, and make the current branch exactly match origin/qa. Be careful when using this command, as it will permanently discard changes and there's no way to recover them.
