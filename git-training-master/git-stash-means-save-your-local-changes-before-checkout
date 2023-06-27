@@ -1,0 +1,38 @@
+git stash is a command in Git version control system that allows you to save changes that you have made to your working directory but do not want to commit yet, so you can switch to a different branch and work there. This command takes your modified tracked files, stages changes, and saves them on a stack of unfinished changes that you can reapply at any time.
+
+Here's a simple example of how to use git stash.
+
+Let's say you are working on a new feature in a new-feature branch, but suddenly a critical bug is reported and you need to switch to the master branch to fix the bug. However, you don't want to commit half-done work.
+
+Here's what you might do:
+
+Save your changes to a new stash:
+
+git stash save "Work in progress for new feature"
+Now your working directory is clean, switch to the master branch:
+
+git checkout master
+Do the bug fix, commit the changes:
+
+# do some changes
+git commit -am "Fix critical bug"
+Now switch back to your new-feature branch:
+
+git checkout new-feature
+You can see your stashes with:
+
+git stash list
+You might see output like this:
+
+
+stash@{0}: On new-feature: Work in progress for new feature
+Apply the stash to the new-feature branch:
+
+git stash apply stash@{0}
+Now you're back to where you left off before switching branches, but with the bugfix applied to the master branch. The changes you stashed are re-applied to your working directory.
+
+Remember, the stash you just applied is not dropped from your stash list. To remove it, you need to use the drop command:
+
+
+git stash drop stash@{0}
+Alternatively, you can use git stash pop instead of git stash apply. The pop command applies the stash and then immediately drops it from your stack.
