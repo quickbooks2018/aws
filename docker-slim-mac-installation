@@ -1,5 +1,7 @@
 https://dockersl.im/install.html
 
+brew install docker-slim
+
 brew list docker-slim
 
 brew link docker-slim 
