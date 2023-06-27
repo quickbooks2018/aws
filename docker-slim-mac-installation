@@ -4,7 +4,17 @@ brew list docker-slim
 
 brew link docker-slim 
 
+#####################################################
 ln -s /path/to/docker-slim /usr/local/bin/docker-slim
+ln -s /path/to/docker-slim /usr/local/bin/slim-sensor
+#####################################################
+
+sudo ln -s /opt/homebrew/Cellar/docker-slim/1.40.2/bin/slim /usr/local/bin/docker-slim
+
+sudo ln -s /opt/homebrew/Cellar/docker-slim/1.40.2/bin/slim-sensor /usr/local/bin/slim-sensor
 
 docker-slim --version
-  
+
+docker build -tag test:latest .
+
+docker-slim build --target test:latest --tag test:slim --http-probe=false
