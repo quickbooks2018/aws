@@ -1,0 +1,10 @@
+https://dockersl.im/install.html
+
+brew list docker-slim
+
+brew link docker-slim 
+
+ln -s /path/to/docker-slim /usr/local/bin/docker-slim
+
+docker-slim --version
+  
