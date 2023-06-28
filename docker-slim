@@ -8,10 +8,27 @@
 curl -sL https://raw.githubusercontent.com/slimtoolkit/slim/master/scripts/install-slim.sh | sudo -E bash -
 
 
+cd /usr/local/bin/
+/usr/local/bin# ls
+argocd  helm  kind  kubectl  slim  slim-sensor
+slim --version
+slim version linux|Transformer|1.40.2|762eea87bafc4b04fe6b0642a62534a148acdaca|2023-05-20_06:09:23AM
 
-#########
-# Example
-#########
+##########
+# Example1
+##########
+docker pull nginx:latest
+
+slim build --target nginx:latest --tag test:slim --http-probe=false
+
+###############
+# No User Input
+###############
+yes | slim build --target nginx:latest --tag test:slim2 --http-probe=false
+
+##########
+# Example2
+##########
 docker run --name docker-slim -v "//var/run/docker.sock:/var/run/docker.sock" -id python:latest
 
 docker images
