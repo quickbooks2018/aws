@@ -1,3 +1,7 @@
+git reset --hard origin/main
+
+example
+
 The command git reset --hard origin/qa is used to reset your current branch to match exactly with the branch origin/qa. Here's a breakdown of what each part of the command does:
 
 git reset: This is a command that allows you to move the "HEAD" pointer to a specific commit. The "HEAD" pointer is a reference to the last commit in the currently checked-out branch.
