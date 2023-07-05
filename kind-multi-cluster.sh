@@ -56,7 +56,7 @@ cat << EOF > kind1-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
- apiServerAddress: 172.31.10.247
+ apiServerAddress: 0.0.0.0
  apiServerPort: 8443
 EOF
 
@@ -68,7 +68,7 @@ cat << EOF > kind2-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
- apiServerAddress: 172.31.10.247
+ apiServerAddress: 0.0.0.0
  apiServerPort: 8444
 EOF
   
