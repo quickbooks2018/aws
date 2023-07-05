@@ -35,7 +35,7 @@ cd hello
 helm install hello ./ -f values.yaml --namespace datree --create-namespace --debug --dry-run
 
 cd ..
-helm template -f hello/values.yaml --namespace datree --create-namespace hello/ --dry-run
+helm template -f hello/values.yaml --namespace datree --create-namespace hello/
 
 
 helm install hello ./ -f values.yaml --namespace datree --create-namespace --debug
