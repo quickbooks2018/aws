@@ -1,0 +1,60 @@
+https://www.josean.com/posts/terminal-setup
+
+How To Setup Your Mac Terminal
+Install Homebrew
+Open up a terminal window and install homebrew with the following command:
+
+###############################################################################################
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+###############################################################################################
+Add Homebrew To Path
+After installing, add it to the path (replace "[username]" with your actual username):
+
+################################################################################
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/[username]/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+#################################################################################
+
+
+
+Install Git
+If you don't have it installed, install git as well:
+
+#################
+brew install git
+#################
+
+Install Oh My Zsh
+Run this to install Oh My Zsh:
+
+###############################################################################################
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+###############################################################################################
+
+
+Install ZSH Plugins
+Install zsh-autosuggestions:
+
+#########################################################################################################################
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+##########################################################################################################################
+
+Install zsh-syntax-highlighting:
+
+#####################################################################################################################################
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+######################################################################################################################################
+Open the "~/.zshrc" file in your desired editor and modify the plugins line to what you see below.
+
+####################################################################
+ZSH_THEME="robbyrussell"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+#####################################################################
+Load these new plugins by running:
+
+################
+source ~/.zshrc
+################
+
+You're Done!
+With that, you're finished and should have a much better terminal experience!
