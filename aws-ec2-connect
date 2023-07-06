@@ -7,3 +7,9 @@
 #################################################################################################################
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
 ##################################################################################################################
+
+
+In the future, we might change the behavior of the auto connection type. To ensure that your desired connection type is used, we recommend that you explictly set the --connection-type to either direct or eice
+
+# To connect to an instance using the instance ID and an EC2 Instance Connect Endpoint
+aws ec2-instance-connect ssh --instance-id i-06b9ea82222cfe6b5 --connection-type eice
