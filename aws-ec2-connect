@@ -4,6 +4,6 @@
 
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
 
-################################################################################################################
-# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
 #################################################################################################################
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
+##################################################################################################################
