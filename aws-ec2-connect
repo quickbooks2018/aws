@@ -13,3 +13,12 @@ In the future, we might change the behavior of the auto connection type. To ensu
 
 # To connect to an instance using the instance ID and an EC2 Instance Connect Endpoint
 aws ec2-instance-connect ssh --instance-id i-06b9ea82222cfe6b5 --connection-type eice
+
+
+# Tunnel
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-using-eice.html
+
+aws ec2-instance-connect open-tunnel \
+    --instance-id i-06b9ea82222cfe6b5 --connection-type eice \
+    --remote-port 80 \
+    --local-port 8080
