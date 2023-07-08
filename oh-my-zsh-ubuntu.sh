@@ -10,4 +10,4 @@ sudo apt-get install -y zsh git
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Set ZSH as your default shell
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $USER
