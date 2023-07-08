@@ -26,5 +26,5 @@ fi
 # Set ZSH as your default shell if it's not already
 if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Setting ZSH as default shell..."
-    chsh -s "$(which zsh)"
+    sudo chsh -s "$(which zsh)" $USER
 fi
