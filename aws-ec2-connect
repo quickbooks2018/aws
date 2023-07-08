@@ -17,6 +17,13 @@
     --instance-os-user ubuntu \
     --ssh-public-key file://~/.ssh/id_rsa.pub
 
+########
+# Tunnel
+########
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-using-eice.html
+
+# Note: only 22 & 3389 allowed
+
 aws ec2-instance-connect open-tunnel \
     --instance-id i-087aa9186044d6149 \
     --remote-port 22 \
@@ -51,9 +58,3 @@ aws ec2-instance-connect ssh --os-user ec2-user --instance-id i-087aa9186044d614
 # Ubuntu
 ########
 aws ec2-instance-connect ssh --os-user ubuntu --instance-id i-087aa9186044d6149 --connection-type eice --debug
-
-
-# Tunnel
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-using-eice.html
-
-Note: only 22 & 3389 allowed
