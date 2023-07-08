@@ -33,7 +33,12 @@ In the future, we might change the behavior of the auto connection type. To ensu
 # AmazonLinux
 #############
 # To connect to an instance using the instance ID and an EC2 Instance Connect Endpoint
-aws ec2-instance-connect ssh --instance-id i-087aa9186044d6149 --connection-type eice
+aws ec2-instance-connect ssh --os-user ec2-user --instance-id i-087aa9186044d6149 --connection-type eice
+
+########
+# Ubuntu
+########
+aws ec2-instance-connect ssh --os-user ubuntu --instance-id i-087aa9186044d6149 --connection-type eice --debug
 
 
 # Tunnel
