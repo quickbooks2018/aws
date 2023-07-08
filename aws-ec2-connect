@@ -7,12 +7,33 @@
 #################################################################################################################
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
 ##################################################################################################################
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html
+#######################################################################################
+################################
+# Put your Public Key Inside EC2
+################################
+# aws ec2-instance-connect send-ssh-public-key \
+    --region us-east-1 \
+    --availability-zone us-east-1a \
+    --instance-id i-087aa9186044d6149 \
+    --instance-os-user ubuntu \
+    --ssh-public-key file://~/.ssh/id_rsa.pub
+
+aws ec2-instance-connect open-tunnel \
+    --instance-id i-087aa9186044d6149 \
+    --remote-port 22 \
+    --local-port 2222
+
+ssh -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa ubuntu@localhost -p 2222
 
 
 In the future, we might change the behavior of the auto connection type. To ensure that your desired connection type is used, we recommend that you explictly set the --connection-type to either direct or eice
 
+#############
+# AmazonLinux
+#############
 # To connect to an instance using the instance ID and an EC2 Instance Connect Endpoint
-aws ec2-instance-connect ssh --instance-id i-06b9ea82222cfe6b5 --connection-type eice
+aws ec2-instance-connect ssh --instance-id i-087aa9186044d6149 --connection-type eice
 
 
 # Tunnel
