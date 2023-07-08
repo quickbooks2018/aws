@@ -4,9 +4,7 @@
 
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
 
-#################################################################################################################
-# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
-##################################################################################################################
+########################################################################################
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html
 #######################################################################################
 ################################
@@ -25,6 +23,20 @@ aws ec2-instance-connect open-tunnel \
     --local-port 2222
 
 ssh -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa ubuntu@localhost -p 2222
+
+####################
+# AwsCli EC2 Connect
+####################
+#################################################################################################################
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#SSH-using-EC2-Instance-Connect
+##################################################################################################################
+
+##########################
+# Latest Version of AwsCLI
+##########################
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+&& unzip awscliv2.zip \
+&& sudo ./aws/install --update
 
 
 In the future, we might change the behavior of the auto connection type. To ensure that your desired connection type is used, we recommend that you explictly set the --connection-type to either direct or eice
