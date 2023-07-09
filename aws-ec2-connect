@@ -31,6 +31,33 @@ aws ec2-instance-connect open-tunnel \
 
 ssh -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa ubuntu@localhost -p 2222
 
+
+#####################
+# Tunnel Port forward
+#####################
+
+####################################################
+Note: OS Username & Ec2 AZ are very important fields
+####################################################
+
+aws ec2-instance-connect send-ssh-public-key \
+    --region us-east-1 \
+    --availability-zone us-east-1c \
+    --instance-id i-011a4018af4e3b888 \
+    --instance-os-user ec2-user \
+    --ssh-public-key file://~/.ssh/id_rsa.pub
+	
+	
+aws ec2-instance-connect open-tunnel \
+    --instance-id i-011a4018af4e3b888 \
+    --remote-port 22 \
+    --local-port 2222	
+	
+ssh -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa -NL 8443:0.0.0.0:8443 ec2-user@localhost -p 2222	
+
+
+
+
 ####################
 # AwsCli EC2 Connect
 ####################
