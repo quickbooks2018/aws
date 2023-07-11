@@ -19,4 +19,6 @@ docker-slim --version
 
 docker build -tag test:latest .
 
-docker-slim build --target test:latest --tag test:slim --http-probe=false
+# https://github.com/slimtoolkit/slim/issues/235
+
+docker-slim build --target test:latest --tag test:slim --http-probe=false --continue-after 1
