@@ -53,6 +53,8 @@ docker pull nginx:latest
 
 docker-slim build --target nginx:latest --tag quickbooks2018/nginx:slim --http-probe=true
 
+docker-slim build --target nginx:latest --tag quickbooks2018/nginx:slim --http-probe=false --include-shell=true --include-workdir=true
+
 docker run --name nginx -p 80:80 -id nginx.slim:latest       # size reduced to 12MB approx
 
 
