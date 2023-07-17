@@ -1,5 +1,11 @@
 $(aws ecr get-login --no-include-email --region us-east-1)
 
+export AWS_ECR_ACCOUNT='925307459448'
+export AWS_REGION='us-east-1'
+# Non TTy
+echo $(aws ecr get-login-password --region "$AWS_REGION") | docker login --username AWS --password-stdin "$AWS_ECR_ACCOUNT".dkr.ecr."$AWS_REGION".amazonaws.com
+
+
 
 # https://stackoverflow.com/questions/60583847/aws-ecr-saying-cannot-perform-an-interactive-login-from-a-non-tty-device-after
 
