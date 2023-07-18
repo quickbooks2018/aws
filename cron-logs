@@ -2,3 +2,29 @@
 
 grep CRON /var/log/syslog
 
+To view all logs related to systemd timers:
+##########################
+journalctl -u cronie.timer
+##########################
+Replace cronie.timer with the name of the specific timer unit you want to inspect. This command will display all log entries related to the specified timer unit.
+
+To view the logs for a specific time range:
+
+#####################################################################################
+journalctl -u cronie.timer --since "yyyy-mm-dd HH:MM:SS" --until "yyyy-mm-dd HH:MM:SS"
+######################################################################################
+Replace cronie.timer with the name of the timer unit you want to inspect, and specify the desired start and end time using the --since and --until options respectively. This command will display the logs for the specified timer unit within the given time range.
+
+To continuously monitor the logs in real-time for a specific timer unit:
+
+##########################
+journalctl -fu cronie.timer
+###########################
+This command will show the logs as they are being generated for the specified timer unit. It is useful for troubleshooting or monitoring tasks.
+
+Remember to replace cronie.timer with the name of your actual timer unit. You can also explore additional options and filters available with journalctl to further customize your log view.
+
+Note: If you are still using the traditional cron system, you can view the logs for cron jobs in the usual way using grep or by inspecting the log files located in the /var/log/ directory.
+
+
+
