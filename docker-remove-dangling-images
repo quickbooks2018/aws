@@ -3,6 +3,8 @@
 ###############
 yes | docker image prune --all --filter "until=2190h" # delete images older than 3 months ago
 
+yes | docker image prune --all --filter "until=2190h" --exclude="image1,image2,image3"
+
 
 
 #####################
