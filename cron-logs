@@ -2,6 +2,10 @@
 
 grep CRON /var/log/syslog
 
+sudo tail -f /var/log/cron
+sudo grep 'your-job-name' /var/log/cron
+
+
 To view all logs related to systemd timers:
 ##########################
 journalctl -u cronie.timer
