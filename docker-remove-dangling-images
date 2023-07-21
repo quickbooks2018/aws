@@ -5,6 +5,14 @@ yes | docker image prune --all --filter "until=2190h" # delete images older than
 
 yes | docker image prune --all --filter "until=2190h" --exclude="image1,image2,image3"
 
+# Above entry will remove all images including dangling and which not used.
+
+
+#############################################################################
+# Remove only dangling images, this will protect the removal of unused images
+#############################################################################
+
+yes | docker image prune --filter "until=2190h" # delete images older than 3 months ago
 
 
 #####################
