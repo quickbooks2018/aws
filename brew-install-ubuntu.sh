@@ -7,5 +7,10 @@ sudo apt-get install build-essential curl file git
 # bash
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.bash_profile
 
+source ~/.bash_profile
+
+
 # zsh
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
+
+source ~/.zshrc
