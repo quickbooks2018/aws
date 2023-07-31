@@ -19,3 +19,6 @@ k9s --context coolCtx
 
 # Start K9s in readonly mode - with all modification commands disabled
 k9s --readonly
+
+# Swtich between namespaces 
+:ns
