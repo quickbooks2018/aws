@@ -35,3 +35,6 @@ k9s --readonly
 
 # Pulse view complete overview of cluster
 :pulses
+
+# filter
+/ -f app=nodejs-with-istio
