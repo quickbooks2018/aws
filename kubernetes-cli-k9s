@@ -23,6 +23,8 @@ k9s --readonly
 # Swtich between namespaces 
 :ns
 
-# shift+: ---> gives you k9 terminal
+# shift+:      ---> gives you k9 terminal
 
-# shift+? gives you have help
+#              ---> shift+? gives you have help
+
+# Go Backwards ---> press esc
