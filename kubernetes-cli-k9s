@@ -8,6 +8,10 @@ https://github.com/derailed/k9s/releases
 
 k9s help
 
+# k9s ---> connect with your cluster
+
+# quit k9s just like vim q!
+
 # Run K9s in a given namespace.
 k9s -n mycoolns
 
