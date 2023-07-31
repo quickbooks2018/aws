@@ -2,3 +2,20 @@
 
 # Installation
 https://github.com/derailed/k9s/releases
+
+# Commands
+# https://k9scli.io/topics/commands/
+
+k9s help
+
+# Run K9s in a given namespace.
+k9s -n mycoolns
+
+# Run K9s and launch in pod view via the pod command.
+k9s -c pod
+
+# Start K9s in a non default KubeConfig context
+k9s --context coolCtx
+
+# Start K9s in readonly mode - with all modification commands disabled
+k9s --readonly
