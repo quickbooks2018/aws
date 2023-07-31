@@ -32,3 +32,6 @@ k9s --readonly
 #              ---> shift+? gives you have help
 
 # Go Backwards ---> press esc
+
+# Pulse view complete overview of cluster
+:pulse
