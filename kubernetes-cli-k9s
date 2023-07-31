@@ -23,4 +23,6 @@ k9s --readonly
 # Swtich between namespaces 
 :ns
 
-# : ---> gives you k9 terminal
+# shift+: ---> gives you k9 terminal
+
+# shift+? gives you have help
