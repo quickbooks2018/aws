@@ -13,3 +13,11 @@ aws --version
 aws-cli/2.0.30 Python/3.7.3 Linux/4.14.181-142.260.amzn2.x86_64 botocore/2.0.0dev34
 
 aws ecr get-login-password --region your_region | docker login --username AWS --password-stdin Account_ID.dkr.ecr.your_region.amazonaws.com
+
+###############
+# Aws ECR login
+###############
+aws ecr get-login-password --region us-east-1 | buildah login --username AWS --password-stdin 185170745503.dkr.ecr.us-east-1.amazonaws.com
+buildah tag quickbooks2018/alpine:buildah 185170745503.dkr.ecr.us-east-1.amazonaws.com/buildah:latest
+buildah images
+buildah push 185170745503.dkr.ecr.us-east-1.amazonaws.com/buildah:latest
