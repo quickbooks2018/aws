@@ -14,3 +14,6 @@ sudo apt-get update
 
 # install buildah
 sudo apt install buildah -y
+
+# Buildah inside a container
+docker run --name python --privileged -id python:slim
