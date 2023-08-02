@@ -35,5 +35,10 @@ FROM alpine:latest
 RUN apk update && apk add curl
 EOF
 
+buildah -t quickbooks2018/alpine:buildah .
+
+buildah -t quickbooks2018/alpine:buildah ~/Dockerfile
+
 buildah login docker.io
+buildah push quickbooks2018/alpine:buildah
 
