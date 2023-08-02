@@ -17,3 +17,13 @@ sudo apt install buildah -y
 
 # Buildah inside a container
 docker run --name python --privileged -id python:slim
+
+# Buildah to build an image from this Dockerfile:
+
+buildah bud -t myflaskapp:latest .
+
+In this command:
+
+bud is short for build-using-dockerfile.
+-t myflaskapp gives the image a tag (in this case, "myflaskapp").
+. tells Buildah to look for the Dockerfile in the current directory.
