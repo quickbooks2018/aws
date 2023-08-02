@@ -1,5 +1,6 @@
 # https://fabianlee.org/2022/08/02/buildah-installing-buildah-and-podman-on-ubuntu-20-04/
 
+# https://github.com/containers/buildah/blob/main/install.md
 
 # prereq packages
 sudo apt-get update
