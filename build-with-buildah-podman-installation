@@ -12,8 +12,8 @@ echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:
 curl -Ls https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_$VERSION_ID/Release.key | sudo apt-key add -
 sudo apt-get update
 
-# install buildah
-sudo apt install buildah -y
+# install buildah podman (Note: Both are almost same)
+sudo apt install buildah podman -y
 
 # Buildah inside a container
 #####################################################
