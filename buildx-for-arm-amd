@@ -3,7 +3,9 @@ The error you encountered is because the current builder (docker-driver) doesn't
 
 To resolve this issue, follow these steps:
 
+#############################
 Enable experimental features:
+#############################
 
 Ensure you have Docker Desktop's experimental features enabled. You can enable this from Docker Desktop's settings/preferences under the "Docker Engine" section by setting "experimental": true.
 Create a new builder instance:
