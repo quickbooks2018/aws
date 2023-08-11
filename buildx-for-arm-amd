@@ -29,6 +29,23 @@ Remember, if you want to push the multi-platform image to a registry like Docker
 Once you've set up buildx properly with the docker-container driver, you shouldn't encounter the mentioned error anymore.
 
 
+Build and load the image into the local Docker daemon:
+
+###############################################################
+docker buildx build --load --platform linux/amd64 -t asim:test .
+################################################################
+
+Now you should be able to see the image using:
+#############
+docker images
+##############
+The --load flag is key here. It ensures that after building the image with buildx, it gets loaded into your local Docker daemon.
+
+
+
+
+
+
 
 Certainly! If you want to push a multi-platform image to a registry using buildx, you simply add the --push flag to the build command. Below are the steps you'd follow after creating and bootstrapping your buildx builder:
 
