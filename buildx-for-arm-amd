@@ -19,9 +19,9 @@ Boot up the builder:
 2. docker buildx inspect mybuilder --bootstrap
 ###############################################
 Build the multi-platform image:
-
+                   --platform linux/amd64,linux/arm64 
 #######################################################################
-3. docker buildx build --platform linux/amd64,linux/arm64 -t asim:test .
+3. docker buildx build --platform linux/amd64 -t asim:test .
 ########################################################################
 
 Remember, if you want to push the multi-platform image to a registry like Docker Hub, you can add --push to the buildx build command.
