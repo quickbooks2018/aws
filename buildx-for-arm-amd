@@ -42,9 +42,16 @@ docker images
 The --load flag is key here. It ensures that after building the image with buildx, it gets loaded into your local Docker daemon.
 
 
+Build and load the image into the local Docker daemon:
 
+################################################################
+docker buildx build --load --platform linux/amd64 -t asim:test .
+################################################################
+Now you should be able to see the image using:
 
-
+#############
+docker images
+#############
 
 
 Certainly! If you want to push a multi-platform image to a registry using buildx, you simply add the --push flag to the build command. Below are the steps you'd follow after creating and bootstrapping your buildx builder:
