@@ -1,0 +1,55 @@
+
+The error you encountered is because the current builder (docker-driver) doesn't support multi-platform builds. The Docker buildx feature relies on the experimental docker-container driver to support building for multiple platforms.
+
+To resolve this issue, follow these steps:
+
+Enable experimental features:
+
+Ensure you have Docker Desktop's experimental features enabled. You can enable this from Docker Desktop's settings/preferences under the "Docker Engine" section by setting "experimental": true.
+Create a new builder instance:
+
+##############################################
+1. docker buildx create --name mybuilder --use
+##############################################
+Boot up the builder:
+
+###############################################
+2. docker buildx inspect mybuilder --bootstrap
+###############################################
+Build the multi-platform image:
+
+#######################################################################
+3. docker buildx build --platform linux/amd64,linux/arm64 -t asim:test .
+########################################################################
+
+Remember, if you want to push the multi-platform image to a registry like Docker Hub, you can add --push to the buildx build command.
+
+Once you've set up buildx properly with the docker-container driver, you shouldn't encounter the mentioned error anymore.
+
+
+
+Certainly! If you want to push a multi-platform image to a registry using buildx, you simply add the --push flag to the build command. Below are the steps you'd follow after creating and bootstrapping your buildx builder:
+
+Login to your Docker Registry (e.g., Docker Hub):
+
+############
+docker login
+############
+You'll be prompted for your username and password. If you're using a different registry, like Google Container Registry or AWS Elastic Container Registry, the login method might be different.
+
+Build and push the multi-platform image:
+
+#########################################################################################################
+docker buildx build --platform linux/amd64,linux/arm64 -t your-username/your-image-name:your-tag . --push
+##########################################################################################################
+
+Replace your-username, your-image-name, and your-tag with appropriate values. The --push flag at the end will build and then push the image to the specified registry.
+
+Remember, when specifying the image name (-t flag), ensure that the prefix matches your Docker registry username (or appropriate namespace) so you have the permissions to push to that repository.
+
+After executing the command, Docker will build the image for each architecture separately and then push each one to the registry. The registry will then recognize the image as a multi-platform image.
+
+
+
+
+
