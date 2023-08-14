@@ -1,3 +1,9 @@
+########
+# Simply
+########
+docker build --platform linux/amd64 -t asim:test .
+
+
 
 The error you encountered is because the current builder (docker-driver) doesn't support multi-platform builds. The Docker buildx feature relies on the experimental docker-container driver to support building for multiple platforms.
 
