@@ -1,4 +1,4 @@
-base64 -w 0 file.json >> test.txt
+base64 -w 0 file.json > test.txt
 
 or 
 
