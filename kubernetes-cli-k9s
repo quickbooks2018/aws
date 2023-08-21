@@ -38,3 +38,8 @@ k9s --readonly
 
 # filter
 / -f app=nodejs-with-istio
+
+# filter namespaces
+: ns
+/ ---> filter
+/ jenkins
