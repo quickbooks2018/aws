@@ -4,3 +4,5 @@ kubectl -n cloudgeeks run curl-pod --image=curlimages/curl -i --tty -- sh
 
 kubectl -n default run curl-pod --image=curlimages/curl -i --tty -- sh
 
+curl -v telnet://SERVICENAME.NAMESPACE.svc.cluster.local:6379
+
