@@ -9,3 +9,7 @@ curl -v telnet://SERVICENAME.NAMESPACE.svc.cluster.local:6379
 # Note: To Access a Pod with out exposing a service use dashes (pod to pod networking test)
 kubectl get pods -o wide
 curl http://10-129-132-4.NAMESPACE.pod.cluster.local
+
+or simply do
+
+curl http://10.129.132.4
