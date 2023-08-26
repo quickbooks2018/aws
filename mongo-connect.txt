@@ -1,0 +1,14 @@
+mongo "mongodb+srv://USERNAME:PASSWORD@ENDPOINT/DATABASENAME?readPreference=secondary"
+
+mongosh "mongodb+srv://USERNAME:PASSWORD@ENDPOINT/DATABASENAME?readPreference=secondary"
+
+
+MongoDB Shell
+1. List Databases: To list databases, use the command:
+ show dbs
+
+2. List Collections:
+use your_database_name
+
+3. show collections
+
