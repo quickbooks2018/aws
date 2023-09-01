@@ -15,7 +15,7 @@ crontab -l
 cron logs
 grep CRON /var/log/syslog
 
-
+3. policy
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -36,8 +36,41 @@ grep CRON /var/log/syslog
   ]
 }
 
+4. service
+
+#!/bin/bash
+
+# Check if the script is run as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root."
+   exit 1
+fi
+
+# Update the package list
+apt update
+
+# Install Apache2
+apt install -y apache2
+
+# Enable Apache2 to start on boot
+systemctl enable apache2
+
+# Start Apache2
+systemctl start apache2
+
+# Print the status of Apache2
+systemctl status apache2
+
+# Print the message
+echo "Apache installation is complete."
+
+#End
 
 
+
+
+
+5.
 #!/usr/bin/env bash
 
 set -xe
