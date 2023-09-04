@@ -2,6 +2,7 @@
 # Simply
 ########
 docker build --platform linux/amd64 -t asim:test .
+podman build --platform linux/amd64 -f Dockerfile -t asim:test .
 
 ###################
 # No need for below
