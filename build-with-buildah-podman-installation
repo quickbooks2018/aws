@@ -21,6 +21,8 @@ docker run --name python --privileged -id python:slim
 ######################################################
 
 # Buildah to build an image from this Dockerfile:
+podman build --platform linux/amd64 -f Dockerfile -t asim:test .
+
 
 buildah bud -t myflaskapp:latest .
 
