@@ -1,0 +1,9 @@
+GET /_cat/nodes
+GET /_nodes/stats
+GET /_cluster/health
+GET /_nodes/stats
+GET _nodes/_all/jvm
+GET _cat/nodes?v&h=ip,heap.current,heap.percent,heap.max&bytes=mb"
+GET _cat/nodes?v&h=ip,name,heap.current,heap.percent,heap.max&bytes=mb
+GET /_cat/shards?v&s=index:desc
+GET /_cluster/health?pretty
