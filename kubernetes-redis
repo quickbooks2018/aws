@@ -33,3 +33,15 @@ redis-cli
 auth cloudgeeks12345678
 info replication
 keys *
+
+helm -n redis upgrade --install cloudgeeks-redis bitnami/redis \
+--version 17.3.16 \
+--create-namespace \
+--set sentinel.enabled=true \
+--set master.persistence.size=50Gi \
+--set replica.persistence.size=50Gi \
+--set replica.replicaCount=1 \
+--set master.livenessProbe.enabled=true \
+--set auth.enabled=true \
+--set volumePermissions.enabled=true \
+-f redis-pa.values.yaml
