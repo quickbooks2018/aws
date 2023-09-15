@@ -1,0 +1,10 @@
+# connect to mongo
+mongo
+
+# If the database does not exist, it will be created:
+use dbname
+db.createUser({user:'username',pwd:'password',roles:[{role:'dbOwner', db:'dbname'}]});
+
+# drop database
+use dbname
+db.dropDatabase()
