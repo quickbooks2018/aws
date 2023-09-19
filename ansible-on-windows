@@ -13,6 +13,8 @@ docker run --name ansible --network host -w /mnt -v ${PWD}/ansible:/mnt -id pyth
 docker exec -it ansible bash
 
 
+#!/bin/bash
+
 apt update -y \
 && apt install -y ansible tmux curl zip unzip jq telnet netcat-traditional net-tools dos2unix git vim nano iputils-ping golang-github-packer-community-winrmcp-dev python3-pip \
 && cd /root \
@@ -22,7 +24,7 @@ apt update -y \
 && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
 && chmod 700 get_helm.sh \
 && ./get_helm.sh \
-&& curl -# -LO https://github.com/weaveworks/eksctl/releases/download/v0.94.0-rc.0/eksctl_Linux_amd64.tar.gz \
+&& curl -# -LO https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz \
 && tar -xzvf eksctl_Linux_amd64.tar.gz \
 && mv eksctl /usr/local/bin/ \
 && curl -# -LO https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip \
@@ -44,18 +46,21 @@ apt update -y \
 && curl -LO -# https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz \
 && tar -xzvf k9s_Linux_amd64.tar.gz \
 && chmod +x k9s \
-&& mv k9s /usr/local/bin/ \
-apt-get update -y && \
-apt-get install -y apt-transport-https ca-certificates gnupg curl sudo zip && \
-echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-apt-get update -y && \
-apt-get install -y google-cloud-sdk && \
-apt-get clean && \
-rm -rf /var/lib/apt/lists/* && \
-rm -rf /tmp/* && \
-rm -rf /var/tmp/* \
+&& cp -rv k9s /usr/local/bin/ \
+&& apt-get update -y \
+&& apt-get install -y apt-transport-https ca-certificates gnupg curl sudo zip \
+&& echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+&& curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+&& apt-get update -y \
+&& apt-get install -y google-cloud-sdk \
+&& apt-get install google-cloud-sdk-gke-gcloud-auth-plugin \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/* \
+&& rm -rf /tmp/* \
+&& rm -rf /var/tmp/* \
 && rm -rf *
+
+# End
 
 
 # Ansible specific version installation
