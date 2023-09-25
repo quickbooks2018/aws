@@ -58,8 +58,11 @@ apt update -y \
 && rm -rf /var/lib/apt/lists/* \
 && rm -rf /tmp/* \
 && rm -rf /var/tmp/* \
-&& rm -rf *
-
+&& rm -rf * \
+&& curl -o oh-my-zsh-ubuntu.sh https://raw.githubusercontent.com/quickbooks2018/aws/master/oh-my-zsh-ubuntu.sh \
+&& chmod +x oh-my-zsh-ubuntu.sh \
+&& ./oh-my-zsh-ubuntu.sh \
+&& rm -f oh-my-zsh-ubuntu.sh
 # End
 
 
