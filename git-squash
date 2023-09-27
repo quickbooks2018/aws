@@ -18,3 +18,10 @@ from bottom ---> s  (squash)
 git branch
 
 git push origin branchname -f
+
+# Specific User
+git log --author="Muhammad Asim" --format="%h %an %s"
+
+git log --oneline --author="Muhammad Asim" --format="%h %an %s"
+
+git log --oneline --author="Muhammad Asim" --format="%h %an %s" -n5
