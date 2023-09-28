@@ -1,0 +1,7 @@
+# This public container help to check the sticky sessions and routing of ingress/lb traffic spread, sample below
+
+docker pull gcr.io/google-samples/hello-app-metrics:1.0
+
+docker run --name test-hostname -p 8080:8080 -id gcr.io/google-samples/hello-app-metrics:1.0
+
+kubectl run test-hostname --image=gcr.io/google-samples/hello-app-metrics:1.0 -n default
