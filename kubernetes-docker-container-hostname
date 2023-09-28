@@ -1,4 +1,5 @@
 # This public container help to check the sticky sessions and routing of ingress/lb traffic spread, sample below
+# https://console.cloud.google.com/gcr/images/google-samples
 
 docker pull gcr.io/google-samples/hello-app-metrics:1.0
 
