@@ -1,0 +1,1 @@
+kubectl run redis-commander --image=rediscommander/redis-commander:latest -n test (from UI ad Server)
