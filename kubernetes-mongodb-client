@@ -1,8 +1,31 @@
 kubectl run mongo-express --image=mongo-express:latest --env="ME_CONFIG_MONGODB_ADMINUSERNAME=myuser" --env="ME_CONFIG_MONGODB_ADMINPASSWORD=mypassword" --env="ME_CONFIG_MONGODB_SERVER=your-mongo-service-name" --port=8081
 
+# https://hub.docker.com/_/mongo-express
+
 kubectl -n nodejs run mongo-express --image=mongo-express:latest \
   --env="ME_CONFIG_BASICAUTH_USERNAME=DBUSERNAME" \
   --env="ME_CONFIG_BASICAUTH_PASSWORD=DBPASSWORD" \
   --env="ME_CONFIG_MONGODB_AUTH_DATABASE=DB_NAME" \
   --env="ME_CONFIG_MONGODB_SERVER=MONGO_SERVER" \
   --port=8081
+
+# SSL
+kubectl -n nodejs run mongo-express --image=mongo-express:latest \
+  --env="ME_CONFIG_BASICAUTH_USERNAME=DBUSERNAME" \
+  --env="ME_CONFIG_BASICAUTH_PASSWORD=DBPASSWORD" \
+  --env="ME_CONFIG_MONGODB_AUTH_DATABASE=DB_NAME" \
+  --env="ME_CONFIG_MONGODB_SERVER=MONGO_SERVER" \
+  --env="ME_CONFIG_SITE_SSL_ENABLED=true" \
+  --port=8081
+
+
+kubectl -n nodejs run mongo-express --image=mongo-express:latest \
+  --env="ME_CONFIG_BASICAUTH_USERNAME=DBUSERNAME" \
+  --env="ME_CONFIG_BASICAUTH_PASSWORD=DBPASSWORD" \
+  --env="ME_CONFIG_MONGODB_AUTH_DATABASE=DB_NAME" \
+  --env="ME_CONFIG_MONGODB_SERVER=MONGO_SERVER" \
+  --env="ME_CONFIG_SITE_SSL_ENABLED=true" \
+  --env="ME_CONFIG_SITE_SSL_CRT_PATH=/path/to/your/certificate.crt" \
+  --env="ME_CONFIG_SITE_SSL_KEY_PATH=/path/to/your/private.key" \
+  --port=8081
+
