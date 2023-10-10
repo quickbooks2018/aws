@@ -2,6 +2,3 @@ kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=nodejs
 
 kubectl run mongodb-client --image=mongo:latest -n nodejs
 
-# Note: Add Server manually
-
-kubectl -n nodejs run adminer --image=adminer:latest --port=8080
