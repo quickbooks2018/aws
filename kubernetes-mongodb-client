@@ -1,6 +1,6 @@
 kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=nodejs
 
-kubectl run mongodb-clinet --image:mongodb:latest -n nodejs
+kubectl run mongodb-client --image:mongodb:latest -n nodejs
 
 # Express
 kubectl run mongo-express --image=mongo-express:latest --env="ME_CONFIG_MONGODB_ADMINUSERNAME=myuser" --env="ME_CONFIG_MONGODB_ADMINPASSWORD=mypassword" --env="ME_CONFIG_MONGODB_SERVER=your-mongo-service-name" --port=8081
