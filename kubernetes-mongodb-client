@@ -2,3 +2,6 @@ kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=nodejs
 
 kubectl run mongodb-client --image=mongo:latest -n nodejs
 
+# Dns lookup
+nslookup _mongodb._tcp.ENDPOINT
+
