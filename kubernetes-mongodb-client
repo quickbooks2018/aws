@@ -4,4 +4,6 @@ kubectl run mongodb-client --image=mongo:latest -n nodejs
 
 # Dns lookup
 nslookup _mongodb._tcp.ENDPOINT
+or
+dig SRV _mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net
 
