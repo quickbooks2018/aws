@@ -58,13 +58,8 @@ spec:
 EOF
 
 kubectl apply -f ubuntu-desktop.yaml
-kubectl exec -it [POD_NAME] --user root -- /bin/sh
 
-#####################
-# kasm-user settings
-#####################
-sudo usermod -aG sudo kasm-user
-echo "kasm-user ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+kubectl exec -it [POD_NAME] --user root -- /bin/sh
 
 ########################
 # Mongo compass package
@@ -74,6 +69,10 @@ sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
 sudo apt-get install -f
 mongodb-compass
 
+##############
+# Port-Forward
+##############
+kubectl -n default port-forward pod/ubuntu-sand-box --address 0.0.0.0 6900:6901
 
 
 # Dns lookup
