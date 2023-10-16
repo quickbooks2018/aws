@@ -40,7 +40,15 @@ EOF
 kubectl apply -f ubuntu-desktop.yaml
 kubectl exec -it [POD_NAME] --user root -- /bin/sh
 
+#####################
+# kasm-user settings
+#####################
+sudo usermod -aG sudo kasm-user
+echo "kasm-user ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+
+########################
 # Mongo compass package
+########################
 wget https://downloads.mongodb.com/compass/mongodb-compass_1.40.3_amd64.deb
 sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
 sudo apt-get install -f
