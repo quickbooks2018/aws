@@ -2,6 +2,13 @@ kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=nodejs
 
 kubectl run mongodb-client --image=mongo:latest -n nodejs
 
+# MongoDB Web Client
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.40.3_amd64.deb
+sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
+sudo apt-get install -f
+mongodb-compass
+
+
 # Dns lookup
 nslookup _mongodb._tcp.ENDPOINT
 or
