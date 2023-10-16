@@ -7,3 +7,33 @@ nslookup _mongodb._tcp.ENDPOINT
 or
 dig SRV _mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net
 
+
+
+dig SRV _mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net
+
+; <<>> DiG 9.18.12-0ubuntu0.22.04.3-Ubuntu <<>> SRV _mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 13720
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 1d0a78188568a54e (echoed)
+;; QUESTION SECTION:
+;_mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net. IN SRV
+
+;; ANSWER SECTION:
+_mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net. 60 IN SRV 0 0 27017 ac-gftthv9-shard-00-00.rzkdltt.mongodb.net.
+_mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net. 60 IN SRV 0 0 27017 ac-gftthv9-shard-00-01.rzkdltt.mongodb.net.
+_mongodb._tcp.cluster-devops-0.rzkdltt.mongodb.net. 60 IN SRV 0 0 27017 ac-gftthv9-shard-00-02.rzkdltt.mongodb.net.
+
+;; Query time: 50 msec
+;; SERVER: 192.168.65.7#53(192.168.65.7) (UDP)
+;; WHEN: Mon Oct 16 06:38:08 UTC 2023
+;; MSG SIZE  rcvd: 427
+
+root@2e91c947ee68:/# curl -v telnet://ac-gftthv9-shard-00-00.rzkdltt.mongodb.net:27017
+*   Trying 52.45.16.161:27017...
+* Connected to ac-gftthv9-shard-00-00.rzkdltt.mongodb.net (52.45.16.161) port 27017 (#0)
+
