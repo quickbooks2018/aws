@@ -8,7 +8,25 @@ sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
 sudo apt-get install -f
 mongodb-compass
 
+# https://kasmweb.com/docs/latest/how_to/running_as_root.html
+##########
+Dockerfile
+##########
+FROM kasmweb/ubuntu-jammy-desktop:1.14.0-rolling
+
+USER root
+RUN apt-get update \
+    && apt-get install -y sudo \
+    && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
+    && rm -rf /var/lib/apt/list/*
+
+USER 1000
+
+CMD ["--tail-log"]
+
+#######################
 # Ubuntu Desktop Client
+#######################
 cat << EOF > ubuntu-desktop.yaml
 apiVersion: v1
 kind: Pod
@@ -17,26 +35,26 @@ metadata:
   namespace: default
 spec:
   containers:
-  - name: sand-box-container
-    image: kasmweb/ubuntu-jammy-desktop:1.14.0-rolling
-    env:
-    - name: VNC_PW
-      value: "password"
-    resources:
-      limits:
-        memory: "2Gi"
-      requests:
-        memory: "2Gi"
-    volumeMounts:
-    - mountPath: /dev/shm
-      name: dshm
-#    securityContext:
-#      runAsUser: 0
+    - name: sand-box-container
+      image: quickbooks2018/ubuntu-desktop:kasm
+      env:
+        - name: VNC_PW
+          value: "password"
+      resources:
+        limits:
+          memory: "2Gi"
+        requests:
+          memory: "2Gi"
+      volumeMounts:
+        - mountPath: /dev/shm
+          name: dshm
+  #    securityContext:
+  #      runAsUser: 0
   volumes:
-  - name: dshm
-    emptyDir:
-      medium: Memory
-      sizeLimit: "2048Mi"
+    - name: dshm
+      emptyDir:
+        medium: Memory
+        sizeLimit: "2048Mi"
 EOF
 
 kubectl apply -f ubuntu-desktop.yaml
