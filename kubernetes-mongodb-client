@@ -30,8 +30,8 @@ spec:
     volumeMounts:
     - mountPath: /dev/shm
       name: dshm
-    securityContext:
-      runAsUser: 0
+#    securityContext:
+#      runAsUser: 0
   volumes:
   - name: dshm
     emptyDir:
