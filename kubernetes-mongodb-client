@@ -8,6 +8,36 @@ sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
 sudo apt-get install -f
 mongodb-compass
 
+# Ubuntu Client
+cat << EOF > ubuntu-desktop.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sand-box
+spec:
+  containers:
+  - name: sand-box-container
+    image: kasmweb/ubuntu-jammy-desktop:1.14.0-rolling
+    env:
+    - name: VNC_PW
+      value: "password"
+    resources:
+      limits:
+        memory: "2Gi"
+      requests:
+        memory: "2Gi"
+    volumeMounts:
+    - mountPath: /dev/shm
+      name: dshm
+  volumes:
+  - name: dshm
+    emptyDir:
+      medium: Memory
+      sizeLimit: "2048Mi"
+EOF
+
+kubectl apply -f ubuntu-desktop.yaml
+
 
 # Dns lookup
 nslookup _mongodb._tcp.ENDPOINT
