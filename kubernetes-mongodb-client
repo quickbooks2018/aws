@@ -21,6 +21,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/list/*
 
 USER 1000
+EXPOSE 6901
 
 CMD ["--tail-log"]
 
