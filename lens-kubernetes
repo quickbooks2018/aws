@@ -1,0 +1,5 @@
+https://community.chocolatey.org/packages/lens
+
+choco install lens --version=2023.10.122002
+
+choco install lens
