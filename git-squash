@@ -1,3 +1,7 @@
+# Remove local changes
+git reset --hard
+
+
 git log --oneline
 
 ############################
