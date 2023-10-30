@@ -1,1 +1,1 @@
-kubectl run redis-commander --image=rediscommander/redis-commander:latest -n test (from UI ad Server)
+kubectl run redis-commander --port=8081 --image=rediscommander/redis-commander:latest -n test (from UI ad Server)
