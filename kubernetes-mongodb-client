@@ -2,7 +2,25 @@ kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=nodejs
 
 kubectl run mongodb-client --image=mongo:latest -n nodejs
 
-# MongoDB Web Client
+#################
+# MONGODB-EXPRESS
+#################
+kubectl -n <namespace> run mongo-express --image=mongo-express:latest \
+--env="ME_CONFIG_MONGODB_SERVER=<mongodb-service-name-or-url>" \
+--env="ME_CONFIG_MONGODB_PORT=<mongodb-port>" \
+--env="ME_CONFIG_MONGODB_ADMINUSERNAME=<mongodb-username>" \
+--env="ME_CONFIG_MONGODB_ADMINPASSWORD=<mongodb-password>" \
+--env="ME_CONFIG_BASICAUTH_USERNAME=<mongo-express-username>" \
+--env="ME_CONFIG_BASICAUTH_PASSWORD=<mongo-express-password>" \
+--port=8081 \
+--restart=Never \
+--labels="app=mongo-express"
+
+
+
+#####################################
+# MongoDB Web Client  MONGODB-COMPASS
+#####################################
 wget https://downloads.mongodb.com/compass/mongodb-compass_1.40.3_amd64.deb
 sudo dpkg -i mongodb-compass_1.40.3_amd64.deb
 sudo apt-get install -f
