@@ -1,6 +1,15 @@
 # MYSQL Client
 --------------
 
+kubectl -n core-be run phpmyadmin --image=phpmyadmin/phpmyadmin:latest \
+--env="PMA_HOST=HSOT-ADDRESS" \
+--env="PMA_PORT=3306" \
+--port=80 \
+--restart=Never \
+--labels="app=phpmyadmin"
+
+
+
 # Connect to MYSQL Database
 kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -pdbpassword11
 
