@@ -1,0 +1,4 @@
+# JQ
+
+kubectl get secrets/argocd-initial-admin-secret -o json -n argocd | jq .data.password -r
+kubectl get secrets/argocd-initial-admin-secret -o json -n argocd | jq .data.password -r | base64 --decode
