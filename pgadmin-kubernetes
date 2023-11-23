@@ -1,1 +1,1 @@
-kubectl run pgadmin --namespace=test --image=dpage/pgadmin4:latest --env="PGADMIN_DEFAULT_EMAIL=admin@pgadmin.org" --env="PGADMIN_DEFAULT_PASSWORD=admin"
+kubectl run pgadmin --namespace=test --image=dpage/pgadmin4:latest --port=80 --env="PGADMIN_DEFAULT_EMAIL=admin@pgadmin.org" --env="PGADMIN_DEFAULT_PASSWORD=admin"
