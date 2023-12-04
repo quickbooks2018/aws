@@ -22,6 +22,9 @@ docker system df
 
 docker system df -v
 
+# Docker builder cache will also free disk space
+docker builder prune -a -f
+
 
 
 # https://www.freecodecamp.org/news/how-to-remove-all-docker-images-a-docker-cleanup-guide/
