@@ -1,5 +1,5 @@
-1 ctrl+alt up arrow ---> select lines in vscode https://github.com/microsoft/vscode/issues/106089 (VSCODE)
+1 windows ctrl+alt up arrow ---> select lines in vscode (VSCODE)
 
-2 alt+mouseclicks on lines ---> select lines (Note: hover the mouse only) (no clicks) (IntelliJ)
+2 windows alt+mouseclicks on lines ---> select lines (Note: hover the mouse only) (no clicks) (IntelliJ)
 
 3. mac command+options up arrow ---> select the lines (VSCODE)
