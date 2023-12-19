@@ -93,6 +93,10 @@ mongodb-compass
 ##############
 kubectl -n default port-forward pod/ubuntu-sand-box --address 0.0.0.0 6900:6901
 
+Note: Use https://localhost:6900
+User:     kasm_user
+password: password
+
 
 # Dns lookup
 nslookup _mongodb._tcp.ENDPOINT
