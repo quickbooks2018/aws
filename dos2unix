@@ -1,0 +1,4 @@
+apt update -y && apt install dos2unix
+find /path/to/directory -type f -exec dos2unix {} +
+find . -type f -exec dos2unix {} +
+
