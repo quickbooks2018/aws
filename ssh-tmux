@@ -51,6 +51,9 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
     .           move window - prompted for a new number
     :movew<CR>  move window to the next unused number
 
+
+
+
 #################
 ## Panes (splits)
 #################
@@ -68,7 +71,13 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
  ----------------------
                   ctrl+b
                    ctrl+use arrows keys
-    
+----------------------------
+# Jump between W for Windows
+----------------------------
+                  ctrl+b w
+
+
+
     o  swap panes
     q  show pane numbers
     x  kill pane
