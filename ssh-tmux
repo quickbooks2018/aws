@@ -63,6 +63,11 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
   -------------------
                  ctrl+b
                  use arrow keys
+ ----------------------
+ # Change the pane size
+ ----------------------
+                  ctrl+b
+                   ctrl+use arrows keys
     
     o  swap panes
     q  show pane numbers
