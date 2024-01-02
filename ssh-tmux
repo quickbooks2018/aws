@@ -51,10 +51,12 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
     .           move window - prompted for a new number
     :movew<CR>  move window to the next unused number
 
+#################
 ## Panes (splits)
-
-    %  horizontal split
-    "  vertical split
+#################
+                  ctrl+b (use this every time)
+ percent         %  horizontal split
+ docuble cotts   "  vertical split
     
     o  swap panes
     q  show pane numbers
