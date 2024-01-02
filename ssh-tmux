@@ -77,6 +77,11 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
 ----------------------------
                   ctrl+b w
 
+------------------------------
+# tmux kill sessions and panes
+------------------------------
+tmux kill-server
+
 
 
     o  swap panes
