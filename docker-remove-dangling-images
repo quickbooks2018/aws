@@ -1,6 +1,10 @@
 ###############
 # Crontab Entry
 ###############
+
+###########
+# Dangerous
+###########
 yes | docker image prune --all --filter "until=2190h" # delete images older than 3 months ago
 
 docker image prune --force --all --filter "until=2190h" # delete images older than 3 months ago
