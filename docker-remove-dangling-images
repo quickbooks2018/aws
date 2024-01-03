@@ -2,6 +2,17 @@
 # Crontab Entry
 ###############
 
+######
+# Safe
+######
+################################################
+# Docker builder cache will also free disk space
+################################################
+docker builder prune -a -f
+
+
+
+
 ###########
 # Dangerous
 ###########
