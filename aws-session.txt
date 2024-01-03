@@ -1,0 +1,1 @@
+aws configure set aws_session_token <your-session-token>
