@@ -1,0 +1,12 @@
+# tcpdump
+apk add tcpdump
+tcpdump -i any -nn port 80
+
+
+# apk with dig
+apk add bind-tools
+dig @172.20.0.10 domainname
+
+dig @10.1o.0.2 domainname
+
+dig domainname
