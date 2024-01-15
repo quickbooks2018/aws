@@ -1,1 +1,3 @@
 kubectl run redis-commander --port=8081 --image=rediscommander/redis-commander:latest -n test (from UI ad Server)
+
+docker run --name redis-command -p 8081:8081 -id rediscommander/redis-commander:latest
