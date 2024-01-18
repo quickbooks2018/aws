@@ -1,3 +1,3 @@
 sudo curl -L https://github.com/sclevine/yj/releases/download/v5.0.0/yj-linux -o /usr/local/bin/yj
 sudo chmod +x /usr/local/bin/yj
-yj -t < your_file.toml > /dev/null
+yj -t < your_file.toml > /dev/null 2>&1
