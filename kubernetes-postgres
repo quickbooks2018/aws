@@ -1,3 +1,9 @@
+kubectl run postgres --image=postgres:latest --env="POSTGRES_PASSWORD=examplepass" --port=5432
+
+kubectl run postgres --image=postgres:latest --env="POSTGRES_DB=exampledb" --env="POSTGRES_USER=exampleuser" --env="POSTGRES_PASSWORD=examplepass" --port=5432
+
+
+
 #CUSTOM PASSWORD
 ----------------
 https://scottlinux.com/2012/09/01/encode-or-decode-base64-from-the-command-line/
