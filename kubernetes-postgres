@@ -2,6 +2,12 @@ kubectl run postgres --image=postgres:latest --env="POSTGRES_PASSWORD=examplepas
 
 kubectl run postgres --image=postgres:latest --env="POSTGRES_DB=exampledb" --env="POSTGRES_USER=exampleuser" --env="POSTGRES_PASSWORD=examplepass" --port=5432
 
+psql -h localhost -p 5432 -U user1 -d mydb
+
+\dt
+
+exit psql, type \q and press Enter
+
 
 
 #CUSTOM PASSWORD
