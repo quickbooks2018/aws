@@ -1,0 +1,5 @@
+https://nix.dev/install-nix
+
+https://search.nixos.org/packages?query=ping
+
+nix-shell -p iputils
