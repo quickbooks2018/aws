@@ -1,3 +1,4 @@
+kubectl run -i --tty --rm mongodb-client --image=mongo:latest --namespace=mongo
 kubectl run mongodb-client --image=mongo:latest -n nodejs
 
 #################
