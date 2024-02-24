@@ -80,6 +80,11 @@ To open a new tab in your current tmux session hit Ctrl + B and then C. After op
 ------------------------------
 # tmux kill sessions and panes
 ------------------------------
+
+###########################
+# tmux scroll ---> ctrl+b [
+###########################
+
 tmux kill-server
 
 
