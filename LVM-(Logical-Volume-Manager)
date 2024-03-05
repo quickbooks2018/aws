@@ -1,0 +1,69 @@
+
+############################
+1. Check Current Volume Size
+############################
+lvdisplay # To display logical volume information
+vgdisplay # To display volume group information
+
+# List logical volumes
+lvs OR lvscan
+
+# List volume groups 
+vgs OR vgscan
+
+# List physical volumes and free space
+pvs OR pvscan
+
+#############################################
+2. Prepare the Physical Volume (If Necessary)
+#############################################
+If you need more physical storage before you can extend the logical volume, you would first add a new physical disk to your system, and then initialize it as a physical volume:
+
+pvcreate /dev/sdX # Replace /dev/sdX with the path to your new disk
+vgextend your_volume_group /dev/sdX # Add the new PV to your VG
+
+############################
+3. Extend the Logical Volume
+############################
+Now, you can extend the logical volume using lvextend. You can specify either the additional size you want to add to the volume or the new total size of the volume.
+
+To add, for example, an additional 10GB to the logical volume:
+
+lvextend -L +10G /dev/your_volume_group/your_logical_volume
+
+lvextend -L +<size> /dev/<volume-group>/<logical-volume>
+
+########################
+4. Resize the Filesystem
+########################
+Finally, after extending the logical volume, you need to resize the filesystem so it can use the newly allocated space. The command you use will depend on the type of filesystem.
+
+---------------------
+For ext4 filesystems:
+---------------------
+resize2fs /dev/your_volume_group/your_logical_volume
+
+-------------------------------------------------------------------------------------------------
+For XFS filesystems, you must use xfs_growfs and it must be done while the filesystem is mounted:
+-------------------------------------------------------------------------------------------------
+xfs_growfs /mount_point
+
+
+Important Notes:
+
+Backups: Create a backup before making changes, especially if you're dealing with critical data.
+LVM Snapshots: LVM snapshots can provide an extra layer of safety for rollback if something goes wrong.
+Online Resizing: Some filesystems support online resizing, meaning you don't need to unmount them. However, it's still generally recommended to perform these operations when there's less activity on the system.
+
+
+# Example
+
+# Assuming your VG is 'myvg', LV is 'mylv', and you want to add 20GB:
+
+1. lvscan  # Shows LVs (find /dev/myvg/mylv)
+2. vgscan  # Shows VGs (find available space in 'myvg')
+3. pvscan  # Shows PVs (make sure underlying physical disk has space) 
+4. lvextend -L +20G /dev/myvg/mylv  # Extend LV by 20GB
+5. xfs_growfs /dev/myvg/mylv         # Grow XFS filesystem to use the new  space 
+   OR
+   resize2fs /dev/myvg/mylv          # Grow ext2/ext3/ext4 filesystem 
