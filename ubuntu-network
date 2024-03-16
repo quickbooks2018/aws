@@ -29,3 +29,17 @@ network:
      nameservers:
 
        addresses: [8.8.8.8,8.8.4.4]
+
+
+# chatgpt
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens33:  # Make sure this matches your actual interface name
+      dhcp4: no
+      addresses: [192.168.100.50/24]
+      gateway4: 192.168.100.1
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
