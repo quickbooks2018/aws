@@ -1,0 +1,6 @@
+[Working Directory] --git add--> [Staging Area] --git commit--> [Local Repository] --git push--> [Remote Repository]
+
+1. Working Directory: Where you make changes to your files.
+2. Staging Area (Index): A prep zone for changes you want to commit.
+3. Local Repository: Where commits are stored on your local machine.
+4. Remote Repository: The server-side repository for team collaboration and backup.
