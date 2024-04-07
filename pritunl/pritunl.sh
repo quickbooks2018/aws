@@ -72,6 +72,7 @@ services:
   mongo:
     image: mongo:latest
     container_name: pritunldb
+    restart: unless-stopped
     environment:
      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
      - MONGO_INITDB_ROOT_PASSWORD=secret
@@ -80,6 +81,7 @@ services:
   pritunl:
     image: quickbooks2018/pritunl:latest
     container_name: pritunl
+    restart: unless-stopped
     depends_on:
         - mongo
     privileged: true
