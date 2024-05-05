@@ -9,5 +9,6 @@ grpcurl -plaintext localhost:50051 list
 # grpc app
 docker pull grpc/csm-example-server:2024-02-13
 
-k -n backend run grpc-app --image=grpc/csm-example-server:2024-02-13
+k create ns backend
+k -n backend run grpc-app --port 50051 --image=grpc/csm-example-server:2024-02-13
 
