@@ -4,4 +4,10 @@ chmod +x grpcurl
 mv grpcurl /usr/local/bin/
 
 
-grpcurl -plaintext localhost:8080 list
+grpcurl -plaintext localhost:50051 list
+
+
+docker pull grpc/csm-example-server:2024-02-13
+
+k -n backend grpc --image=grpc/csm-example-server:2024-02-13
+
