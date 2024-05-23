@@ -1,0 +1,2 @@
+Note: Allow your IP in (SG of ec2) for ssh tunnel
+ssh -i /path/to/key.pem -NL 3306:mydb.abcdefg12345.us-west-2.rds.amazonaws.com:3306 ec2-user@<bastion-public-ip>
