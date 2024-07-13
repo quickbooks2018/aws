@@ -1,0 +1,36 @@
+The main differences between an alias record and a CNAME record in DNS are:
+
+Functionality:
+
+Alias: Can point to other record types like A, AAAA, or even another alias.
+CNAME: Can only point to another domain name.
+
+
+Root domain use:
+
+Alias: Can be used on the root domain (e.g., example.com).
+CNAME: Cannot be used on the root domain due to DNS standards.
+
+
+Coexistence with other records:
+
+Alias: Can coexist with other DNS records for the same name.
+CNAME: Must be the only record for a given name (except for DNSSEC records).
+
+
+DNS lookup:
+
+Alias: The DNS resolver handles the mapping, returning the target's IP address directly.
+CNAME: The client must perform an additional DNS lookup to resolve the target domain.
+
+
+Performance:
+
+Alias: Generally faster, as it requires fewer DNS lookups.
+CNAME: May introduce slight delays due to additional lookups.
+
+
+Flexibility:
+
+Alias: Offers more flexibility in DNS configuration.
+CNAME: More limited in its application
