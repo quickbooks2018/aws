@@ -1,0 +1,44 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    secrets:
+      - source: server_certificate
+        target: /etc/nginx/ssl/server.crt
+        mode: 0400
+    configs:
+      - source: nginx_config
+        target: /etc/nginx/nginx.conf
+    volumes:
+      - web_data:/usr/share/nginx/html
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD_FILE: /etc/postgres/secrets/db_password
+    secrets:
+      - source: db_password
+        target: /etc/postgres/secrets/db_password
+        mode: 0400
+    configs:
+      - source: postgres_config
+        target: /etc/postgresql/postgresql.conf
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+secrets:
+  server_certificate:
+    file: ./secrets/server.crt
+  db_password:
+    file: ./secrets/db_password.txt
+
+configs:
+  nginx_config:
+    file: ./configs/nginx.conf
+  postgres_config:
+    file: ./configs/postgresql.conf
+
+volumes:
+  web_data:
+  db_data:
