@@ -1,1 +1,38 @@
 https://www.youtube.com/watch?v=THxIyHz191A
+
+tls ---> 1. Authentication 2. data protection 3. data integrity
+
+http + tls = https
+
+keys types = asymmetric key ---> (2 keys) public key ---> encrypt the data private key decrypt data ( Slow but able to do authentication)
+key types = symmetric key ---> do encryption and decryption (Unable to authentication but FAST)
+
+
+CA = Signed certifictes with their own private key (Digitally Signed) ---> once issued ---> installed on server
+
+1. tls session --->  1. Hands-shake ---> purpose authentication 2. encryption phase
+
+session = a conversion b/w two parties for limited or unlimited time
+
+Client sends request to server "hello"
+Server sends it public key + certificates
+
+Client verify the certificates with ---> CA once verified
+Client used the public key of server to encrypt the message (string) and send to server
+Server decrypt the message(server) with server private key
+
+Now both client and Server has same secret string
+client and server both use this string and other information ---> generate (Master key)
+
+Client generates Session key with (Master Key)
+Server generates Session key with (Master key)
+
+(Session Key) is Symmetric key ---> encrypt + decrypt (Algorithms AES-256-GCM    AND    CHACHA20) 
+
+Session become secure and fast
+
+
+
+
+
+
