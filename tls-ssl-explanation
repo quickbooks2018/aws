@@ -31,7 +31,10 @@ Server generates Session key with (Master key)
 
 Session become secure and fast
 
+NOTE: with every encrypted message + MAC KEY
 
+EVERY MAC   = MAC    
+      cleint  Server     ---> if macth than no temper in data mean data integrity.
 
 
 
