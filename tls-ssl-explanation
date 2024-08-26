@@ -5,7 +5,7 @@ tls ---> 1. Authentication 2. data protection 3. data integrity
 http + tls = https
 
 keys types = asymmetric key ---> (2 keys) public key ---> encrypt the data private key decrypt data ( Slow but able to do authentication)
-key types = symmetric key ---> do encryption and decryption (Unable to authentication but FAST)
+key types  = symmetric key ---> do encryption and decryption (Unable to authentication but FAST)
 
 
 CA = Signed certifictes with their own private key (Digitally Signed) ---> once issued ---> installed on server
