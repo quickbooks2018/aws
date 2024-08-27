@@ -1,0 +1,12 @@
+mtr google.com
+tracepath google.com
+
+MTR (My TraceRoute) is a network diagnostic tool used in Linux and other operating systems. The command "mtr" combines the functionality of traceroute and ping. 
+
+mtr --tcp <target_host_or_ip>
+
+mtr --tcp -P <port_number> <target_host_or_ip>
+
+mtr --tcp -P 80 google.com
+mtr -P 80 google.com
+This command would use TCP on port 80 instead of ICMP.
