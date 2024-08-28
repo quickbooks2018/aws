@@ -10,6 +10,10 @@ key types  = symmetric key ---> do encryption and decryption (Unable to authenti
 
 CA = Signed certifictes with their own private key (Digitally Signed) ---> once issued ---> installed on server
 
+Digital Signing: Sign with your private key, verify with your public key
+
+You (Server) also do ---> CSR ---> Signed certifictes with their own private key (Digitally Signed)
+
 1. tls session --->  1. Hands-shake ---> purpose authentication 2. encryption phase
 
 session = a conversion b/w two parties for limited or unlimited time
