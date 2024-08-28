@@ -1,45 +1,59 @@
 https://www.youtube.com/watch?v=THxIyHz191A
 
-tls ---> 1. Authentication 2. data protection 3. data integrity
+TLS Overview:
 
-http + tls = https
+TLS:
+Authentication ✅
+Data Protection ✅
+Data Integrity ✅
+HTTP + TLS = HTTPS ✅
+Key Types:
 
-keys types = asymmetric key ---> (2 keys) public key ---> encrypt the data private key decrypt data ( Slow but able to do authentication)
-key types  = symmetric key ---> do encryption and decryption (Unable to authentication but FAST)
+Asymmetric Key:
+Two keys: Public Key (encrypts data), Private Key (decrypts data) ✅
+Slow but able to perform authentication ✅
+Symmetric Key:
+Performs both encryption and decryption ✅
+Unable to perform authentication but fast ✅
+Certificate Authority (CA):
 
+CA signs certificates with its own private key (Digitally Signed) ✅
+Once issued, installed on server ✅
+Digital Signing:
 
-CA = Signed certifictes with their own private key (Digitally Signed) ---> once issued ---> installed on server
+Sign with your private key, verify with your public key ✅
+Server-side CSR:
 
-Digital Signing: Sign with your private key, verify with your public key
+Server generates a Certificate Signing Request (CSR) ✅
+CA signs the CSR with its private key (Digitally Signed) ✅
+TLS Session:
 
-You (Server) also do ---> CSR ---> Signed certifictes with their own private key (Digitally Signed)
+TLS Session:
 
-1. tls session --->  1. Hands-shake ---> purpose authentication 2. encryption phase
+Handshake Phase: Purpose is authentication ✅
+Encryption Phase ✅
+Session:
 
-session = a conversion b/w two parties for limited or unlimited time
+A conversation between two parties for a limited or unlimited time ✅
+Client-Server Communication:
 
-Client sends request to server "hello"
-Server sends it public key + certificates
+Client sends "hello" to server ✅
+Server sends its public key and certificate ✅
+Client verifies the certificate with CA; once verified, uses server's public key to encrypt a message ✅
+Server decrypts the message with its private key ✅
+Secret String:
 
-Client verify the certificates with ---> CA once verified
-Client used the public key of server to encrypt the message (string) and send to server
-Server decrypt the message(server) with server private key
+Both client and server use the secret string and other information to generate a Master Key ✅
+Session Key:
 
-Now both client and Server has same secret string
-client and server both use this string and other information ---> generate (Master key)
+Client generates a Session Key using the Master Key ✅
+Server generates a Session Key using the Master Key ✅
+Session Key is a symmetric key used for encryption and decryption ✅
+Encryption Algorithms: AES-256-GCM and CHACHA20 ✅
+Session Security:
 
-Client generates Session key with (Master Key)
-Server generates Session key with (Master key)
+Session becomes secure and fast ✅
+MAC (Message Authentication Code):
 
-(Session Key) is Symmetric key ---> encrypt + decrypt (Algorithms AES-256-GCM    AND    CHACHA20) 
-
-Session become secure and fast
-
-NOTE: with every encrypted message + MAC KEY
-
-EVERY MAC   = MAC    
-      cleint  Server     ---> if macth than no temper in data mean data integrity.
-
-
-
-
+Each encrypted message includes a MAC key ✅
+If MACs match between client and server, data integrity is confirmed (no tampering) ✅
