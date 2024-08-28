@@ -27,6 +27,20 @@ Server-side CSR:
 Server generates a Certificate Signing Request (CSR) ✅
 CA signs the CSR with its private key (Digitally Signed) ✅
 
+
+When you generate a Certificate Signing Request (CSR), you do not sign it with your private key. Instead, the CSR contains your public key, and you use your private key to create a digital signature within the CSR. This digital signature proves to the Certificate Authority (CA) that you have control over the corresponding private key, but it is not the same as signing the CSR itself.
+
+Here’s the process:
+
+Generate Key Pair: You generate a private key and a corresponding public key.
+Create CSR: You create a CSR that includes your public key and some information about your identity (like domain name, organization, etc.). The CSR is digitally signed with your private key, proving you own the private key that corresponds to the public key.
+Submit CSR: You send the CSR to the CA.
+CA Signs Certificate: The CA verifies your information and uses its private key to sign the certificate, which includes your public key.
+So, while the CSR is associated with your private key because it's digitally signed, the signing step for the certificate itself is done by the CA using their private key, not by you.
+
+
+
+
 TLS Session:
 
 Handshake Phase: Purpose is authentication ✅
