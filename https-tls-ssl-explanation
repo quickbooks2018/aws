@@ -26,7 +26,6 @@ Server-side CSR:
 
 Server generates a Certificate Signing Request (CSR) ✅
 CA signs the CSR with its private key (Digitally Signed) ✅
-TLS Session:
 
 TLS Session:
 
