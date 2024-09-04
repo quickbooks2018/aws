@@ -1,0 +1,26 @@
+To squash all local and remote commits into a single commit with the message "devops position assessment", you'll need to perform the following steps:
+
+Please note:
+
+This process rewrites history, so only do this if you're sure no one else is working on this branch.
+The --force flag is necessary because you're rewriting history.
+This action is irreversible and will lose the detailed commit history. Make sure you really want to do this.
+If this is a shared repository, communicate with your team before performing these actions.
+
+
+1.Ensure you have the latest changes:
+git fetch origin
+git checkout main
+git pull origin main
+
+2.Reset your local branch to the initial commit:
+git reset --soft $(git rev-list --max-parents=0 HEAD)
+
+3.Stage all changes:
+git add .
+
+4.Commit with the desired message:
+git commit -m "devops position assessment"
+
+5.Force push to update the remote repository:
+git push origin main --force
