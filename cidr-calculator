@@ -178,6 +178,10 @@ IP Address: The address "192.168.13.10" is shown in both decimal (the common for
 The binary form of the IP is: 11000000 10101000 11001101 00001010.
 Subnet Mask: The subnet mask "255.255.255.0" is used to divide the network and host portions of the IP address. The binary form of the subnet mask is: 11111111 11111111 11111111 00000000.
 
+The subnet mask 255.255.255.0 in binary is: 11111111 11111111 11111111 00000000.
+The "/24" means that the first 24 bits of the IP address are used for the network portion (the 1s in the subnet mask), and the remaining 8 bits (the 0s) are used for the host portion.
+So, 255.255.255.0 and /24 represent the same network configuration.
+
 The "1"s in the subnet mask indicate the network portion of the IP address, while the "0"s indicate the host portion.
 Network Portion: In the image, the first three octets (192.168.13) represent the network part of the IP address, as indicated by the purple underlining. This is determined by the subnet mask (255.255.255.0), which has all 1's in the first three octets and 0's in the last octet.
 
