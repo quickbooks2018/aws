@@ -171,3 +171,19 @@ Decimal	Binary
 10	00001010
 You can use this process to convert any decimal number to binary.
 
+
+
+IP Address: The address "192.168.13.10" is shown in both decimal (the common format we use) and binary form (how computers process it).
+
+The binary form of the IP is: 11000000 10101000 11001101 00001010.
+Subnet Mask: The subnet mask "255.255.255.0" is used to divide the network and host portions of the IP address. The binary form of the subnet mask is: 11111111 11111111 11111111 00000000.
+
+The "1"s in the subnet mask indicate the network portion of the IP address, while the "0"s indicate the host portion.
+Network Portion: In the image, the first three octets (192.168.13) represent the network part of the IP address, as indicated by the purple underlining. This is determined by the subnet mask (255.255.255.0), which has all 1's in the first three octets and 0's in the last octet.
+
+Host Portion: The last octet (10) is the host portion, highlighted with a red underline. This part can vary within the network, representing different devices or systems within the same subnet.
+
+Summary:
+The network is represented by "192.168.13" (or 11000000 10101000 11001101 in binary).
+The host within that network is represented by ".10" (or 00001010 in binary).
+
