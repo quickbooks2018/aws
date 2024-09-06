@@ -62,3 +62,112 @@ see /18 & count 8.8.2.6.8
 
 10.10.192.0/18
       (128+64)
+
+
+To convert an IP address from decimal (like 192.168.13.10) to binary, follow these steps for each octet (each part of the IP address separated by a period).
+
+Steps:
+1. Convert Decimal to Binary:
+Each octet (number) is converted to binary. Here's how to do it:
+
+Start with the decimal number.
+Repeatedly divide the number by 2, recording the remainder each time.
+Continue until the quotient is 0.
+The binary number is the sequence of remainders read from bottom to top (reverse order).
+Example: Converting 192 to Binary
+Divide 192 by 2:
+192
+÷
+2
+=
+96
+192÷2=96 remainder 0
+
+Divide 96 by 2:
+96
+÷
+2
+=
+48
+96÷2=48 remainder 0
+
+Divide 48 by 2:
+48
+÷
+2
+=
+24
+48÷2=24 remainder 0
+
+Divide 24 by 2:
+24
+÷
+2
+=
+12
+24÷2=12 remainder 0
+
+Divide 12 by 2:
+12
+÷
+2
+=
+6
+12÷2=6 remainder 0
+
+Divide 6 by 2:
+6
+÷
+2
+=
+3
+6÷2=3 remainder 0
+
+Divide 3 by 2:
+3
+÷
+2
+=
+1
+3÷2=1 remainder 1
+
+Divide 1 by 2:
+1
+÷
+2
+=
+0
+1÷2=0 remainder 1
+
+
+2. Repeat the process for each octet.
+168:
+Following the same process, the binary form of 168 is 10101000.
+
+13:
+For 13, divide and get 00001101.
+
+10:
+For 10, divide and get 00001010.
+
+3. Combine the Binary Octets:
+Now you combine each of the binary octets into a single 32-bit representation:
+
+192 → 11000000
+168 → 10101000
+13 → 00001101
+10 → 00001010
+So, the full IP address 192.168.13.10 in binary is:
+
+
+11000000.10101000.00001101.00001010
+Each of these binary octets represents 8 bits, which is why IPv4 addresses are 32 bits (4 octets of 8 bits each).
+
+Summary Table:
+Decimal	Binary
+192	11000000
+168	10101000
+13	00001101
+10	00001010
+You can use this process to convert any decimal number to binary.
+
