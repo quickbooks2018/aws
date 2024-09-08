@@ -1,0 +1,74 @@
+1. Application Layer
+
+This layer handles protocols such as DNS, FTP, and HTTPS. For example, when you access a website like google.com, the DNS protocol resolves the domain name into an IP address, followed by a secure connection through HTTPS.
+Transport Layer
+
+2. The transport layer utilizes TCP (Transmission Control Protocol) or UDP (User Datagram Protocol). In the case of TCP, the communication follows a three-way handshake process. This layer is responsible for identifying services using port numbers. For example, accessing a web server on port 80 for HTTP or port 443 for HTTPS.
+Internet Layer
+
+3. This layer deals with IP addressing (IPv4/IPv6) and routing the data across different networks through an Internet Service Provider (ISP). An example of this process is when data is transmitted from your device through your ISP, identifying and navigating the best path to the destination.
+Link Layer
+
+4. The link layer focuses on hardware addressing, including MAC (Media Access Control) addresses. For example, when a request is sent from your laptop, it first travels to the router using your laptop's MAC address.
+In Simple Terms:
+Your laptop includes a MAC address for hardware identification, a source IP address, and a source port. When connecting to a service (such as a web server), you also have a destination IP
+combination, alongside the transport protocol (TCP or UDP) being used.
+
+---------------------------------------------------------------------------
+
+# TCP/IP Protocol Suite (Internet Protocol Suite)
+
+The TCP/IP Protocol Suite, also known as the Internet Protocol Suite, is a conceptual model and set of communications protocols used in the Internet and similar computer networks. It is organized into four abstraction layers:
+
+## 1. Application Layer
+
+- **Purpose**: Provides network services directly to end-users or applications.
+- **Protocols**: HTTP(S), FTP, SMTP, DNS, SSH, etc.
+- **Example**: When you enter "www.example.com" in a browser:
+  1. DNS resolution converts the domain name to an IP address.
+  2. HTTPS establishes a secure connection with the web server.
+
+## 2. Transport Layer
+
+- **Purpose**: Ensures end-to-end communication and data integrity.
+- **Protocols**: TCP (Transmission Control Protocol), UDP (User Datagram Protocol)
+- **Key Features**:
+  - Port numbers for application addressing
+  - TCP's three-way handshake for connection establishment
+- **Example**: 
+  - Web browsing typically uses TCP on port 443 for HTTPS
+  - DNS queries often use UDP on port 53
+
+## 3. Internet Layer
+
+- **Purpose**: Handles routing of packets across network boundaries.
+- **Protocols**: IPv4, IPv6, ICMP
+- **Key Features**:
+  - IP addressing
+  - Routing between different networks
+- **Example**: 
+  - Your ISP routes your data packets to their destination using IP addresses.
+  - IPv4: 192.168.1.1
+  - IPv6: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+## 4. Link Layer
+
+- **Purpose**: Interfaces with the physical network hardware.
+- **Protocols**: Ethernet, Wi-Fi, PPP
+- **Key Features**:
+  - MAC (Media Access Control) addressing
+  - Physical data transmission
+- **Example**:
+  - Your laptop's network interface card has a unique MAC address (e.g., 00:1A:2B:3C:4D:5E).
+  - Data is transmitted as frames between your device and the router.
+
+## Data Flow Example
+
+When you send a request from your laptop:
+
+1. **Application Layer**: Your browser initiates an HTTPS request to www.example.com
+2. **Transport Layer**: TCP segment is created with source port (e.g., 54321) and destination port (443 for HTTPS)
+3. **Internet Layer**: IP packet is formed with your source IP (e.g., 192.168.1.100) and the destination IP (e.g., 93.184.216.34)
+4. **Link Layer**: Ethernet frame is created with your MAC address (00:1A:2B:3C:4D:5E) and your router's MAC address (00:E0:4C:68:0A:BF)
+
+The data then traverses up these layers at the receiving end to reach the destination application.
