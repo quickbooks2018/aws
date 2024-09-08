@@ -1,5 +1,5 @@
 # High Load Testing
-docker run --rm httpd:2.4 ab -n 100000 -c 500 -k -r -s 600 -t 300 https://app.saqlainmustaq.com/
+docker run --rm httpd:2.4 ab -n 100000 -c 500 -k -r -s 600 -t 300 https://app.saqlainmushtaq.com/
 
 This command sets up the following test parameters:
 
