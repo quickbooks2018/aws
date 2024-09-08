@@ -1,0 +1,5 @@
+# Linux
+apt install -y tilix
+
+# MAC
+brew install --cask iterm2
