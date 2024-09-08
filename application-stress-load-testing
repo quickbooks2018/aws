@@ -8,3 +8,16 @@ This command does the following:
 -k: Use HTTP KeepAlive
 -r: Don't exit on socket receive errors
 -s 300: Set a 300-second timeout for socket operations
+
+# High Load Testing
+docker run --rm httpd:2.4 ab -n 1000000 -c 1000 -f TLS1.3 -k -r -s 1200 -t 600 https://app.saqlainmushtaq.com/
+
+This command sets up the following test parameters:
+
+-n 1000000: 1 million total requests
+-c 1000: 1000 concurrent connections
+-f TLS1.3: Force TLS 1.3 protocol
+-k: Use HTTP KeepAlive
+-r: Don't exit on socket receive errors
+-s 1200: Set a 1200-second (20 minute) timeout for socket operations
+-t 600: Run the test for a maximum of 600 seconds (10 minutes)
