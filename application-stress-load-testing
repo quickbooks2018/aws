@@ -1,14 +1,10 @@
-https://hub.docker.com/r/jordi/ab
+docker run --rm httpd:2.4 ab -n 1000 -c 100 -f TLS1.3 -k -r -s 300 https://app.saqlainmushtaq.com/
 
-docker run --rm jordi/ab -k -c 100 -n 100000 http://172.17.0.1:8080/ 
+This command does the following:
 
-
-docker run --rm jordi/ab -k -c 100 -n 100000 http://your-domain.com/
-
-
-
-
-If you get this error, probably you forgot to end your URL with a slash (/). ab is picky about that:
-
-Wrong: docker run --rm jordi/ab https://www.docker.com
-Right: docker run --rm jordi/ab https://www.docker.com/
+-n 1000: Send 1000 requests in total
+-c 100: Use 100 concurrent connections
+-f TLS1.3: Force TLS 1.3 protocol
+-k: Use HTTP KeepAlive
+-r: Don't exit on socket receive errors
+-s 300: Set a 300-second timeout for socket operations
