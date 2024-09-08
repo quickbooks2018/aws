@@ -1,3 +1,16 @@
+# High Load Testing
+docker run --rm httpd:2.4 ab -n 100000 -c 500 -k -r -s 600 -t 300 https://app.saqlainmustaq.com/
+
+This command sets up the following test parameters:
+
+-n 100000: 100,000 total requests
+-c 500: 500 concurrent connections
+-k: Use HTTP KeepAlive
+-r: Don't exit on socket receive errors
+-s 600: Set a 600-second (10 minute) timeout for socket operations
+-t 300: Run the test for a maximum of 300 seconds (5 minutes)
+
+# Normal Testing
 docker run --rm httpd:2.4 ab -n 1000 -c 100 -f TLS1.3 -k -r -s 300 https://app.saqlainmushtaq.com/
 
 This command does the following:
