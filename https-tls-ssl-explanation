@@ -11,7 +11,8 @@ Key Types:
 
 Asymmetric Key:
 Two keys: Public Key (encrypts data), Private Key (decrypts data) ✅
-Slow but able to perform authentication ✅
+Slow but it is able to perform authentication ✅
+
 Symmetric Key:
 Performs both encryption and decryption ✅
 Unable to perform authentication but fast ✅
