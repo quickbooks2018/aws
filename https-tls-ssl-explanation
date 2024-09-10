@@ -43,34 +43,32 @@ CA Signs Certificate: The CA verifies your information and uses its private key 
 So, while the CSR is associated with your private key because it's digitally signed, the signing step for the certificate itself is done by the CA using their private key, not by you.
 
 
-
-
-TLS Session:
-
-Handshake Phase: Purpose is authentication ✅
-Encryption Phase ✅
 Session:
-
 A conversation between two parties for a limited or unlimited time ✅
 Client-Server Communication:
+
+TLS Session:
+Handshake Phase: Purpose is authentication ✅
+Encryption Phase ✅
+
 
 Client sends "hello" to server ✅
 Server sends its public key and certificate ✅
 Client verifies the certificate with CA; once verified, uses server's public key to encrypt a message ✅
 Server decrypts the message with its private key ✅
+
 Secret String:
-
 Both client and server use the secret string and other information to generate a Master Key ✅
-Session Key:
 
+Session Key:
 Client generates a Session Key using the Master Key ✅
 Server generates a Session Key using the Master Key ✅
 Session Key is a symmetric key used for encryption and decryption ✅
 Encryption Algorithms: AES-256-GCM and CHACHA20 ✅
+
 Session Security:
-
 Session becomes secure and fast ✅
-MAC (Message Authentication Code):
 
+MAC (Message Authentication Code):
 Each encrypted message includes a MAC key ✅
 If MACs match between client and server, data integrity is confirmed (no tampering) ✅
