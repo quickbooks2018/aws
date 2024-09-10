@@ -20,8 +20,8 @@ Certificate Authority (CA):
 
 CA signs certificates with its own private key (Digitally Signed) ✅
 Once issued, installed on server ✅
-Digital Signing:
 
+Digital Signing:
 Sign with your private key, verify with your public key ✅
 Server-side CSR:
 
