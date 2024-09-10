@@ -260,6 +260,27 @@ For example, /8 means 8 bits are for the network, and the remaining bits are for
 /24 → 255.255.255.0 (Class C)
 Each of these helps determine how many devices (hosts) can fit in that network.
 
+When you use the CIDR notation 192.168.0.0/16, you are reserving 16 bits for the host part of the IP addresses. Since there are 16 bits left for hosts, the total number of IP addresses you can get is calculated as:
+
+2
+16
+=
+65
+,
+536
+2 
+16
+ =65,536
+
+So, you will get 65,536 IP addresses in total.
+
+Breakdown:
+Network bits: /16 means 16 bits are used for the network portion.
+Host bits: The remaining 16 bits are used for hosts.
+The total number of IP addresses = 2^16 = 65,536.
+Important Note:
+AWS reserves 5 IP addresses from each subnet you create for internal use. So, effectively, you get 65,531 usable IP addresses in your VPC.
+
 Simple Summary of Classes:
 Class	Example IP	CIDR	Default Subnet Mask	Number of Hosts
 A	10.0.0.0/8	/8	255.0.0.0	Millions (very large network)
