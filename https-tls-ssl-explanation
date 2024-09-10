@@ -28,7 +28,6 @@ Server-side CSR:
 Server generates a Certificate Signing Request (CSR) ✅
 CA signs the CSR with its private key (Digitally Signed) ✅
 
-
 CSR
 You do sign the CSR with your private key.
 The CSR does contain your public key.
