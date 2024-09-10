@@ -29,7 +29,11 @@ Server generates a Certificate Signing Request (CSR) ✅
 CA signs the CSR with its private key (Digitally Signed) ✅
 
 
-When you generate a Certificate Signing Request (CSR), you do not sign it with your private key. Instead, the CSR contains your public key, and you use your private key to create a digital signature within the CSR. This digital signature proves to the Certificate Authority (CA) that you have control over the corresponding private key, but it is not the same as signing the CSR itself.
+CSR
+You do sign the CSR with your private key.
+The CSR does contain your public key.
+You use your private key to create a digital signature within the CSR, which proves to the Certificate Authority (CA) that you control the corresponding private key.
+
 
 Here’s the process:
 
