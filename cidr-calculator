@@ -191,3 +191,79 @@ Summary:
 The network is represented by "192.168.13" (or 11000000 10101000 11001101 in binary).
 The host within that network is represented by ".10" (or 00001010 in binary).
 
+
+
+What is an IP Address?
+An IP (Internet Protocol) address is like a home address for computers on a network. It helps devices find each other and communicate on the internet or local network. An IP address looks like this: 192.168.1.1 and is made up of four numbers (called octets), each ranging from 0 to 255.
+
+IP Classes and Subnet Masks (CIDR Notation)
+There are different "classes" of IP addresses, which help define how many devices (hosts) can exist in a network. Each class has a "subnet mask," which tells us how many parts of the IP address are used for the network (the home address) and how many parts are used for hosts (the specific rooms/devices in the home).
+
+Let’s go class by class.
+
+Class A (Large Networks)
+Range: IP addresses from 1.0.0.0 to 126.255.255.255.
+
+Example: 10.0.0.0/8
+
+CIDR: /8 means that the first 8 bits are used for the network, and the rest of the bits (remaining 24 bits) are used for hosts.
+
+Subnet Mask Calculation:
+
+11111111.00000000.00000000.00000000 (in binary)
+This is 255.0.0.0 in decimal.
+Explanation:
+Class A is used for very large networks, like ISPs or huge corporations. With /8, the first octet (10 in 10.0.0.0) is the network, and the rest are used for hosts, meaning it can support millions of devices.
+
+Class B (Medium Networks)
+Range: IP addresses from 128.0.0.0 to 191.255.255.255.
+
+Example: 172.16.0.0/12 (this is part of Class B's private range)
+
+CIDR: /12 means that the first 12 bits are used for the network, and the rest of the bits (remaining 20 bits) are for hosts.
+
+Subnet Mask Calculation:
+
+11111111.11110000.00000000.00000000 (in binary)
+This is 255.240.0.0 in decimal.
+Explanation:
+Class B is used for medium-sized networks. With /12, the first 12 bits are for the network part (like 172.16), and the rest are for hosts. This allows up to thousands of devices on the network.
+
+Class C (Small Networks)
+Range: IP addresses from 192.0.0.0 to 223.255.255.255.
+
+Example: 192.168.0.0/24
+
+CIDR: /24 means that the first 24 bits are used for the network, and the remaining 8 bits are for hosts.
+
+Subnet Mask Calculation:
+
+11111111.11111111.11111111.00000000 (in binary)
+This is 255.255.255.0 in decimal.
+Explanation:
+Class C is for small networks, like home or small business networks. With /24, the first 24 bits represent the network, and only 8 bits are for hosts, meaning it can support 254 devices.
+
+Class D (Multicasting)
+Range: IP addresses from 224.0.0.0 to 239.255.255.255.
+Use: Class D is not used for regular devices. It’s used for multicasting, where one source sends data to a group of devices. Think of this like a live broadcast to multiple people.
+Class E (Experimental)
+Range: IP addresses from 240.0.0.0 to 255.255.255.255.
+Use: Class E is reserved for experimental or research purposes and not used in normal networks.
+How to Read CIDR Notation (/8, /12, /16, etc.)
+CIDR Notation tells us how many bits in the IP address are used for the network part.
+
+For example, /8 means 8 bits are for the network, and the remaining bits are for hosts.
+
+/8 → 255.0.0.0 (Class A)
+/12 → 255.240.0.0 (Class B)
+/16 → 255.255.0.0 (Class B)
+/24 → 255.255.255.0 (Class C)
+Each of these helps determine how many devices (hosts) can fit in that network.
+
+Simple Summary of Classes:
+Class	Example IP	CIDR	Default Subnet Mask	Number of Hosts
+A	10.0.0.0/8	/8	255.0.0.0	Millions (very large network)
+B	172.16.0.0/12	/12	255.240.0.0	Thousands (medium network)
+C	192.168.0.0/24	/24	255.255.255.0	254 (small network)
+D	224.0.0.0	N/A	N/A	Used for multicasting
+E	240.0.0.0	N/A	N/A	Reserved for research
