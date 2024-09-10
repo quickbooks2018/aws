@@ -1,3 +1,6 @@
+# https://www.youtube.com/watch?v=TVr0RZ1-74g
+# NAT https://www.youtube.com/watch?v=47PUj7OSGkA
+
 1. Application Layer
 
 This layer handles protocols such as DNS, FTP, and HTTPS. For example, when you access a website like google.com, the DNS protocol resolves the domain name into an IP address, followed by a secure connection through HTTPS.
