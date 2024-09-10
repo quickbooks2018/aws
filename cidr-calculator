@@ -267,3 +267,12 @@ B	172.16.0.0/12	/12	255.240.0.0	Thousands (medium network)
 C	192.168.0.0/24	/24	255.255.255.0	254 (small network)
 D	224.0.0.0	N/A	N/A	Used for multicasting
 E	240.0.0.0	N/A	N/A	Reserved for research
+
+
+you can create a 192.168.0.0/16 network in AWS, and here's why and how:
+
+Why can you use 192.168.0.0/16 in AWS?
+Even though 192.168.0.0 is traditionally a Class C network (with a /24 subnet mask by default), the concept of IP classes (Class A, B, C) is not strictly followed anymore in modern networking, especially with CIDR (Classless Inter-Domain Routing). CIDR allows us to create subnets of any size, regardless of the original class.
+
+In AWS, you're not restricted by the old Class A, B, or C boundaries. You can choose any size for your VPC (Virtual Private Cloud) and subnets within the private IP ranges.
+192.168.0.0/16 means you are reserving the entire network space from 192.168.0.0 to 192.168.255.255 for your AWS VPC. This provides a much larger range of IP addresses than a standard Class C /24 network.
