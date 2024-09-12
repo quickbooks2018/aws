@@ -87,6 +87,19 @@ OSI stands for Open Systems Interconnection
 
 OSI Model helps us to understand how data is transfered from one computer to another computer in a computer network
 
+Note: each layer is a set of protocols not application it self example application layer does not have chrome.
+
+application layer protocols include:
+
+HTTP (Hypertext Transfer Protocol) for web browsing
+SMTP (Simple Mail Transfer Protocol) for email transmission
+FTP (File Transfer Protocol) for file transfers
+DNS (Domain Name System) for domain name resolution
+IMAP (Internet Message Access Protocol) for retrieving emails
+POP3 (Post Office Protocol version 3) for retrieving emails
+SSH (Secure Shell) for secure remote access
+DHCP (Dynamic Host Configuration Protocol) for dynamic IP address allocation
+
 7 Physical: The actual hardware. Example: Cables, network interface cards. (data transform from binary to electrical signals)
 
 6 Data Link: Transfers data between adjacent network nodes. Example: Ethernet, (Wi-Fi). Wireless or Wired Connection
