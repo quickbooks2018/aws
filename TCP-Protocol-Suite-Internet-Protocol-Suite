@@ -83,6 +83,10 @@ The data then traverses up these layers at the receiving end to reach the destin
 #########
 OSI Model
 #########
+OSI stands for Open Systems Interconnection
+
+OSI Model helps us to understand how data is transfered from one computer to another computer in a computer network
+
 7 Physical: The actual hardware. Example: Cables, network interface cards. (data transform from binary to electrical signals)
 
 6 Data Link: Transfers data between adjacent network nodes. Example: Ethernet, (Wi-Fi). Wireless or Wired Connection
