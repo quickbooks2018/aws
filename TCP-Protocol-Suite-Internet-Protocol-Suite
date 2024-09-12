@@ -79,3 +79,20 @@ When you send a request from your laptop:
 4. **Link Layer**: Ethernet frame is created with your MAC address (00:1A:2B:3C:4D:5E) and your router's MAC address (00:E0:4C:68:0A:BF)
 
 The data then traverses up these layers at the receiving end to reach the destination application.
+
+#########
+OSI Model
+#########
+7 Physical: The actual hardware. Example: Cables, network interface cards. (data transform from binary to electrical signals)
+
+6 Data Link: Transfers data between adjacent network nodes. Example: Ethernet, (Wi-Fi). Wireless or Wired Connection
+
+5 Network: Routes data packets between different networks. Example: IP addresses. (Routing)
+
+4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol)
+
+3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session)
+
+2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS)
+
+1 Application: What the user actually interacts with. Example: Web browsers, email clients. (Chrome google.com)
