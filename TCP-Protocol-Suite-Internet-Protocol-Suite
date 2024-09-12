@@ -106,8 +106,7 @@ DHCP (Dynamic Host Configuration Protocol) for dynamic IP address allocation
 
 5 Network: Routes data packets between different networks. Example: IP addresses. (Routing)
 
-4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol)
-
+4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol 3 way hand shake acknowledgement, flow control of data how data is being transmitted, retransmission of data in case of error) TCP Coonection oriented, UDP Connection Less
 3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session + authentication authorization + Session termination or session management)
 
 2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS)
