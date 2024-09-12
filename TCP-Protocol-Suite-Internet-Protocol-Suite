@@ -108,7 +108,7 @@ DHCP (Dynamic Host Configuration Protocol) for dynamic IP address allocation
 
 4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol)
 
-3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session)
+3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session + Session termination or session management)
 
 2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS)
 
