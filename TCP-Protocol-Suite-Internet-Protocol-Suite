@@ -101,13 +101,30 @@ Note: each layer is a set of protocols not application it self example applicati
 5 Network: Routes data packets between different networks. Example: IP addresses. (Logical addressing) DATA Packet=(source ip source port destination ip destionation port) (Routing mean transfer of packets from source to destination)
 
 4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol 3 way hand shake acknowledgement, flow control of data how data is being transmitted, retransmission of data in case of error) TCP Coonection oriented, UDP Connection Less
+
+client advertize (Packet Size)+(Segment Size) with Server ---> Syncronize (sync)
+Client <---    Server acknowledge with client and also sent his (Packet Size)+(Segment Size)    (Asyc) 
+client ---> sync
+
+full duplex
+reliable
+if data loss, retransmiited (Error Control)
+(Three Way handshake)
+
+
+Connection less transmission done via UDP (FASTER)
+
+# Examples
+TCP (Transmission Control Protocol)
+Connection oriented tranmission done via TCP (SLOWER)
+
 Web browsing (HTTP/HTTPS)
 Email (SMTP, IMAP, POP3)
 File transfer (FTP)
 Secure shell (SSH)
 
 UDP (User Datagram Protocol):
-
+Connection less transmission done via UDP (FASTER)
 Video streaming
 Online gaming
 Voice over IP (VoIP)
