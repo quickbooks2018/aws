@@ -96,6 +96,10 @@ Note: each layer is a set of protocols not application it self example applicati
 
 7 Physical: The actual hardware. (data transform from binary to electrical signals)
 Example: Cables, network interface cards. Satellites
+electrical signal ---> cables
+light signal ---> optical fiber
+redio signal ---> air ( Satellites )
+
 
 6 Data Link: Transfers data between adjacent network nodes. 
 Example: Ethernet, (Wi-Fi). Wireless or Wired Connection (MAC address )(Physical addressing) 
