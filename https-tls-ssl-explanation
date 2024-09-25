@@ -3,8 +3,8 @@ https://www.youtube.com/watch?v=THxIyHz191A
 TLS Overview:
 
 TLS: ---> ADD
-Authentication ✅ (HandShake)
-Data Protection ✅ (Encryption Phase)
+Authentication ✅ (HandShake) (Asymmetric Key)
+Data Protection ✅ (Encryption Phase) (Symmetric Key)
 Data Integrity ✅  (Message Authentication Code)
 HTTP + TLS = HTTPS ✅
 Key Types:
