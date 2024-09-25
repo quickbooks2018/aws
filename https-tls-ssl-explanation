@@ -23,8 +23,8 @@ Once issued, installed on server ✅
 
 Digital Signing:
 Sign with your private key, verify with your public key ✅
-Server-side CSR:
 
+Server-side CSR:
 Server generates a Certificate Signing Request (CSR) ✅
 CA signs the CSR with its private key (Digitally Signed) ✅
 
