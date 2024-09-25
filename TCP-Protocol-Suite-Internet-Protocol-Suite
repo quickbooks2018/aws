@@ -116,7 +116,7 @@ DNS lookups
 
 3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session + authentication authorization + Session termination or session management)
 
-2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS)
+2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS) (Compression Encryption Decryption)
 
 1 Application: What the user actually interacts with. Example: Web browsers, email clients. (Chrome google.com)
 
