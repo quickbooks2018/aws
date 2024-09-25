@@ -16,8 +16,8 @@ Slow but it is able to perform authentication ✅
 Symmetric Key:
 Performs both encryption and decryption ✅
 Unable to perform authentication but fast ✅
-Certificate Authority (CA):
 
+Certificate Authority (CA):
 CA signs certificates with its own private key (Digitally Signed) ✅
 Once issued, installed on server ✅
 
