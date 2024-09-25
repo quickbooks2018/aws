@@ -113,7 +113,9 @@ Online gaming
 Voice over IP (VoIP)
 DNS lookups
 
-
+#################################################################################
+Note: Web browser performs all below ( 1. Application 2. Presentation 3. Session) 
+#################################################################################
 3 Session: Manages connections between applications. Example: Setting up and ending calls. (Client Server Session + authentication authorization + Session termination or session management)
 
 2 Presentation: Formats and encrypts data. Example: TLS (Transport Layer Security), (HTTPS) (Compression Encryption Decryption)
