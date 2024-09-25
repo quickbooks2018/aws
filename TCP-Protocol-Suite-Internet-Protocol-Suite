@@ -94,11 +94,16 @@ OSI Model helps us to understand how data is transfered from one computer to ano
 
 Note: each layer is a set of protocols not application it self example application layer does not have chrome.
 
-7 Physical: The actual hardware. Example: Cables, network interface cards. (data transform from binary to electrical signals)
+7 Physical: The actual hardware. (data transform from binary to electrical signals)
+Example: Cables, network interface cards. Satellites
 
-6 Data Link: Transfers data between adjacent network nodes. Example: Ethernet, (Wi-Fi). Wireless or Wired Connection (MAC address )(Physical addressing) FRAME= source MAC destination MAC + data packet
+6 Data Link: Transfers data between adjacent network nodes. 
+Example: Ethernet, (Wi-Fi). Wireless or Wired Connection (MAC address )(Physical addressing) 
+FRAME= source MAC destination MAC + DATA Packet
 
-5 Network: Routes data packets between different networks. Example: IP addresses. (Logical addressing) DATA Packet=(source ip source port destination ip destionation port) (Routing mean transfer of packets from source to destination)
+5 Network: Routes data packets between different networks. 
+Example: IP addresses. (Logical addressing) 
+DATA Packet=(source ip source port destination ip destionation port) (Routing mean transfer of packets from source to destination)
 
 4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol 3 way hand shake acknowledgement, flow control of data how data is being transmitted, retransmission of data in case of error) TCP Coonection oriented, UDP Connection Less
 
