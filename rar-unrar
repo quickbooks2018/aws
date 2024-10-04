@@ -1,0 +1,11 @@
+# Install unrar package (if not already installed):
+sudo apt update
+sudo apt install unrar
+
+# Extract the .rar file:
+unrar x filename.rar
+
+# To list the contents of the .rar file without extracting:
+unrar l filename.rar
+
+
