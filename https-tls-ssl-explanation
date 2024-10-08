@@ -6,9 +6,13 @@ TLS: ---> ADD
 Authentication ✅ (TCP HandShake) (Asymmetric Key)
 Data Protection ✅ (Encryption Phase) (Symmetric Key)
 Data Integrity ✅  (Message Authentication Code)
-HTTP + TLS = HTTPS ✅
-Key Types:
 
+HTTP + TLS = HTTPS ✅
+
+TLS:---> Session---> two phases
+1. handshake phase ✅ 2. encryption phase ✅
+
+Key Types:
 Asymmetric Key:
 Two keys: Public Key (encrypts data), Private Key (decrypts data) ✅
 Slow but it is able to perform authentication ✅
