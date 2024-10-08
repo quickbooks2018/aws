@@ -5,7 +5,7 @@ TLS Overview:
 TLS: ---> ADD
 Authentication ✅ (TCP HandShake) (Asymmetric Key)
 Data Protection ✅ (Encryption Phase) (Symmetric Key)
-Data Integrity ✅  (Message Authentication Code)
+Data Integrity ✅  (Message Authentication Code) MAC algorithm verifies data is not tempered
 
 HTTP + TLS = HTTPS ✅
 
