@@ -57,7 +57,7 @@ Encryption Phase ✅
 
 
 Client sends "hello" to server ✅
-Server sends its public key and certificate ✅
+Server in return sends its public key and certificate ✅
 Client verifies the certificate with CA; once verified, uses server's public key to encrypt a message ✅ and ---> sends to server
 Server decrypts the message with its private key ✅
 (Now both client and server has same string)
