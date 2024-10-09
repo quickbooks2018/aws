@@ -74,6 +74,6 @@ Encryption Algorithms: AES-256-GCM and CHACHA20 ✅
 Session Security:
 Session becomes secure and fast ✅
 
-MAC (Message Authentication Code):
+MAC (Message Authentication Code) MAC algorithm:
 Each encrypted message includes a MAC key ✅
 If MACs match between client and server, data integrity is confirmed (no tampering) ✅
