@@ -10,17 +10,16 @@
 TCP/IP Protocol Suite (ATIL)
 
 1. Application Layer
-
 This layer handles protocols such as DNS, FTP, and HTTPS. For example, when you access a website like google.com, the DNS protocol resolves the domain name into an IP address, followed by a secure connection through HTTPS.
-Transport Layer
 
-2. The transport layer utilizes TCP (Transmission Control Protocol) or UDP (User Datagram Protocol). In the case of TCP, the communication follows a three-way handshake process. This layer is responsible for identifying services using port numbers. For example, accessing a web server on port 80 for HTTP or port 443 for HTTPS.
-Internet Layer
+2. Transport Layer
+The transport layer utilizes TCP (Transmission Control Protocol) or UDP (User Datagram Protocol). In the case of TCP, the communication follows a three-way handshake process. This layer is responsible for identifying services using port numbers. For example, accessing a web server on port 80 for HTTP or port 443 for HTTPS.
 
-3. This layer deals with IP addressing (IPv4/IPv6) and routing the data across different networks through an Internet Service Provider (ISP). An example of this process is when data is transmitted from your device through your ISP, identifying and navigating the best path to the destination.
-Link Layer
+3. Internet Layer
+This layer deals with IP addressing (IPv4/IPv6) and routing the data across different networks through an Internet Service Provider (ISP). An example of this process is when data is transmitted from your device through your ISP, identifying and navigating the best path to the destination.
 
-4. The link layer focuses on hardware addressing, including MAC (Media Access Control) addresses. For example, when a request is sent from your laptop, it first travels to the router using your laptop's MAC address.
+4. Link Layer
+The link layer focuses on hardware addressing, including MAC (Media Access Control) addresses. For example, when a request is sent from your laptop, it first travels to the router using your laptop's MAC address.
 In Simple Terms:
 Your laptop includes a MAC address for hardware identification, a source IP address, and a source port. When connecting to a service (such as a web server), you also have a destination IP
 combination, alongside the transport protocol (TCP or UDP) being used.
