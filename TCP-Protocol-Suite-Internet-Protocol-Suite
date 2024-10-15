@@ -112,8 +112,8 @@ DATA Packet=(source ip source port destination ip destionation port) (Routing me
 4 Transport: Ensures complete data transfer. Example: TCP, UDP protocols. (TCP/UDP Protocol 3 way hand shake acknowledgement, flow control of data how data is being transmitted, retransmission of data in case of error) TCP Coonection oriented, UDP Connection Less
 
 client advertize (Packet Size)+(Segment Size) with Server ---> Syncronize (sync)
-Client <---    Server acknowledge with client and also sent his (Packet Size)+(Segment Size)    (Asyc) 
-client ---> sync
+Client <---    Server acknowledge with client and also sent his (Packet Size)+(Segment Size)    (sync+Acknowledgment) 
+client ---> (Acknowledgment)
 
 full duplex
 reliable
