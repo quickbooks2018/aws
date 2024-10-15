@@ -103,7 +103,7 @@ redio signal ---> air ( Satellites )
 
 6 Data Link: Transfers data between adjacent network nodes. 
 Example: Ethernet, (Wi-Fi). Wireless or Wired Connection (MAC address )(Physical addressing) 
-FRAME= source MAC destination MAC + DATA Packet
+FRAME= source MAC + destination MAC + DATA Packet
 
 5 Network: Routes data packets between different networks. 
 Example: IP addresses. (Logical addressing) 
